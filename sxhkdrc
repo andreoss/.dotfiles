@@ -1,3 +1,9 @@
+alt + slash
+       dbus-launch rofi -show-icons -show combi
+ctrl + alt + slash
+        dbus-launch rofi -show-icons -show filebrowser
+alt + BackSpace
+        dmenu_run
 super+c
     icesh -f center
 
@@ -15,8 +21,6 @@ super+slash
            icesh -f windowlist
 super+c
            icesh -f center
-alt+slash
-           rofi -show combi
 
 super+b
           icesh -f if -P _NET_FRAME_EXTENTS=0 then bordered else borderless
