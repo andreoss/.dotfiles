@@ -1,20 +1,16 @@
 #!/bin/sh
 WM=
 
-if type icewm-session; then
-	WM="icewm-session --nobg"
-elif type dwm; then
+if type dwm; then
 	WM=dwm
-elif type ratpoison; then
-	WM=ratpoison
 else
-	WM=xterm
+	if type icewm-session; then
+		WM="icewm-session --nobg"
+	fi
 fi
 
 while :; do
-    dunstify "Running '$WM'"
-    $WM
-    sleep 10
+	$WM
 done
 
 exit

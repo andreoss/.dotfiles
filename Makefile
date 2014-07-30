@@ -18,6 +18,7 @@ local-bin:
 	$(LN) ${HOME}/.dotfiles/bin/tm       ${HOME}/.local/bin/tm
 	$(LN) ${HOME}/.dotfiles/bin/viper    ${HOME}/.local/bin/viper
 	$(LN) ${HOME}/.dotfiles/bin/x        ${HOME}/.local/bin/x
+	$(LN) ${HOME}/.dotfiles/bin/wm       ${HOME}/.local/bin/wm
 
 dotfiles:
 	$(LN) ${HOME}/.dotfiles/.crontab     ${HOME}/.crontab
