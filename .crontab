@@ -1,0 +1,7 @@
+*/15 * * * * mbsync -a 
+*/5  * * * * notmuch new
+0    * * * * find ~ -name '*.core' -type f -delete
+0    0 * * * find ~ -name '*~'     -type f -delete
+0    0 * * * find ~ -name '#*'     -type f -delete
+0    * * * * DISPLAY=:0 dunstify "$(date)"
+
