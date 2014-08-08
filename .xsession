@@ -1,6 +1,5 @@
-#!/bin/sh -l
+#!/bin/ksh -l
 # Simulate "login shell"
-
 . "$HOME"/.profile
 . "$HOME"/.kshrc
 
@@ -17,15 +16,10 @@ done
 
 trap cleanup EXIT
 
-__start() {
-	C="$1"
-	shift
-	if type "$C"; then
-		dunstify "Running - $C"
-		"$C" "$@"
-	else
-		dunstify "Not found - $C"
-	fi
+__loop() {
+	dunstify "Running - $*"
+	"$@"
+	__loop "$@"
 }
 
 eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
@@ -39,7 +33,7 @@ fi
 DPI=100
 
 __is_docked() {
-	xrandr | grep -E '^(HDMI|DP)[0-9-]+ connected'
+	xrandr | grep -E 'HDMI[0-9-]+ connected'
 }
 
 __is_4k() {
@@ -87,11 +81,7 @@ ulimit -Sc 0
 				done
 		done
 	else
-		if [ -x "$HOME/.fehbg" ]; then
-			"$HOME/.fehbg"
-		else
-			xsetroot -solid black
-		fi
+		xsetroot -solid black
 	fi
 } &
 
@@ -108,22 +98,22 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation" 1
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
 
-__start conky &
-__start urxvtd &
-__start dunst &
+__loop conky &
+__loop urxvtd &
+__loop dunst &
 
 if [ "$HOSTNAME" = "wks" ]; then
 	xpra shadow
 fi
 
-__start emacs --fg-daemon &
+__loop emacs --fg-daemon &
 
-# {
-# 	while :; do
-# 		sleep 1
-# 		uptime | sed 's/.*://;s/,//g' | xargs -Ixxx xsetroot -name xxx
-# 	done
-# } &
+{
+	while :; do
+		sleep 1
+		uptime | sed 's/.*://;s/,//g' | xargs -Ixxx xsetroot -name xxx
+	done
+} &
 
 env | grep -v ^PS | grep -v ^DOAS | tee -a "$HOME/.xenv"
 exec wm
