@@ -81,7 +81,12 @@ ulimit -Sc 0
 				done
 		done
 	else
+            if [ -x "$HOME/.fehbg" ]
+            then
+                "$HOME/.fehbg"
+            else
 		xsetroot -solid black
+            fi
 	fi
 } &
 
