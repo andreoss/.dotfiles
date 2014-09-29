@@ -1,0 +1,65 @@
+Emacs*font:             Terminus
+Emacs*geometry:  	80x38
+Emacs*menuBar:   	0
+Emacs*scrollBar: 	on
+Emacs*toolBar:   	0
+Emacs*scrollBarWidth: 	6
+
+*color0:     #1E1E1E
+*color1:     #E61D2B
+*color2:     #01AC82
+*color3:     #F7941E
+*color4:     #2151A1
+*color5:     #521F61
+*color6:     #016438
+*color7:     #DADADA
+*color8:     #7D7D7D
+*color9:     #FFADAD
+*color10:    #70BF44
+*color11:    #F8CD24
+*color12:    #1DA1F2
+*color13:    #925FA1
+*color14:    #01DCA2
+*color15:    #ADADAD
+*background: #151515
+*foreground: #FCF3E4
+
+URxvt.font: xft:Terminus:size=10:bold
+URxvt.background: #FFFFEA
+URxvt.foreground: #000000
+URxvt.cursorBlink: true
+URxvt.cursorColor: #FF2909
+URxvt.depth: 32
+URxvt.fading: 25
+URxvt.internalBorder: 24
+URxvt.iso14755: true
+
+URxvt.keysym.C-0: resize-font:reset
+URxvt.keysym.C-equal: resize-font:bigger
+URxvt.keysym.C-minus: resize-font:smaller
+URxvt.keysym.C-question: resize-font:show
+URxvt.keysym.M-f: perl:keyboard-select:search
+URxvt.keysym.M-s: perl:keyboard-select:activate
+URxvt.keysym.M-u: perl:url-select:select_next
+
+URxvt.letterSpace: 0
+URxvt.loginShell: true
+URxvt.perl-ext-common: context,selection-to-clipboard,url-select,resize-font,keyboard-select
+
+URxvt.saveLines: 10000000
+URxvt.scrollBar: true
+URxvt.scrollBar_align: center
+URxvt.scrollBar_floating: true
+URxvt.scrollBar_right: true
+URxvt.scrollTtyKeypress: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollstyle: plain
+URxvt.secondaryScroll: true
+URxvt.shading: 100
+URxvt.transparent: false
+URxvt.urgentOnBell: true
+URxvt.url-select.underline: true
+
+XTerm*charClass: 37:48, 45-47:48, 58:48, 64:48, 126:48
+Xcursor.size: 32
