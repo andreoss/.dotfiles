@@ -73,4 +73,4 @@ conky &
 urxvtd &
 dunst &
 
-exec icewm-session
+exec icewm-session --nobg
