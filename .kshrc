@@ -131,7 +131,10 @@ PATH=$SBT_HOME/bin:$PATH
 LOCAL_HOME=$HOME/.local
 PATH="$LOCAL_HOME/bin:$PATH"
 PATH="$PATH:$LOCAL_HOME/share/coursier/bin"
-export PATH SBT_HOME JAVA_HOME
+PATH="$PATH:$HOME/pkg/bin"
+MANPATH="$MANPATH:$HOME/pkg/man"
+
+export PATH SBT_HOME JAVA_HOME MANPATH
 
 
 if [ -e "$HOME"/.kshrc.alias ]

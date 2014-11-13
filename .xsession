@@ -57,6 +57,8 @@ ulimit -Sc 0
 					sleep $((60 * 30))
 				done
 		done
+        else
+            xsetroot -solid black
 	fi
 } &
 
