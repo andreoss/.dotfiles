@@ -1,0 +1,24 @@
+[alias]
+    ack   = !git ls-files | ack --files-from=-
+    au    = add --all
+    bu    = !git rev-parse --abbrev-ref --symbolic-full-name @{u}
+    cc    = clone
+    ci    = commit
+    cia   = commit --amend
+    cm    = commit -m
+    co    = checkout
+    cp    = cherry-pick
+    d     = diff
+    fe    = fetch --all
+    hot   = "!f() { git log --all --find-copies --find-renames --name-only --format='format:' \"$@\" | grep -v '^$' | sort | uniq -c | sort -rn ;};f"
+    ll    = log --oneline --graph --decorate
+    lp    = log -p
+    ls    = ls-files
+    p     = pull
+    pm    = pull origin master
+    pu    = push
+    pufo  = push --force
+    pure  = pull --rebase
+    re    = reset
+    sc    = clone --depth=1
+    st    = status -s -b
