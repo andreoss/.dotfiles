@@ -13,13 +13,20 @@ done
 LANG=ru
 LC_ALL=ru_RU.UTF-8
 EDITOR=et
+HOSTNAME=$(hostname)
 
 export LC_ALL LANG
 export MANPATH
 export EDITOR
+export HOSTNAME
 
 if [ ! "$GPG_AGENT_INFO" ]; then
 	if type keychain >/dev/null; then
 		eval $(keychain --eval --agents ssh,gpg 2>/dev/null)
 	fi
+fi
+
+if [ -e "$HOME/.cargo/env" ]
+then
+    . "$HOME/.cargo/env"
 fi
