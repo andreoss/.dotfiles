@@ -131,8 +131,11 @@ PATH=$SBT_HOME/bin:$PATH
 LOCAL_HOME=$HOME/.local
 PATH="$LOCAL_HOME/bin:$PATH"
 PATH="$PATH:$LOCAL_HOME/share/coursier/bin"
-PATH="$PATH:$HOME/pkg/bin"
-MANPATH="$MANPATH:$HOME/pkg/man"
+
+if [ -d "$HOME"/.cargo ]
+then
+    PATH="$PATH:$HOME/.cargo/bin"
+fi
 
 export PATH SBT_HOME JAVA_HOME MANPATH
 
