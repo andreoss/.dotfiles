@@ -1,15 +1,21 @@
+OS != uname
+
+
+all: system dotfiles cron
+
 cron:
 	crontab ${HOME}/.crontab
 
 
-all:
-	ln -f -s  ${HOME}/.dotfiles/.Xresources ${HOME}/.Xdefaults
-	ln -f -s  ${HOME}/.dotfiles/.kshrc     ${HOME}/.kshrc
-	ln -f -s  ${HOME}/.dotfiles/.profile   ${HOME}/.profile
-	ln -f -s  ${HOME}/.dotfiles/.xsession  ${HOME}/.xsession
-	ln -f -s  ${HOME}/.dotfiles/.crontab   ${HOME}/.crontab
-	ln -f -s  ${HOME}/.dotfiles/.screenrc  ${HOME}/.screenrc
-	ln -f -s  ${HOME}/.dotfiles/.screenrc  ${HOME}/.screenrc
+dotfiles:
+	ln -f -s  ${HOME}/.dotfiles/.Xresources  ${HOME}/.Xdefaults
+	ln -f -s  ${HOME}/.dotfiles/.kshrc       ${HOME}/.kshrc
+	ln -f -s  ${HOME}/.dotfiles/.kshrc.alias ${HOME}/.kshrc.alias
+	ln -f -s  ${HOME}/.dotfiles/.profile     ${HOME}/.profile
+	ln -f -s  ${HOME}/.dotfiles/.xsession    ${HOME}/.xsession
+	ln -f -s  ${HOME}/.dotfiles/.xbindkeysrc ${HOME}/.xbindkeysrc
+	ln -f -s  ${HOME}/.dotfiles/.crontab     ${HOME}/.crontab
+	ln -f -s  ${HOME}/.dotfiles/.screenrc    ${HOME}/.screenrc
 
 	mkdir -p  ${HOME}/.icewm/
 	mkdir -p  ${HOME}/.config/gtk-3.0/
@@ -21,3 +27,13 @@ all:
 	git config --global include.path 	${HOME}/.dotfiles/gitaliases
 	mkdir -p  ${HOME}/.config/
 	mkdir -p  ${HOME}/.config/sxhkd/
+
+.if ${OS} == "OpenBSD"
+system:
+	doas pkg_add -l pkgs-${OS}.txt
+.else
+system:
+	@echo "Unsupported: ${OS}
+	@exit 1
+.endif
+
