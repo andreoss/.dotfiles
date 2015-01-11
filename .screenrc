@@ -24,7 +24,7 @@ bind R  eval "source $HOME/.screenrc"
 termcapinfo xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
 termcapinfo rxvt* 'hs:ts=\E]2;:fs=\007:ds=\E]2;\007'
 
-backtick 0 2 2 ksh -c "uptime | sed 's/.*://;s/,//g'"
+backtick 0 2 2 sh -c "uptime | sed 's/.*://;s/,/./g'"
 
 windowlist string "%4n %h%=%f"
 hardstatus string "%?%F%{.R.}%?%? %h%?%=%`%=%-Lw%50><%n%f %t>%{-}%+Lw%<%="

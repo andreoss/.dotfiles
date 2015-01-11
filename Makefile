@@ -25,6 +25,7 @@ dotfiles:
 	ln -f -s  ${HOME}/.dotfiles/gtk-3.0.ini ${HOME}/.config/gtk-3.0/settings.ini
 
 	git config --global include.path 	${HOME}/.dotfiles/gitaliases
+
 	mkdir -p  ${HOME}/.config/
 	mkdir -p  ${HOME}/.config/sxhkd/
 
