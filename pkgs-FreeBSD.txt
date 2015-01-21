@@ -6,6 +6,7 @@ cmake
 conky
 curl
 dnscrypt-proxy2
+doas
 docker
 docker-compose
 docker-machine
@@ -29,6 +30,7 @@ k9s
 keychain
 libreoffice
 librewolf
+libtool
 maven
 maven-wrapper
 mill
@@ -68,4 +70,3 @@ xorg
 xpra
 yt-dlp
 zsh
-doas
