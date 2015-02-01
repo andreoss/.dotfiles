@@ -1,0 +1,9 @@
+#!/bin/sh
+doas pkg install -y bhyve-firmware vm-bhyve
+
+doas sysrc vm_enable="YES"
+doas sysrc vm_delay="5"
+doas sysrc vm_dir="zfs:z/vm"
+
+doas zfs create z/vm
+# zfs set recordsize=64K zroot/bhyve 
