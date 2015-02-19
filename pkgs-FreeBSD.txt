@@ -55,7 +55,6 @@ sudo
 sxhkd
 terminus-font
 terminus-ttf
-ungoogled-chromium
 urxvt-perls
 virtualbox-ose
 virtualbox-ose-kmod
