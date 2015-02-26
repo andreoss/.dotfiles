@@ -31,6 +31,9 @@ dotfiles:
 .if "${OS}" == "OpenBSD"
 system:
 	doas pkg_add -l pkgs-${OS}.txt
+.elif "${OS}" == "FreeBSD"
+system:
+	xargs sudo pkg install -y < pkgs-${OS}.txt
 .else
 system:
 	@echo "Unsupported: ${OS}"
