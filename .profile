@@ -8,17 +8,35 @@ for PKG_PREFIX in "$HOME" /usr; do
 		PATH="$PATH":"$PKG_PREFIX"/pkg/sbin
 		MANPATH="$MANPATH:$PKG_PREFIX/pkg/man"
 	fi
+
 done
+
+if [ -z "$XDG_RUNTIME_DIR" ] || [ "$XDG_RUNTIME_DIR" = "/tmp" ]; then
+	XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir"
+
+	mkdir -pm 0700 "$XDG_RUNTIME_DIR"
+	export XDG_RUNTIME_DIR
+fi
 
 LANG=ru
 LC_ALL=ru_RU.UTF-8
 EDITOR=et
 HOSTNAME=$(hostname)
 
+SBT_HOME=$HOME/.local/sbt/
+PATH=$SBT_HOME/bin:$PATH
+LOCAL_HOME=$HOME/.local
+LOCAL_OPT=$HOME/.opt/
+PATH="$LOCAL_HOME/bin:$PATH" 
+PATH="$PATH:$LOCAL_HOME/share/coursier/bin"
+
+
+
 export LC_ALL LANG
 export MANPATH
 export EDITOR
 export HOSTNAME
+export PATH
 
 if [ ! "$GPG_AGENT_INFO" ]; then
 	if type keychain >/dev/null; then
@@ -29,4 +47,24 @@ fi
 if [ -e "$HOME/.cargo/env" ]
 then
     . "$HOME/.cargo/env"
+fi
+
+if [ -e "$HOME/.profile-private" ]
+then
+    . "$HOME/.profile-private"
+fi
+
+if [ -e "$HOME"/.profile."$HOSTNAME" ]
+then               
+    . "$HOME"/.profile."$HOSTNAME"                  
+fi                                          
+                                                           
+if [ -d "$LOCAL_OPT" ] 
+then
+for p in "$LOCAL_OPT"/*; do
+    if [ -d "$p" ] && [ -d "$p/bin" ]
+    then
+        PATH="$p"/bin:"$PATH"
+    fi                       
+done    
 fi

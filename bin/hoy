@@ -1,0 +1,71 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use POSIX      qw(strftime);
+use List::Util qw(max);
+
+use experimental qw(postderef);
+
+binmode( STDOUT, ":utf8" );
+
+our @TZs = qw(
+  America/Argentina/Buenos_Aires
+  America/Asuncion
+  America/Caracas
+  America/Mexico_City
+  America/New_York
+  America/Sao_Paulo
+  Asia/Dubai
+  Asia/Tokyo
+  Europe/Lisbon
+  Europe/Madrid
+  Europe/London
+  Europe/Moscow
+  Europe/Tallinn
+  Europe/Warsaw
+  UTC
+);
+
+my @results;
+
+for my $TZ (@TZs) {
+    $ENV{'TZ'} = $TZ;
+    my $time = strftime( "%H:%M|%Z|%z|%A|%d|%B", localtime );
+    push @results, [ $TZ, [ split( /\|/, $time ) ] ];
+}
+
+my @lengths;
+for my $result (@results) {
+    my ( $tz, $fields ) = $result->@*;
+
+    for my $i ( 0 .. $fields->$#* ) {
+        $lengths[$i] = max( length( $fields->[$i] ), $lengths[$i] || 0 );
+    }
+}
+my $fmt = "%15s " . join( " ", map { "%-" . $_ . "s" } @lengths ) . "\n";
+
+my @prev = ();
+
+for my $result ( sort { $a->[1]->[0] cmp $b->[1]->[0] } @results ) {
+    my ( $tz, $fields ) = $result->@*;
+
+    my @fmts;
+
+    for my $i ( 0 .. $fields->$#* ) {
+        if ( defined $prev[$i] && $prev[$i] eq $fields->[$i] ) {
+            push @fmts, "-" x ( $lengths[$i] );
+        }
+        else {
+            push @fmts, $fields->[$i];
+        }
+    }
+
+    @prev = @$fields;
+
+    $tz =~ s[.*/][]xs;
+    $tz =~ s[  _][ ]xs;
+
+    printf( $fmt, $tz, @fmts );
+}
