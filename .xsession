@@ -3,28 +3,24 @@
 . "$HOME"/.profile
 . "$HOME"/.kshrc
 
+if [ -d /usr/local/share/fonts ]; then
+	for d in /usr/local/share/fonts/*; do
+		xset +fp "$d"
+	done
+fi
+
 DPI=100
 
 __is_docked() {
-	xrandr | tee -a .xrandr.log | grep -E 'HDMI[0-9-]+ connected'
+	xrandr | grep -E 'HDMI[0-9-]+ connected'
 }
 
 __is_4k() {
-	xrandr | tee -a .xrandr.log | grep 3840 2>/dev/null >/dev/null
+	xrandr | grep 3840 2>/dev/null >/dev/null
 }
 
-if [ -z "$SSH_AGENT_PID" ] && [ -x /usr/bin/ssh-agent ]; then
-	for k in id_rsa id_ecdsa id_ecdsa_sk id_ed25519 id_ed25519_sk id_dsa; do
-		if [ -f "$HOME/.ssh/$k" ]; then
-			eval $(ssh-agent -s)
-			ssh-add </dev/null
-			break
-		fi
-	done
-fi
-if [ "$SSH_AGENT_PID" ]; then
-	ssh-add -D </dev/null
-	eval $(ssh-agent -s -k)
+if type keychain; then
+	eval $(keychain --eval --agents ssh,gpg)
 fi
 
 xrdb "$HOME"/.Xresources
@@ -38,12 +34,10 @@ if __is_4k; then
 fi
 echo "Xft.dpi: $DPI" | xrdb -merge
 
-# setxkbmap 'us,ru' -option 'grp:shifts_toggle,compose:ralt'
 setxkbmap 'us,ru' -option 'ctrl:nocaps,grp:shifts_toggle,compose:ralt'
 xcape &
 sxhkd &
 
-# Disable core dumps
 ulimit -Sc 0
 
 {
@@ -57,8 +51,8 @@ ulimit -Sc 0
 					sleep $((60 * 30))
 				done
 		done
-        else
-            xsetroot -solid black
+	else
+		xsetroot -solid black
 	fi
 } &
 
