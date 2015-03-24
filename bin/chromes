@@ -8,6 +8,9 @@ use Carp qw(croak);
 use File::Path qw(make_path);
 use IPC::Open3;
 
+our $profiles_root = "$ENV{HOME}/.config/iridium/extra-profile/";
+our $profiles_cache = "$ENV{HOME}/.cache/iridium/extra-profile-cache/";
+
 sub dmenu {
     my @xs = @_;
     my $output = '';
@@ -22,15 +25,12 @@ sub dmenu {
     return $output;
 }
 
-my $profiles_root = "$ENV{HOME}/.config/iridium/extra-profile/";
-my $profiles_cache = "$ENV{HOME}/.cache/iridium/extra-profile-cache/";
-
 my $profile_name = shift @ARGV // '';
 make_path($profiles_root) unless -d $profiles_root;
 make_path($profiles_cache) unless -d $profiles_cache;
 
 my $chromium;
-for my $exe ('ungoogled-chromium', 'iridium', 'chromium') {
+for my $exe ('ungoogled-chromium', 'iridium', 'chromium', 'chrome') {
     if (system("which $exe > /dev/null 2>&1") == 0) {
         $chromium = $exe;
         last;
