@@ -62,4 +62,3 @@ URxvt.urgentOnBell: true
 URxvt.url-select.underline: true
 
 XTerm*charClass: 37:48, 45-47:48, 58:48, 64:48, 126:48
-Xcursor.size: 32
