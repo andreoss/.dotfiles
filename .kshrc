@@ -10,7 +10,11 @@ then
     chmod 600 "$HISTFILE"
 fi
 
-__PROMPT='> '
+if [ "$SSH_CLIENT" ]; then
+        __PROMPT='>> '
+else
+	__PROMPT='> '
+fi
 __PROMPT_BUF=$(mktemp)
 __TITLE_UPDATE_INTERNAL=1
 
