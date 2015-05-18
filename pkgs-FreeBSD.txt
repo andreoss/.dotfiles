@@ -68,3 +68,4 @@ xorg
 xpra
 yt-dlp
 zsh
+doas
