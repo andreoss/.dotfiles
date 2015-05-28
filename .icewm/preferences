@@ -29,3 +29,23 @@ TaskBarClockLeds=0
 ColorClockText = "rgb:00/00/00"
 
 TaskBarShowMailboxStatus=0
+
+CenterLarge=1
+CenterTransientsOnOwner=1
+SmartPlacement=1
+
+TrayIconMaxWidth=16
+TrayIconMaxHeight=16
+TrayDrawBevel=1
+
+ShowHelp=0
+ShowRun=1
+
+TaskBarShowShowDesktopButton=0
+TaskBarShowStartMenu=1
+TaskBarShowWindowListMenu=0
+
+TaskBarShowAPMStatus=0
+TaskBarShowAPMAuto=0
+TaskBarShowAPMTime=0
+TaskBarShowAPMGraph=0
