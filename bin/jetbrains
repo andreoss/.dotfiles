@@ -1,0 +1,10 @@
+#!/bin/sh
+if type idea-community;
+then
+    exec idea-community
+fi
+
+
+find "$HOME"/.var/app/com.jetbrains.IntelliJ-IDEA-Community -name '.lock' -delete
+
+exec flatpak run com.jetbrains.IntelliJ-IDEA-Community "$@"
