@@ -1,6 +1,9 @@
 unsetenv DISPLAY
 setenv   LC_CTYPE en_US.UTF-8
 
+term      screen-256color
+altscreen on
+
 activity  "%c activity -> %n%f %t"
 bell      "%c bell -> %n%f %t^G"
 vbell_msg " *beep* "
@@ -21,8 +24,9 @@ bind ^c screen 1
 bind 0  select 10                                                            
 bind R  eval "source $HOME/.screenrc" 
 
-termcapinfo xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
-termcapinfo rxvt* 'hs:ts=\E]2;:fs=\007:ds=\E]2;\007'
+termcapinfo xterm*                       'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+termcapinfo xterm*|rxvt*                 'ti@:te@'
+termcapinfo xterm*|rxvt*                 'hs:ts=\E]2;:fs=\007:ds=\E]2;\007'
 
 backtick 0 2 2 sh -c "uptime | sed 's/.*://;s/,/./g'"
 
