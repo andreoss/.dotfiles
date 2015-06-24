@@ -15,6 +15,7 @@ dotfiles:
 	ln -f -s  ${HOME}/.dotfiles/.xbindkeysrc ${HOME}/.xbindkeysrc
 	ln -f -s  ${HOME}/.dotfiles/.crontab     ${HOME}/.crontab
 	ln -f -s  ${HOME}/.dotfiles/.screenrc    ${HOME}/.screenrc
+	ln -f -s  ${HOME}/.dotfiles/.inputrc     ${HOME}/.inputrc
 
 	mkdir -p  ${HOME}/.icewm/
 	mkdir -p  ${HOME}/.config/gtk-3.0/
