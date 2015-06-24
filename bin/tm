@@ -1,6 +1,6 @@
 #!/bin/sh
 TMUX_SESSION_NAME="${1:-master}"
-if [ -z "$TMUX" ] && [ ${UID} != 0 ]
+if [ -z "$TMUX" -a "${UID}" != 0 ]
 then
     exec tmux new-session -A -s "$TMUX_SESSION_NAME"
 fi
