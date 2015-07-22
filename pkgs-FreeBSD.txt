@@ -1,4 +1,5 @@
 aria2
+direnv
 aspell
 autorandr
 bind-tools
@@ -27,6 +28,7 @@ gtar
 icewm
 icewm-extra-themes
 ImageMagick7
+iwmbt-firmware
 ja-font-std
 k9s
 keychain
@@ -36,7 +38,7 @@ maven
 maven-wrapper
 mill
 mixertui
-mksh
+ksh93
 mpv
 notmuch
 notmuch-emacs
@@ -77,3 +79,4 @@ zathura-djvu
 zathura-pdf-mupdf
 zathura-ps
 zsh
+mtr-nox11
