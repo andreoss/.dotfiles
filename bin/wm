@@ -1,12 +1,14 @@
 #!/bin/sh
 WM=
 
-if type dwm; then
+if type icewm-session; then
+	WM="icewm-session --nobg"
+elif type dwm; then
 	WM=dwm
+elif type ratpoison; then
+	WM=ratpoison
 else
-	if type icewm-session; then
-		WM="icewm-session --nobg"
-	fi
+	WM=xterm
 fi
 
 while :; do
