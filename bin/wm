@@ -1,0 +1,18 @@
+#!/bin/sh
+WM=
+
+if type icewm-session; then
+	WM="icewm-session --nobg"
+elif type dwm; then
+	WM=dwm
+elif type ratpoison; then
+	WM=ratpoison
+else
+	WM=xterm
+fi
+
+while :; do
+	$WM
+done
+
+exit
