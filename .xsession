@@ -3,6 +3,8 @@
 . "$HOME"/.profile
 . "$HOME"/.kshrc
 
+eval $(dbus-launch --sh-syntax)
+
 if [ -d /usr/local/share/fonts ]; then
 	for d in /usr/local/share/fonts/*; do
 		xset +fp "$d"
