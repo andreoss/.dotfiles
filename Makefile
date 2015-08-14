@@ -22,7 +22,7 @@ dotfiles:
 	mkdir -p  ${HOME}/.config/dunst/
 
 	ln -f -s  ${HOME}/.dotfiles/.icewm/preferences ${HOME}/.icewm/
-	ln -f -s  ${HOME}/.dotfiles/.dunstrc           ${HOME}/.config/dunstrc
+	ln -f -s  ${HOME}/.dotfiles/.dunstrc           ${HOME}/.config/dunst/dunstrc
 
 	ln -f -s  ${HOME}/.dotfiles/gtk-3.0.ini ${HOME}/.config/gtk-3.0/settings.ini
 
