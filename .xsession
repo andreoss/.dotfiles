@@ -3,10 +3,28 @@
 . "$HOME"/.profile
 . "$HOME"/.kshrc
 
-__loop() {
-    dunstify "Running - $*" 
-    "$@"
-    __loop "$@"
+cleanup() {
+	pkill -P $$
+}
+
+for sig in INT QUIT HUP TERM; do
+	trap "
+    cleanup
+    trap - "$sig" EXIT
+    kill -s "$sig" "'"$$"' "$sig"
+done
+
+trap cleanup EXIT
+
+__start() {
+	C="$1"
+	shift
+	if type "$C"; then
+		dunstify "Running - $C"
+		"$C" "$@"
+	else
+		dunstify "Not found - $C"
+	fi
 }
 
 eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
@@ -68,13 +86,17 @@ ulimit -Sc 0
 				done
 		done
 	else
-		xsetroot -solid black
+		if [ -x "$HOME/.fehbg" ]; then
+			"$HOME/.fehbg"
+		else
+			xsetroot -solid black
+		fi
 	fi
 } &
 
 case "$(uname)" in
 OpenBSD)
-	sct 4500
+	sct
 	;;
 esac
 
@@ -85,17 +107,15 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation" 1
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
 
-
-__loop conky &
-__loop urxvtd &
-__loop dunst &
+__start conky &
+__start urxvtd &
+__start dunst &
 
 if [ "$HOSTNAME" = "wks" ]; then
 	xpra shadow
 fi
 
-__loop emacs --fg-daemon &
-
+__start emacs --fg-daemon &
 
 {
 	while :; do
@@ -104,16 +124,5 @@ __loop emacs --fg-daemon &
 	done
 } &
 
-WM=
-
-if type dwm; then
-	WM=dwm
-else
-	if type icewm-session; then
-		WM="icewm-session --nobg"
-	fi
-fi
-
 env | grep -v ^PS | grep -v ^DOAS | tee -a "$HOME/.xenv"
-
-exec $WM
+exec wm
