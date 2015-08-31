@@ -3,6 +3,7 @@ setenv   LC_CTYPE en_US.UTF-8
 
 term      screen-256color
 altscreen on
+attrcolor b ".I"
 
 activity  "%c activity -> %n%f %t"
 bell      "%c bell -> %n%f %t^G"
