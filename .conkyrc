@@ -7,7 +7,8 @@ draw_graph_borders false
 draw_outline true
 draw_shades false
 extra_newline false
-font Terminus:size=12
+font  Terminus:size=12
+font2 Terminus:size=8
 gap_x 48
 gap_y 48
 maximum_height 320
@@ -46,11 +47,14 @@ color6 FFFFFF
 color7 FFFFFF
 color8 FFFFFF
 
+no_buffers no
+
 TEXT
-${alignc}${time %A}, ${time %d %B, %X}
-$loadavg${alignr}$uptime
-${cpugraph 15,480 586E75 541230 scale -t}
-${alignc}${fs_used /user/}/${fs_free /user}
+$uptime ${alignr}${time %A}       
+$loadavg${alignr}${time %d %B, %X}
+${loadgraph 15,240 586E75 541230 scale -l -t}${cpugraph 15,240 586E75 541230 scale -t}
+${membar 2, 100} ${memperc}% ${alignr}${swapbar 2,100} ${swapperc}% 
+${if_existing /home}${alignc}/home - ${fs_used /home}/${fs_free /home}$endif${if_existing /usr}${alignc}/usr - ${fs_used /usr}/${fs_free /usr}$endif
 $diskio_read/s${alignr}$diskio_write/s
 ${diskiograph_read 25,240 586E75 541230 scale -t}${alignr}${diskiograph_write 25,240 586E75 541230 scale -t}
 ${if_up iwn0}${downspeedgraph iwn0 15,240 586E75 541230 scale -t}${alignr}${upspeedgraph iwn0 15,240 586E75 541230 scale -t}$endif
@@ -65,3 +69,13 @@ $endif
 ${hr 1}
 ${execpi 60 /home/a/.dotfiles/misc/cal.pl}
 ${hr 1}
+${font2}
+${tail /var/log/messages 5}
+${font}
+${hr 1}
+
+${alignc} ${apm_adapter} 
+${hr 1}
+${font2}
+${execi 60 wdate}
+${font}
