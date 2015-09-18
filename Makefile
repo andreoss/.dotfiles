@@ -50,5 +50,5 @@ system:
 .endif
 
 gsettings:
-	gsettings get org.gnome.desktop.input-sources sources     "[('xkb', 'us'), ('xkb', 'ru')]"
+	gsettings set org.gnome.desktop.input-sources sources     "[('xkb', 'us'), ('xkb', 'ru')]"
 	gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
