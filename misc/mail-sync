@@ -1,0 +1,29 @@
+#!/bin/sh
+
+. "$HOME"/.xenv
+
+inboxs=$(mktemp)
+grep ^Inbox "$HOME"/.config/isyncrc >"$inboxs"
+
+while read _ inbox; do
+	mkdir -m 0700 -p "$inbox" &
+done <"$inboxs"
+wait
+
+accounts=$(mktemp)
+grep ^Account "$HOME"/.config/isyncrc >"$accounts"
+
+while read _ account; do
+	mbsync "$account" &
+done <"$accounts"
+wait
+
+output=$(mktemp)
+notmuch new | tee "$output"
+
+if [ "$(notmuch count tag:new)" -gt 0 ]; then
+	dunstify "$(cat $output)"
+fi
+
+notmuch tag +2fa subject:"Security Code" and tag:new
+notmuch tag -new +inbox                      tag:new
