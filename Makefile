@@ -29,6 +29,7 @@ dotfiles:
 	$(LN) ${HOME}/.dotfiles/.xbindkeysrc ${HOME}/.xbindkeysrc
 	$(LN) ${HOME}/.dotfiles/.Xresources  ${HOME}/.Xdefaults
 	$(LN) ${HOME}/.dotfiles/.xsession    ${HOME}/.xsession
+	$(LN) ${HOME}/.xsession              ${HOME}/.xinitrc
 
 	$(ND) ${HOME}/.config/dunst/
 	$(ND) ${HOME}/.config/gtk-3.0/
@@ -54,6 +55,8 @@ system:
 	doas rcctl restart sndiod
 	doas sysctl  -f sysctl-${OS}.txt
 	doas pkg_add -l pkgs-${OS}.txt
+	doas syspatch
+	doas fw_update
 	echo 'machine gop 13' | doas tee /etc/boot.conf
 .elif "${OS}" == "FreeBSD"
 	xargs doas pkg install -y < pkgs-${OS}.txt
