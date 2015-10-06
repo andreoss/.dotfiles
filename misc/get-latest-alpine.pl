@@ -15,7 +15,7 @@ our $client = HTTP::Tiny->new;
 
 my $response = $client->get("$base_url/latest-releases.yaml");
 
-die("Failed to fetch data: $response->{reason}\n")
+die("Failed to fetch data: $response->{status} - $response->{reason}\n")
   unless ( $response->{success} );
 
 my $yaml = CPAN::Meta::YAML->read_string( $response->{content} )
