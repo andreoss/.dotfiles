@@ -1,6 +1,10 @@
 
+
 doas apk add docker
 doas rc-update add docker default
 doas service docker start
 doas addgroup "$USER" docker
 
+doas rc-update add chronyd
+doas rc-update add wpa_supplicant
+doas rc-update add dhcpcd

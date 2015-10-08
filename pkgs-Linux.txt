@@ -44,3 +44,9 @@ xdg-user-dirs
 xdg-utils
 xpra
 xsetroot
+pm-utils
+dhcpcd 
+chrony 
+macchanger 
+wireless-tools 
+iputils
