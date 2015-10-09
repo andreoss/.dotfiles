@@ -1,0 +1,98 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use Carp qw(croak);
+*crap = *croak;
+
+use File::Path qw(make_path);
+use IPC::Open3;
+
+sub dmenu {
+    my @xs = @_;
+    my $output = '';
+
+    my $pid = open3(my $in, my $out, undef, 'dmenu') or crap("Cannot open dmenu: $!");
+    print $in join("\n", @xs);
+    close($in);
+    chomp($output = <$out>);
+    close($out);
+    waitpid($pid, 0);
+    
+    return $output;
+}
+
+my $profiles_root = "$ENV{HOME}/.config/iridium/extra-profile/";
+my $profiles_cache = "$ENV{HOME}/.cache/iridium/extra-profile-cache/";
+
+my $profile_name = shift @ARGV // '';
+make_path($profiles_root) unless -d $profiles_root;
+make_path($profiles_cache) unless -d $profiles_cache;
+
+my $chromium;
+for my $exe ('ungoogled-chromium', 'iridium', 'chromium') {
+    if (system("which $exe > /dev/null 2>&1") == 0) {
+        $chromium = $exe;
+        last;
+    }
+}
+
+if (!$profile_name) {
+    opendir(my $dh, $profiles_root) or crap("Cannot open directory: $!");
+    my @profiles = grep { -d "$profiles_root/$_" && !/^\./ } readdir($dh);
+    closedir($dh);
+    $profile_name = dmenu(@profiles);
+}
+
+crap("No profile selected") unless $profile_name =~ /\S+/;
+crap("Not exists $profile_name") unless -d "$profiles_root/$profile_name";
+
+my $homepage = 'about:config';
+my $workspace = '';
+my $kiosk = 0;
+
+if ($profile_name eq 'Github') {
+    $workspace = 5;
+    $homepage = 'https://github.com';
+    $kiosk = 1;
+} elsif ($profile_name =~ /^Telegram/) {
+    $workspace = 5;
+    $homepage = 'https://web.telegram.org/';
+    $kiosk = 1;
+} elsif ($profile_name eq 'WhatsApp') {
+    $workspace = 5;
+    $kiosk = 1;
+} elsif ($profile_name =~ /^Slack/) {
+    $workspace = 5;
+    $homepage = "https://app.slack.com";
+    $kiosk = 1;
+} else {
+    $workspace = 6;
+}
+
+my @extra_args;
+if ($kiosk) {
+    push @extra_args, (
+        '--noerrdialogs',
+        '--enable-features=OverlayScrollbar',
+        "--app=$homepage",
+        '--start-maximized'
+    );
+}
+
+$ENV{XDG_CACHE_HOME} = "$profiles_cache/$profile_name";
+$ENV{XDG_CONFIG_HOME} = "$profiles_root/$profile_name";
+
+exec($chromium,
+    '--class=' . $profile_name,
+    '--disable-async-dns',
+    '--force-dark-mode',
+    '--homepage=' . $homepage,
+    '--window-size=1200,1000',
+    '--window-position=10,10',
+    '--window-workspace=' . $workspace,
+    '--user-data-dir=' . "$profiles_root/$profile_name",
+    '--profile-directory=' . $profile_name,
+    @extra_args,
+    @ARGV
+) or crap("Failed to execute $chromium: $!");
