@@ -55,6 +55,7 @@ sudo
 sxhkd
 terminus-font
 terminus-ttf
+texlive-full
 urxvt-perls
 virtualbox-ose
 virtualbox-ose-kmod
@@ -68,4 +69,8 @@ xf86-video-intel
 xorg
 xpra
 yt-dlp
+zathura
+zathura-djvu
+zathura-pdf-mupdf
+zathura-ps
 zsh
