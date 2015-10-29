@@ -1,0 +1,22 @@
+set scrolloff=5
+
+set incsearch
+
+map \r <Action>(Run)
+map \f <Action>(ReformatCode)
+map \q <Action>(QuickActions)
+map \s <Action>(SearchEverywhere)
+map \\ <Action>(QuickActions)
+
+
+map gfu <Action>(ShowUsages)
+map gff <Action>(FindUsages)
+map gfs <Action>(GotoTypeDeclaration)
+map gfd <Action>(GotoDeclaration)
+map gfi <Action>(GotoImplementation)
+map gfm <Action>(GotoSuperMethod)
+map gft <Action>(GotoTest)
+
+
+
+map \a <Action>(ShowIntentionActions)

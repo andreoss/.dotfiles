@@ -31,6 +31,7 @@ dotfiles:
 	$(LN) ${HOME}/.dotfiles/.xbindkeysrc ${HOME}/.xbindkeysrc
 	$(LN) ${HOME}/.dotfiles/.Xresources  ${HOME}/.Xdefaults
 	$(LN) ${HOME}/.dotfiles/.xsession    ${HOME}/.xsession
+	$(LN) ${HOME}/.dotfiles/.ideavimrc   ${HOME}/.ideavimrc
 	$(LN) ${HOME}/.xsession              ${HOME}/.xinitrc
 
 	$(ND) ${HOME}/.config/dunst/
