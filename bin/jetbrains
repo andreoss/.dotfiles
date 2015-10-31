@@ -6,5 +6,4 @@ fi
 
 
 find "$HOME"/.var/app/com.jetbrains.IntelliJ-IDEA-Community -name '.lock' -delete
-
-exec flatpak run com.jetbrains.IntelliJ-IDEA-Community "$@"
+exec dbus-run-session flatpak run --user com.jetbrains.IntelliJ-IDEA-Community "$@"
