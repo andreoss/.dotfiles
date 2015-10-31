@@ -1,0 +1,7 @@
+#!/bin/sh
+if type signal-desktop;
+then
+    exec signal-desktop
+fi
+
+exec dbus-run-session flatpak run --user org.signal.Signal 
