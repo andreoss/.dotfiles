@@ -26,7 +26,7 @@ icewm
 icewm-lang
 k9s
 kubernetes
-linux-firmware-none
+linux-firmware
 man-pages
 mariadb-client
 nerd-fonts-all 
