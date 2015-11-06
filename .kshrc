@@ -128,8 +128,6 @@ PS1='$(__ps1)'
 DOAS_PS1='$(__ps1)'
 export PS1 DOAS_PS1 __LPID
 
-JAVA_HOME=/usr/local/jdk-17/
-PATH=$JAVA_HOME/bin:$PATH
 SBT_HOME=$HOME/.local/sbt/
 PATH=$SBT_HOME/bin:$PATH
 LOCAL_HOME=$HOME/.local
@@ -142,7 +140,7 @@ then
     . "$HOME"/.cargo/env
 fi
 
-export PATH SBT_HOME JAVA_HOME MANPATH
+export PATH SBT_HOME MANPATH
 
 
 if [ -e "$HOME"/.kshrc.alias ]
@@ -150,7 +148,10 @@ then
     . "$HOME"/.kshrc.alias
 fi
 
-export OPENIDE_JDK=/usr/lib/jvm/java-21-openjdk
+if [ -e "$HOME"/.kshrc."$HOSTNAME" ]
+then
+    . "$HOME"/.kshrc."$HOSTNAME"
+fi
 
 for p in "$LOCAL_OPT"/*; do
     if [ -d "$p" ] && [ -d "$p/bin" ]
