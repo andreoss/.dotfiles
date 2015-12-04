@@ -1,5 +1,6 @@
-#!/bin/ksh -l
+#!/bin/sh -l
 # Simulate "login shell"
+
 . "$HOME"/.profile
 . "$HOME"/.kshrc
 
@@ -38,7 +39,7 @@ fi
 DPI=100
 
 __is_docked() {
-	xrandr | grep -E 'HDMI[0-9-]+ connected'
+	xrandr | grep -E '^(HDMI|DP)[0-9-]+ connected'
 }
 
 __is_4k() {
@@ -117,12 +118,12 @@ fi
 
 __start emacs --fg-daemon &
 
-{
-	while :; do
-		sleep 1
-		uptime | sed 's/.*://;s/,//g' | xargs -Ixxx xsetroot -name xxx
-	done
-} &
+# {
+# 	while :; do
+# 		sleep 1
+# 		uptime | sed 's/.*://;s/,//g' | xargs -Ixxx xsetroot -name xxx
+# 	done
+# } &
 
 env | grep -v ^PS | grep -v ^DOAS | tee -a "$HOME/.xenv"
 exec wm
