@@ -2,6 +2,7 @@
 TZS="
         America/Argentina/Buenos_Aires
         America/Asuncion
+        America/Los_Angeles
         America/Caracas
         America/Mexico_City
         America/New_York
@@ -9,6 +10,8 @@ TZS="
         Asia/India/Delhi
         Asia/Dubai
         Asia/Tokyo
+        Europe/Berlin
+        Europe/Sofia
         Europe/Lisbon
         Europe/Madrid
         Europe/London
