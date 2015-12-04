@@ -12,7 +12,9 @@ else
 fi
 
 while :; do
-	$WM
+    dunstify "Running '$WM'"
+    $WM
+    sleep 10
 done
 
 exit
