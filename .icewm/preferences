@@ -3,8 +3,11 @@ ActiveTaskBarFontNameXft="Terminus:size=8:bold"
 ActiveWorkspaceFontNameXft="Terminus:size=8"
 ApmFontNameXft="Terminus:size=8"
 ClockFontNameXft="Terminussize=8"
+
 HideBordersMaximized=0
 HideTitleBarWhenMaximized=1
+PreferFreetypeFonts=1
+
 InputFontNameXft="Terminus:size=8:bold"
 LabelFontNameXft="Terminus:size=8"
 ListBoxFontNameXft="Terminus:size=8"
@@ -12,7 +15,6 @@ MenuFontNameXft="Terminus:size=10:bold"
 NormalButtonFontNameXft="Terminus:size=8"
 NormalTaskBarFontNameXft="Terminus:size=8"
 NormalWorkspaceFontNameXft="Terminus:size=8"
-PreferFreetypeFonts=1 
 QuickSwitchFontNameXft="Terminussize=8:bold"
 StatusFontNameXft="Terminussize=8:bold"
 TempFontNameXft="Terminussize=8"
@@ -20,7 +22,8 @@ TitleFontNameXft="Terminus:size=8:bold"
 ToolButtonFontNameXft="Terminus:size=8"
 ToolTipFontNameXft="Terminus:size=8"
 ClockFontNameXft="Terminus:size=8:bold"
-WorkspaceNames=" I ", " II ", " III ", " IV ", " V ", " VI "
+
+WorkspaceNames=" I ", " II ", " III ", " IV ", " V ", " VI ", " VII ", " VIII ", " IX "
 ColorClock = ""
 TaskBarClockLeds=0
 ColorClockText = "rgb:00/00/00"
