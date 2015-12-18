@@ -24,7 +24,7 @@ Emacs*scrollBarWidth: 	6
 *background: #151515
 *foreground: #FCF3E4
 
-URxvt.font: xft:PT Mono:size=10
+URxvt.font: xft:Terminus:size=10
 URxvt.background: #FFFFEA
 URxvt.foreground: #000000
 URxvt.cursorBlink: true
