@@ -46,4 +46,4 @@ system:
 .else
 	@echo "Unsupported: ${OS}"
 	@exit 1
-.endif
+endif
