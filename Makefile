@@ -34,7 +34,7 @@ dotfiles:
 	$(LN) ${HOME}/.dotfiles/gtk-3.0.ini        ${HOME}/.config/gtk-3.0/settings.ini
 
 	$(LN)  ${HOME}/.dotfiles/sxhkdrc	   ${HOME}/.config/sxhkd/sxhkdrc
-	pkill -USR1 sxhkd
+	pkill -USR1 sxhkd || echo "Not running"
 
 	git config --global include.path 	${HOME}/.dotfiles/gitaliases
 
@@ -43,7 +43,9 @@ system:
 	doas pkg_add -l pkgs-${OS}.txt
 .elif "${OS}" == "FreeBSD"
 	xargs doas pkg install -y < pkgs-${OS}.txt
-.else
-	@echo "Unsupported: ${OS}"
-	@exit 1
-endif
+.elif "${OS}" == "Linux"
+system:
+	doas rm -f              /etc/motd
+	doas ln -f -s /dev/null /etc/motd
+	xargs doas apk add < pkgs-${OS}.txt
+.endif
