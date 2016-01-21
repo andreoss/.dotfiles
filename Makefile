@@ -10,11 +10,11 @@ cron:
 
 local-bin:
 	$(ND) ${HOME}/.local/bin
-	$(LN) ${HOME}/.dotfiles/bin/chrome ${HOME}/.local/bin/chrome
-	$(LN) ${HOME}/.dotfiles/bin/viper  ${HOME}/.local/bin/viper
+	$(LN) ${HOME}/.dotfiles/bin/chrome   ${HOME}/.local/bin/chrome
+	$(LN) ${HOME}/.dotfiles/bin/et       ${HOME}/.local/bin/et
+	$(LN) ${HOME}/.dotfiles/bin/viper    ${HOME}/.local/bin/viper
 
 dotfiles:
-
 	$(LN) ${HOME}/.dotfiles/.crontab     ${HOME}/.crontab
 	$(LN) ${HOME}/.dotfiles/.inputrc     ${HOME}/.inputrc
 	$(LN) ${HOME}/.dotfiles/.kshrc       ${HOME}/.kshrc
@@ -31,14 +31,15 @@ dotfiles:
 	$(ND) ${HOME}/.icewm/
 
 	$(LN) ${HOME}/.dotfiles/.icewm/preferences ${HOME}/.icewm/
+	$(LN) ${HOME}/.dotfiles/.icewm/toolbar     ${HOME}/.icewm/
 	$(LN) ${HOME}/.dotfiles/.dunstrc           ${HOME}/.config/dunst/dunstrc
 	$(LN) ${HOME}/.dotfiles/gtk-3.0.ini        ${HOME}/.config/gtk-3.0/settings.ini
-
-	$(LN)  ${HOME}/.dotfiles/sxhkdrc	   ${HOME}/.config/sxhkd/sxhkdrc
+	$(LN) ${HOME}/.dotfiles/sxhkdrc	           ${HOME}/.config/sxhkd/sxhkdrc
 	pkill -USR1 sxhkd || echo "Not running"
 
-	git config --global include.path 	${HOME}/.dotfiles/gitaliases
+	git config --global include.path 	   ${HOME}/.dotfiles/gitaliases
 
+	xrdb ~/.Xdefaults
 system:
 	doas rm -f              /etc/motd
 	doas ln -f -s /dev/null /etc/motd
