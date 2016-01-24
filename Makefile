@@ -14,7 +14,6 @@ local-bin:
 	$(LN) ${HOME}/.dotfiles/bin/chrome   ${HOME}/.local/bin/chrome
 	$(LN) ${HOME}/.dotfiles/bin/et       ${HOME}/.local/bin/et
 	$(LN) ${HOME}/.dotfiles/bin/tm       ${HOME}/.local/bin/tm
-	$(LN) ${HOME}/.dotfiles/bin/vi       ${HOME}/.local/bin/vi
 	$(LN) ${HOME}/.dotfiles/bin/viper    ${HOME}/.local/bin/viper
 	$(LN) ${HOME}/.dotfiles/bin/x        ${HOME}/.local/bin/x
 	$(LN) ${HOME}/.dotfiles/bin/wm       ${HOME}/.local/bin/wm
@@ -23,6 +22,7 @@ dotfiles:
 	$(LN) ${HOME}/.dotfiles/.crontab     ${HOME}/.crontab
 	$(LN) ${HOME}/.dotfiles/.inputrc     ${HOME}/.inputrc
 	$(LN) ${HOME}/.dotfiles/.kshrc       ${HOME}/.kshrc
+	$(LN) ${HOME}/.dotfiles/.zshrc       ${HOME}/.zshrc
 	$(LN) ${HOME}/.dotfiles/.kshrc.alias ${HOME}/.kshrc.alias
 	$(LN) ${HOME}/.dotfiles/.profile     ${HOME}/.profile
 	$(LN) ${HOME}/.dotfiles/.screenrc    ${HOME}/.screenrc
