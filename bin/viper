@@ -1,0 +1,2 @@
+#!/bin/sh
+exec emacs -Q -nw -l "$HOME/.dotfiles/.emacs" "$@"
