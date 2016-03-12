@@ -8,3 +8,10 @@ doas addgroup "$USER" docker
 doas rc-update add chronyd
 doas rc-update add wpa_supplicant
 doas rc-update add dhcpcd
+
+doas apk add throttled
+doas rc-update add throttled
+doas rc-service throttled start
+
+
+echo "tun" | doas tee /etc/modules-load.d/tun.conf
