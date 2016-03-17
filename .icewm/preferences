@@ -15,7 +15,7 @@ MenuFontNameXft="Terminus:size=10:bold"
 NormalButtonFontNameXft="Terminus:size=8"
 NormalTaskBarFontNameXft="Terminus:size=8"
 NormalWorkspaceFontNameXft="Terminus:size=8"
-QuickSwitchFontNameXft="Terminussize=8:bold"
+QuickSwitchFontNameXft="Terminus:size=14:bold"
 StatusFontNameXft="Terminussize=8:bold"
 TempFontNameXft="Terminussize=8"
 TitleFontNameXft="Terminus:size=8:bold"
@@ -26,8 +26,6 @@ ClockFontNameXft="Terminus:size=8:bold"
 WorkspaceNames=" I ", " II ", " III ", " IV ", " V ", " VI ", " VII ", " VIII ", " IX "
 ColorClock = ""
 TaskBarClockLeds=0
-ColorClockText = "rgb:00/00/00"
-
 TaskBarShowMailboxStatus=0
 
 CenterLarge=1
