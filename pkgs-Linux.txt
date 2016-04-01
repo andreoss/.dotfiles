@@ -56,3 +56,5 @@ xpra
 xsetroot
 xclip
 iw
+xkill
+cfdisk
