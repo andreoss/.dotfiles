@@ -1,0 +1,6 @@
+MenuMouseTracking         = 1
+ShowWindowList            = 0 
+TaskBarShowCollapseButton = 0
+TaskbuttonIconOffset      = 3
+TimeFormat                = "%R"
+ToolTipDelay              = 200
