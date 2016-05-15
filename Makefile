@@ -44,8 +44,11 @@ system:
 .elif "${OS}" == "FreeBSD"
 	xargs doas pkg install -y < pkgs-${OS}.txt
 .elif "${OS}" == "Linux"
-system:
 	doas rm -f              /etc/motd
 	doas ln -f -s /dev/null /etc/motd
 	xargs doas apk add < pkgs-${OS}.txt
 .endif
+
+gsettings:
+	gsettings get org.gnome.desktop.input-sources sources     "[('xkb', 'us'), ('xkb', 'ru')]"
+	gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
