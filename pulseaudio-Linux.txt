@@ -5,7 +5,7 @@ doas apk add pipewire-jack
 doas apk add pipewire-alsa
 doas apk add bluez bluez-openrc pipewire-spa-bluez
 doas rc-update add bluetooth
-doas rc-service bluetooth star
+doas rc-service bluetooth start
 rc-service -U pipewire start 
 rc-service -U wireplumber start
 
