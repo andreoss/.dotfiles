@@ -54,6 +54,7 @@ xdg-user-dirs
 xdg-utils
 xpra
 xsetroot
+xsecurelock
 xclip
 iw
 xkill
