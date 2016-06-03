@@ -1,4 +1,3 @@
-ImageMagick
 amigafonts--
 aspell
 bash
@@ -18,10 +17,13 @@ gmake--
 gnupg
 gradle
 gtar--static
+icewm
+ImageMagick
 iridium
 isync
 keychain
 leiningen--
+libreoffice--
 maven
 mpv--
 notmuch
@@ -31,6 +33,7 @@ pass-otp
 password-store
 pcmanfm
 poppler
+qemu
 ratpoison
 rofi
 rsync--
@@ -38,8 +41,11 @@ rxvt-unicode--everything
 sbcl
 sbt--
 screen--
+shellcheck
+shfmt
 sudo--
 terminus-font--centered_tilde
+texlive_texmf-full
 unifont--
 unzip--
 vlc--
@@ -47,8 +53,3 @@ wget
 xcape--
 youtube-dl
 yt-dlp--
-libreoffice--
-texlive_texmf-full
-qemu
-shellcheck
-shfmt
