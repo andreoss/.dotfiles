@@ -35,7 +35,7 @@ if __is_docked; then
 fi
 
 if __is_4k; then
-	DPI=200
+	DPI=$(($DPI * 2))
 fi
 
 xrdb "$HOME"/.Xresources
