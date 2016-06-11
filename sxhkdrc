@@ -2,7 +2,7 @@ super+c
     icesh -f center
 
 alt + Return
-    urxvt
+    st
 
 super+j
      chrome
