@@ -11,6 +11,7 @@ cron:
 local-bin:
 	$(ND) ${HOME}/.local/bin
 	$(LN) ${HOME}/.dotfiles/bin/chrome ${HOME}/.local/bin/chrome
+	$(LN) ${HOME}/.dotfiles/bin/viper  ${HOME}/.local/bin/viper
 
 dotfiles:
 
