@@ -10,6 +10,7 @@ cron:
 
 local-bin:
 	$(ND) ${HOME}/.local/bin
+	$(LN) ${HOME}/.dotfiles/bin/wdate    ${HOME}/.local/bin/wdate
 	$(LN) ${HOME}/.dotfiles/bin/chrome   ${HOME}/.local/bin/chrome
 	$(LN) ${HOME}/.dotfiles/bin/et       ${HOME}/.local/bin/et
 	$(LN) ${HOME}/.dotfiles/bin/tm       ${HOME}/.local/bin/tm
