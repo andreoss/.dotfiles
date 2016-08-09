@@ -1,0 +1,4 @@
+-inet6
+inet autoconf
+up
+!/usr/local/sbin/openvpn --daemon --config /etc/openvpn/client.conf 
