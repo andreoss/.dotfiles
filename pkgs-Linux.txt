@@ -1,12 +1,11 @@
+aria2
 bash
-rofi
 bmake
 direnv
 doas
 docker
 docker-cli-compose
 dunst
-sxhkd
 emacs
 firefox-esr
 font-dejavu
@@ -18,6 +17,8 @@ httpie
 linux-firmware-none
 man-pages
 oksh
+rofi
 rxvt-unicode
 screen
+sxhkd
 xpra
