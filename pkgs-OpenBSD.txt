@@ -1,4 +1,4 @@
- ImageMagick
+ImageMagick
 amigafonts--
 aspell
 bash
@@ -13,7 +13,6 @@ dunst--
 emacs--gtk3
 feh
 firefox-esr
-ghc--
 ghostscript--
 git--
 gmake--
@@ -23,14 +22,18 @@ gtar--static
 icewm
 iridium
 isync
+ja-fonts-funet
+ja-fonts-gnu
 keychain
 leiningen--
 libreoffice--
 maven
 mpv--
 notmuch
+noto-fonts
 openvpn--
 p5-ack
+p5-Perl-Critic
 p7zip
 pass-otp
 password-store
@@ -45,6 +48,7 @@ rxvt-unicode--everything
 sbcl
 sbt--
 screen--
+sgi-fonts
 shellcheck
 shellcheck--
 shfmt
@@ -58,3 +62,4 @@ wget
 xcape--
 youtube-dl
 yt-dlp--
+zbar
