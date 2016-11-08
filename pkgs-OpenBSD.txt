@@ -11,6 +11,7 @@ dnscrypt-proxy
 dnscrypt-proxy--
 dunst--
 emacs--gtk3
+feh
 firefox-esr
 ghc--
 ghostscript--
