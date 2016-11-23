@@ -16,10 +16,15 @@ done
 
 trap cleanup EXIT
 
-__loop() {
-	dunstify "Running - $*"
-	"$@"
-	__loop "$@"
+__start() {
+	C="$1"
+	shift
+	if type "$C"; then
+		dunstify "Running - $C"
+		"$C" "$@"
+	else
+		dunstify "Not found - $C"
+	fi
 }
 
 eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
@@ -81,12 +86,11 @@ ulimit -Sc 0
 				done
 		done
 	else
-            if [ -x "$HOME/.fehbg" ]
-            then
-                "$HOME/.fehbg"
-            else
-		xsetroot -solid black
-            fi
+		if [ -x "$HOME/.fehbg" ]; then
+			"$HOME/.fehbg"
+		else
+			xsetroot -solid black
+		fi
 	fi
 } &
 
@@ -103,15 +107,15 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation" 1
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
 
-__loop conky &
-__loop urxvtd &
-__loop dunst &
+__start conky &
+__start urxvtd &
+__start dunst &
 
 if [ "$HOSTNAME" = "wks" ]; then
 	xpra shadow
 fi
 
-__loop emacs --fg-daemon &
+__start emacs --fg-daemon &
 
 {
 	while :; do
