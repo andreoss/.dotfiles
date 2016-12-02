@@ -40,13 +40,13 @@ dotfiles:
 	git config --global include.path 	${HOME}/.dotfiles/gitaliases
 
 system:
+	doas rm -f              /etc/motd
+	doas ln -f -s /dev/null /etc/motd
 .if "${OS}" == "OpenBSD"
 	doas pkg_add -l pkgs-${OS}.txt
 .elif "${OS}" == "FreeBSD"
 	xargs doas pkg install -y < pkgs-${OS}.txt
 .elif "${OS}" == "Linux"
-	doas rm -f              /etc/motd
-	doas ln -f -s /dev/null /etc/motd
 	xargs doas apk add < pkgs-${OS}.txt
 .endif
 
