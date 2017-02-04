@@ -3,7 +3,7 @@
 . "$HOME"/.profile
 . "$HOME"/.kshrc
 
-eval $(dbus-launch --sh-syntax)
+eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
 
 if [ -d /usr/local/share/fonts ]; then
 	for d in /usr/local/share/fonts/*; do
@@ -18,18 +18,17 @@ __is_docked() {
 }
 
 __is_4k() {
-    current=$( xrandr | perl -nE 'print $1 if /current \s+ (\d+) \s* x \s* (\d+)/xmgsi' )
-    if [ "$current" -ge 3000 ] ; then	
-        echo 1
-    else
-        xrandr | grep 3840 2>/dev/null >/dev/null 
-    fi
+	current=$(xrandr | perl -nE 'print $1 if /current \s+ (\d+) \s* x \s* (\d+)/xmgsi')
+	if [ "$current" -ge 3000 ]; then
+		echo 1
+	else
+		xrandr | grep 3840 2>/dev/null >/dev/null
+	fi
 }
 
 if type keychain; then
-	eval $(keychain --eval --agents ssh,gpg)
+	eval $(keychain --eval --agents ssh,gpg 2>/dev/null | tee -a "$HOME/.xenv")
 fi
-
 
 if __is_docked; then
 	autorandr docked
@@ -41,8 +40,8 @@ fi
 
 xrdb "$HOME"/.Xresources
 
-echo "Xft.dpi: $DPI"                      | xrdb -merge
-echo "Xcursor.theme: Adwaita"             | xrdb -merge
+echo "Xft.dpi: $DPI" | xrdb -merge
+echo "Xcursor.theme: Adwaita" | xrdb -merge
 echo "Xcursor.size: $((24 * $DPI / 100))" | xrdb -merge
 
 setxkbmap 'us,ru' -option 'ctrl:nocaps,grp:shifts_toggle,compose:ralt'
@@ -70,8 +69,6 @@ ulimit -Sc 0
 xset b off
 xidle &
 
-emacs --daemon &
-
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation" 1
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
@@ -81,7 +78,10 @@ urxvtd &
 dunst &
 
 if [ "$HOSTNAME" = "wks" ]; then
-    xpra shadow --opengl=no
+	xpra shadow
 fi
 
-exec icewm-session --nobg
+env | grep -v ^PS | grep -v ^DOAS | tee -a "$HOME/.xenv"
+emacs --bg-daemon &
+
+exec icewm-session --no-bg
