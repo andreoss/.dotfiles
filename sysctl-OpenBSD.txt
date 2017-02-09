@@ -1,0 +1,9 @@
+hw.smt=1
+kern.maxfiles=8192
+kern.maxproc=8192
+kern.maxthread=8192
+kern.shminfo.shmall=536870912  
+kern.shminfo.shmmax=2147483647  
+kern.shminfo.shmmin=2048
+kern.shminfo.shmmni=4096     
+kern.shminfo.shmseg=4096

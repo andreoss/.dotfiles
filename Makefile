@@ -43,6 +43,7 @@ system:
 	doas rm -f              /etc/motd
 	doas ln -f -s /dev/null /etc/motd
 .if "${OS}" == "OpenBSD"
+	doas sysctl  -f sysctl-${OS}.txt
 	doas pkg_add -l pkgs-${OS}.txt
 	echo 'machine gop 13' | doas tee /etc/boot.conf
 .elif "${OS}" == "FreeBSD"
