@@ -1,0 +1,14 @@
+alias ..='cd ..'
+alias cs=courier
+alias e='emacsclient -t'
+alias ee=emacs
+alias g=git
+alias l=ls
+alias la='ll | less'
+alias ll='l -last'
+alias mc='mc -b'
+alias ping='ping -c 10'
+alias rm='rm -P'
+alias sudo=doas
+alias v=vi
+alias sx='screen -xRR sx'
