@@ -7,8 +7,8 @@ alt + BackSpace
 super+c
     icesh -f center
 
-alt + Return
-    st
+ctrl + alt + Return
+    urxvt
 
 super+j
      chrome
@@ -40,4 +40,3 @@ super+Home
 	        icesh -f sizeto 49% 49% top left
 super+Prior
 	       icesh -f sizeto 49% 49% top right
-
