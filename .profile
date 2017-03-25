@@ -1,6 +1,12 @@
 ENV="$HOME"/.kshrc
 export ENV
-PATH=/sbin:/bin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/X11R6/bin
+
+PATH=/sbin:/bin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/X11R6/bin:$PATH
+
+if [ -d "$HOME/.nix-profile/" ]
+then
+    . "$HOME"/.nix-profile/etc/profile.d/hm-session-vars.sh
+fi
 
 for PKG_PREFIX in "$HOME" /usr; do
 	if [ -d "$PKG_PREFIX/pkg" ]; then
@@ -27,7 +33,7 @@ SBT_HOME=$HOME/.local/sbt/
 PATH=$SBT_HOME/bin:$PATH
 LOCAL_HOME=$HOME/.local
 LOCAL_OPT=$HOME/.opt/
-PATH="$LOCAL_HOME/bin:$PATH" 
+PATH="$LOCAL_HOME/bin:$PATH"
 PATH="$PATH:$LOCAL_HOME/share/coursier/bin"
 
 
@@ -55,16 +61,16 @@ then
 fi
 
 if [ -e "$HOME"/.profile."$HOSTNAME" ]
-then               
-    . "$HOME"/.profile."$HOSTNAME"                  
-fi                                          
-                                                           
-if [ -d "$LOCAL_OPT" ] 
+then
+    . "$HOME"/.profile."$HOSTNAME"
+fi
+
+if [ -d "$LOCAL_OPT" ]
 then
 for p in "$LOCAL_OPT"/*; do
     if [ -d "$p" ] && [ -d "$p/bin" ]
     then
         PATH="$p"/bin:"$PATH"
-    fi                       
-done    
+    fi
+done
 fi
