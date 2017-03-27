@@ -1,7 +1,11 @@
 set -o vi
 
+SHELL_VARIANT="${0:-ksh}"
+SHELL_VARIANT="${SHELL_VARIANT##-}"
+SHELL_VARIANT="$(basename "$SHELL_VARIANT")"
+export SHELL_VARIANT
 HISTSIZE=$((1 << 16))
-HISTFILE="$HOME"/.history
+HISTFILE="$HOME"/.history."$SHELL_VARIANT"
 HOSTNAME="$(hostname)"
 if [ ! -e "$HISTFILE" ]
 
