@@ -12,8 +12,11 @@ done
 
 LANG=ru
 LC_ALL=ru_RU.UTF-8
+EDITOR=et
+
 export LC_ALL LANG
 export MANPATH
+export EDITOR
 
 if [ ! "$GPG_AGENT_INFO" ]; then
 	if type keychain >/dev/null; then
