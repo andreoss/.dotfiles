@@ -197,7 +197,10 @@ setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt autocd
 
-eval "$(direnv hook zsh)"
+if type direnv >/dev/null
+then
+  eval "$(direnv hook zsh)"
+fi
 
 if [ -e "$HOME"/.kshrc.alias ]
 then

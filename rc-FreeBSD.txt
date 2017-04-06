@@ -93,3 +93,5 @@ doas ./misc/edit.pl -uncomment 'net.link.tap.up_on_open=1' /etc/sysctl.conf
 doas sysrc rc_info="YES"
 doas sysrc rc_startmsgs="YES"
 doas sysrc ifconfig_lo0_alias0="inet 127.0.0.2 netmask 0xffffffff"
+
+doas sysrc coretemp_load="YES"
