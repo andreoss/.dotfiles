@@ -1,4 +1,5 @@
 ack
+sshfs
 aria2
 bash
 bmake
@@ -54,3 +55,4 @@ xdg-utils
 xpra
 xsetroot
 xclip
+iw
