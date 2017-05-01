@@ -11,3 +11,4 @@ alias ping='ping -c 10'
 alias sudo=doas
 alias v=vi
 alias sx='screen -xRR sx'
+alias dir=la
