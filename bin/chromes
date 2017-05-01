@@ -45,7 +45,8 @@ if (!$profile_name) {
 }
 
 crap("No profile selected") unless $profile_name =~ /\S+/;
-crap("Not exists $profile_name") unless -d "$profiles_root/$profile_name";
+
+crap("Not exists $profile_name - $profiles_root/$profile_name") unless -d "$profiles_root/$profile_name";
 
 my $homepage = 'about:config';
 my $workspace = '';
