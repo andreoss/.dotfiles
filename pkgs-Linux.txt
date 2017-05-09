@@ -59,3 +59,4 @@ xclip
 iw
 xkill
 cfdisk
+rustup
