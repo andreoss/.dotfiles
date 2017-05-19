@@ -38,6 +38,7 @@ dotfiles:
 	pkill -USR1 sxhkd || echo "Not running"
 
 	git config --global include.path 	   ${HOME}/.dotfiles/gitaliases
+	pkill -USR1 sxhkd
 
 	xrdb ~/.Xdefaults
 system:
