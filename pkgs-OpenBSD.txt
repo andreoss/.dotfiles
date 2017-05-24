@@ -1,4 +1,4 @@
-terminus-font--centered_tilde
+terminus-font--
 ImageMagick
 amigafonts--
 aspell
