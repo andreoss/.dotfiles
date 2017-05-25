@@ -63,3 +63,4 @@ xcape--
 youtube-dl
 yt-dlp--
 zbar
+pv
