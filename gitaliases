@@ -11,7 +11,7 @@
     d     = diff
     dx    = diff --staged
     fe    = fetch --all
-    hot   = "!f() { git log --all --find-copies --find-renames --name-only --format='format:' \"$@\" | grep -v '^$' | sort | uniq -c | sort -rn ;};f"
+    hot   = "!f() { git log --all --find-copies --find-renames --name-only --format='format:' \"$@\" | grep -v '^$' | sort | uniq -c | sort -rn | less ;};f"
     ll    = log --oneline --graph --decorate
     lp    = log -p
     ls    = ls-files
@@ -24,3 +24,4 @@
     re    = reset
     sc    = clone --depth=1
     st    = status -s -b
+    count = shortlog -sn
