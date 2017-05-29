@@ -1,6 +1,5 @@
 OS != uname
 
-
 all: system dotfiles cron
 
 cron:
@@ -29,12 +28,11 @@ dotfiles:
 	mkdir -p  ${HOME}/.config/
 	mkdir -p  ${HOME}/.config/sxhkd/
 
-.if ${OS} == "OpenBSD"
+.if "${OS}" == "OpenBSD"
 system:
 	doas pkg_add -l pkgs-${OS}.txt
 .else
 system:
-	@echo "Unsupported: ${OS}
+	@echo "Unsupported: ${OS}"
 	@exit 1
 .endif
-
