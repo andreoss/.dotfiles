@@ -132,9 +132,9 @@ LOCAL_HOME=$HOME/.local
 PATH="$LOCAL_HOME/bin:$PATH"
 PATH="$PATH:$LOCAL_HOME/share/coursier/bin"
 
-if [ -d "$HOME"/.cargo ]
+if [ -e "$HOME"/.cargo/env ]
 then
-    PATH="$PATH:$HOME/.cargo/bin"
+    . "$HOME"/.cargo/env
 fi
 
 export PATH SBT_HOME JAVA_HOME MANPATH
