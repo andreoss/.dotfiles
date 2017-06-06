@@ -1,3 +1,4 @@
+
 Emacs*font:             Terminus
 Emacs*geometry:  	80x38
 Emacs*menuBar:   	0
@@ -46,6 +47,7 @@ URxvt.letterSpace: 0
 URxvt.loginShell: true
 
 URxvt.saveLines: 10000000
+URxvt.saveLines: 10000
 URxvt.scrollBar: true
 URxvt.scrollBar_align: center
 URxvt.scrollBar_floating: true
