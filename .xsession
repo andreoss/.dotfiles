@@ -25,7 +25,6 @@ if type keychain; then
 	eval $(keychain --eval --agents ssh,gpg)
 fi
 
-xrdb "$HOME"/.Xresources
 
 if __is_docked; then
 	autorandr docked
@@ -34,7 +33,12 @@ fi
 if __is_4k; then
 	DPI=200
 fi
-echo "Xft.dpi: $DPI" | xrdb -merge
+
+xrdb "$HOME"/.Xresources
+
+echo "Xft.dpi: $DPI"                      | xrdb -merge
+echo "Xcursor.theme: Adwaita"             | xrdb -merge
+echo "Xcursor.size: $((24 * $DPI / 100))" | xrdb -merge
 
 setxkbmap 'us,ru' -option 'ctrl:nocaps,grp:shifts_toggle,compose:ralt'
 xcape &
