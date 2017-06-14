@@ -3,10 +3,14 @@ OS != uname
 ND = mkdir -p
 LN = ln -f -s
 
-all: system dotfiles cron
+all: system local-bin dotfiles cron
 
 cron:
 	crontab ${HOME}/.crontab
+
+local-bin:
+	$(ND) ${HOME}/.local/bin
+	$(LN) ${HOME}/.dotfiles/bin/chrome ${HOME}/.local/bin/chrome
 
 dotfiles:
 
@@ -42,4 +46,4 @@ system:
 .else
 	@echo "Unsupported: ${OS}"
 	@exit 1
-endif
+.endif
