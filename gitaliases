@@ -9,6 +9,7 @@
     co    = checkout
     cp    = cherry-pick
     d     = diff
+    dx    = diff --staged
     fe    = fetch --all
     hot   = "!f() { git log --all --find-copies --find-renames --name-only --format='format:' \"$@\" | grep -v '^$' | sort | uniq -c | sort -rn ;};f"
     ll    = log --oneline --graph --decorate
