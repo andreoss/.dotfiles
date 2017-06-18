@@ -53,3 +53,4 @@ xdg-user-dirs
 xdg-utils
 xpra
 xsetroot
+xclip
