@@ -30,6 +30,8 @@ __start() {
 
 eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
 
+__start /usr/libexec/pipewire-launcher &
+
 if [ -d /usr/local/share/fonts ]; then
 	for d in /usr/local/share/fonts/*; do
 		xset +fp "$d"
@@ -109,7 +111,10 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
 
 __start conky &
+__start udiskie &
+__start cbatticon &
 __start urxvtd &
+__start sxhkd &
 __start dunst &
 
 if [ "$HOSTNAME" = "wks" ]; then
