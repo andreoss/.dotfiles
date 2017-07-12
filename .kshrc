@@ -133,6 +133,7 @@ PATH=$JAVA_HOME/bin:$PATH
 SBT_HOME=$HOME/.local/sbt/
 PATH=$SBT_HOME/bin:$PATH
 LOCAL_HOME=$HOME/.local
+LOCAL_OPT=$HOME/.opt/
 PATH="$LOCAL_HOME/bin:$PATH"
 PATH="$PATH:$LOCAL_HOME/share/coursier/bin"
 
@@ -148,3 +149,12 @@ if [ -e "$HOME"/.kshrc.alias ]
 then
     . "$HOME"/.kshrc.alias
 fi
+
+export OPENIDE_JDK=/usr/lib/jvm/java-21-openjdk
+
+for p in "$LOCAL_OPT"/*; do
+    if [ -d "$p" ] && [ -d "$p/bin" ]
+    then
+        PATH="$p"/bin:"$PATH"
+    fi
+done
