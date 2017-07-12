@@ -18,7 +18,12 @@ __is_docked() {
 }
 
 __is_4k() {
-	xrandr | grep 3840 2>/dev/null >/dev/null
+    current=$( xrandr | perl -nE 'print $1 if /current \s+ (\d+) \s* x \s* (\d+)/xmgsi' )
+    if [ "$current" -ge 3000 ] ; then	
+        echo 1
+    else
+        xrandr | grep 3840 2>/dev/null >/dev/null 
+    fi
 }
 
 if type keychain; then
@@ -74,5 +79,9 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
 conky &
 urxvtd &
 dunst &
+
+if [ "$HOSTNAME" = "wks" ]; then
+    xpra shadow --opengl=no
+fi
 
 exec icewm-session --nobg
