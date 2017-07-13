@@ -1,7 +1,12 @@
 #!/bin/sh
 
+ARG="$*"
+
+if ! [ "$ARG" ]; then
+	ARG="$PWD"
+fi
 if tty >/dev/null; then
-	exec emacsclient -t "$@"
+	exec emacsclient -t "$ARG"
 else
-	exec emacsclient -c "$@"
+	exec emacsclient -c "$ARG"
 fi
