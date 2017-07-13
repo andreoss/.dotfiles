@@ -12,7 +12,10 @@ local-bin:
 	$(ND) ${HOME}/.local/bin
 	$(LN) ${HOME}/.dotfiles/bin/chrome   ${HOME}/.local/bin/chrome
 	$(LN) ${HOME}/.dotfiles/bin/et       ${HOME}/.local/bin/et
+	$(LN) ${HOME}/.dotfiles/bin/tm       ${HOME}/.local/bin/tm
+	$(LN) ${HOME}/.dotfiles/bin/vi       ${HOME}/.local/bin/vi
 	$(LN) ${HOME}/.dotfiles/bin/viper    ${HOME}/.local/bin/viper
+	$(LN) ${HOME}/.dotfiles/bin/x        ${HOME}/.local/bin/x
 
 dotfiles:
 	$(LN) ${HOME}/.dotfiles/.crontab     ${HOME}/.crontab

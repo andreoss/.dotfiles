@@ -81,7 +81,6 @@ if [ "$HOSTNAME" = "wks" ]; then
 	xpra shadow
 fi
 
-env | grep -v ^PS | grep -v ^DOAS | tee -a "$HOME/.xenv"
 emacs --bg-daemon &
 
 {
@@ -91,4 +90,16 @@ emacs --bg-daemon &
 	done
 } &
 
-exec icewm-session --no-bg
+WM=
+
+if type dwm; then
+	WM=dwm
+else
+	if type icewm-session; then
+		WM="icewm-session --nobg"
+	fi
+fi
+
+env | grep -v ^PS | grep -v ^DOAS | tee -a "$HOME/.xenv"
+
+exec $WM
