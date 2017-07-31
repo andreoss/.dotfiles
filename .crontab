@@ -1,5 +1,6 @@
 *    * * * * $HOME/.dotfiles/misc/mail-sync
 0    * * * * find ~ -name '*.core' -type f -delete
+0    0 * * * find ~ -name '*.dump' -type f -delete
 0    0 * * * find ~ -name '*~'     -type f -delete
 0    0 * * * find ~ -name '#*'     -type f -delete
 0    * * * * sh -c '. $HOME/.xenv; dunstify "$(date)"'
