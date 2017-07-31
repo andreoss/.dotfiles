@@ -1,6 +1,7 @@
 aria2
 bash
 bmake
+curl
 direnv
 doas
 docker
@@ -22,3 +23,4 @@ rxvt-unicode
 screen
 sxhkd
 xpra
+xsetroot
