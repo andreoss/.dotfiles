@@ -66,6 +66,12 @@ ulimit -Sc 0
 	fi
 } &
 
+case "$(uname)" in
+OpenBSD)
+	sct 4500
+	;;
+esac
+
 xset b off
 xidle &
 
