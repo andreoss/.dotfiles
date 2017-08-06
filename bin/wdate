@@ -1,0 +1,32 @@
+#!/bin/sh
+TZS="
+        America/Argentina/Buenos_Aires
+        America/Asuncion
+        America/Caracas
+        America/Mexico_City
+        America/New_York
+        America/Sao_Paulo
+        Asia/Delhi
+        Asia/Dubai
+        Asia/Tokyo
+        Europe/Lisbon
+        Europe/London
+        Europe/Moscow
+        Europe/Tallinn
+        Europe/Warsaw
+        UTC
+"
+
+__date() {
+	printf "%30s|" "$TZ"
+	date "+%H:%M|%Z|%z|%A|%d|%B"
+}
+{
+	for TZ in $TZS; do
+		TZ="$TZ" __date
+	done
+} |
+	sort -t '|' -n -k 4 |
+	tee /dev/null |
+	perl -F'\|' -lanE 'my @S; { for my $i (0..$#F) { $S[$i] = ($^H[$i] eq $F[$i]) ? ("-" x length($F[$i])) : $F[$i]; } }; @^H=@F; say "@S"; ;' |
+	column -t
