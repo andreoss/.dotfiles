@@ -19,6 +19,7 @@
     pu    = push
     pufo  = push --force
     pure  = pull --rebase
+    rc    = rebase --continue
     re    = reset
     sc    = clone --depth=1
     st    = status -s -b
