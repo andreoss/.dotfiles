@@ -3,6 +3,12 @@
 . "$HOME"/.profile
 . "$HOME"/.kshrc
 
+__loop() {
+    dunstify "Running - $*" 
+    "$@"
+    __loop "$@"
+}
+
 eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
 
 if [ -d /usr/local/share/fonts ]; then
@@ -79,15 +85,17 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation" 1
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
 
-conky &
-urxvtd &
-dunst &
+
+__loop conky &
+__loop urxvtd &
+__loop dunst &
 
 if [ "$HOSTNAME" = "wks" ]; then
 	xpra shadow
 fi
 
-emacs --bg-daemon &
+__loop emacs --fg-daemon &
+
 
 {
 	while :; do
