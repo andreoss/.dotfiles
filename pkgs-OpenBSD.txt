@@ -1,3 +1,5 @@
+terminus-font--centered_tilde
+ImageMagick
 amigafonts--
 aspell
 bash
@@ -10,15 +12,16 @@ dnscrypt-proxy
 dnscrypt-proxy--
 dunst--
 emacs--gtk3
+feh
 firefox-esr
 ghc--
+ghostscript--
 git--
 gmake--
 gnupg
 gradle
 gtar--static
 icewm
-ImageMagick
 iridium
 isync
 keychain
@@ -32,8 +35,9 @@ p5-ack
 pass-otp
 password-store
 pcmanfm
+pinentry-qt6
 poppler
-qemu
+qemu--
 ratpoison
 rofi
 rsync--
@@ -42,9 +46,9 @@ sbcl
 sbt--
 screen--
 shellcheck
+shellcheck--
 shfmt
 sudo--
-terminus-font--centered_tilde
 texlive_texmf-full
 unifont--
 unzip--
