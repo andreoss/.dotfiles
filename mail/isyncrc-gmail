@@ -1,0 +1,23 @@
+IMAPAccount «account»
+PassCmd     "pass show «account» | sed -n  s/app:\\ //\\;2p"
+UserCmd     "pass show «account» | sed -n s/user:\\ //\\;2p"
+Host        imap.gmail.com
+Port        993
+TLSType     IMAPS
+
+IMAPStore «account»-remote
+Account   «account»
+
+MaildirStore            «account»-local
+Inbox         ~/Maildir/«account»/Inbox
+Path          ~/Maildir/«account»/
+SubFolders    Verbatim
+
+Channel   «account»
+Create    Near
+Expunge   None
+Far       :«account»-remote:
+Near      :«account»-local:
+Patterns  *
+Remove    None
+SyncState *
