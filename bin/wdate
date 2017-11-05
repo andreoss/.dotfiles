@@ -1,37 +1,45 @@
-#!/bin/sh
-TZS="
-        America/Argentina/Buenos_Aires
-        America/Asuncion
-        America/Los_Angeles
-        America/Caracas
-        America/Mexico_City
-        America/New_York
-        America/Sao_Paulo
-        Asia/India/Delhi
-        Asia/Dubai
-        Asia/Tokyo
-        Europe/Berlin
-        Europe/Sofia
-        Europe/Lisbon
-        Europe/Madrid
-        Europe/London
-        Europe/Moscow
-        Europe/Tallinn
-        Europe/Warsaw
-        UTC
-"
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use POSIX        qw(setlocale strftime);
+use List::Util   qw(sum);
+use experimental qw(signatures postderef);
 
-__date() {
-	printf "%30s|" "$TZ"
-	date "+%H:%M|%Z|%z|%A|%d|%B"
+our @TZs = qw(
+  America/Argentina/Buenos_Aires America/Asuncion America/Los_Angeles
+  America/Caracas America/Mexico_City America/New_York America/Sao_Paulo
+  Asia/Dubai Asia/Tokyo Europe/Berlin Europe/Sofia Europe/Lisbon Europe/Madrid
+  Europe/London Europe/Moscow Europe/Tallinn Europe/Warsaw UTC
+);
+
+sub print_table ($data) {
+
+    my @widths = ();
+
+    for my $row ( $data->@* ) {
+        for my $i ( 0 .. $row->$#* ) {
+            $widths[$i] = length( $row->[$i] )
+              if length( $row->[$i] ) > ( $widths[$i] || 0 );
+        }
+    }
+
+    for my $row (@$data) {
+        for my $i ( 0 .. $row->$#* ) {
+            printf "%-*s", $widths[$i] + 2, $row->[$i];
+        }
+        print "\n";
+    }
 }
-{
-	for TZ in $TZS; do
-		export TZ
-		__date
-	done
-} |
-	sort -t '|' -n -k 4 |
-	sed 's,.*/,,' |
-	perl -F'\|' -lanE 'my @S; { for my $i (0..$#F) { $S[$i] = ($^H[$i] eq $F[$i]) ? ("-" x length($F[$i])) : $F[$i]; } }; @^H=@F; say "@S"; ;' |
-	column -t
+
+my @data = ();
+for my $tz (@TZs) {
+    $ENV{'TZ'} = $tz;
+    my ( $time, $offset, $day_name, $day, $month ) = split /\|/,
+      strftime( "%H:%M|%z|%A|%d|%B", localtime() );
+
+    push @data, [ $tz, $time, $offset, $day_name, $day, $month ];
+}
+
+@data = sort { $a->[2] <=> $b->[2] } @data;
+
+print_table( \@data );
