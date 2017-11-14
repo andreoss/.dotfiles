@@ -10,6 +10,7 @@ our @TZs = qw(
   America/Caracas America/Mexico_City America/New_York America/Sao_Paulo
   Asia/Dubai Asia/Tokyo Europe/Berlin Europe/Sofia Europe/Lisbon Europe/Madrid
   Europe/London Europe/Moscow Europe/Tallinn Europe/Warsaw UTC
+  Asia/Kolkata
 );
 
 sub print_table ($data) {
