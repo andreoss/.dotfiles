@@ -1,46 +1,71 @@
 #!/usr/bin/env perl
+
 use strict;
 use warnings;
-use POSIX        qw(setlocale strftime);
-use List::Util   qw(sum);
-use experimental qw(signatures postderef);
+
+use POSIX      qw(strftime);
+use List::Util qw(max);
+
+use experimental qw(postderef);
+
+binmode( STDOUT, ":utf8" );
 
 our @TZs = qw(
-  America/Argentina/Buenos_Aires America/Asuncion America/Los_Angeles
-  America/Caracas America/Mexico_City America/New_York America/Sao_Paulo
-  Asia/Dubai Asia/Tokyo Europe/Berlin Europe/Sofia Europe/Lisbon Europe/Madrid
-  Europe/London Europe/Moscow Europe/Tallinn Europe/Warsaw UTC
-  Asia/Kolkata
+  America/Argentina/Buenos_Aires
+  America/Asuncion
+  America/Caracas
+  America/Mexico_City
+  America/New_York
+  America/Sao_Paulo
+  Asia/Dubai
+  Asia/Tokyo
+  Europe/Lisbon
+  Europe/Madrid
+  Europe/London
+  Europe/Moscow
+  Europe/Tallinn
+  Europe/Warsaw
+  UTC
 );
 
-sub print_table ($data) {
+my @results;
 
-    my @widths = ();
+for my $TZ (@TZs) {
+    $ENV{'TZ'} = $TZ;
+    my $time = strftime( "%H:%M|%Z|%z|%A|%d|%B", localtime );
+    push @results, [ $TZ, [ split( /\|/, $time ) ] ];
+}
 
-    for my $row ( $data->@* ) {
-        for my $i ( 0 .. $row->$#* ) {
-            $widths[$i] = length( $row->[$i] )
-              if length( $row->[$i] ) > ( $widths[$i] || 0 );
+my @lengths;
+for my $result (@results) {
+    my ( $tz, $fields ) = $result->@*;
+
+    for my $i ( 0 .. $fields->$#* ) {
+        $lengths[$i] = max( length( $fields->[$i] ), $lengths[$i] || 0 );
+    }
+}
+my $fmt = "%15s " . join( " ", map { "%-" . $_ . "s" } @lengths ) . "\n";
+
+my @prev = ();
+
+for my $result ( sort { $a->[1]->[0] cmp $b->[1]->[0] } @results ) {
+    my ( $tz, $fields ) = $result->@*;
+
+    my @fmts;
+
+    for my $i ( 0 .. $fields->$#* ) {
+        if ( defined $prev[$i] && $prev[$i] eq $fields->[$i] ) {
+            push @fmts, "-" x ( $lengths[$i] );
+        }
+        else {
+            push @fmts, $fields->[$i];
         }
     }
 
-    for my $row (@$data) {
-        for my $i ( 0 .. $row->$#* ) {
-            printf "%-*s", $widths[$i] + 2, $row->[$i];
-        }
-        print "\n";
-    }
+    @prev = @$fields;
+
+    $tz =~ s[.*/][]xs;
+    $tz =~ s[  _][ ]xs;
+
+    printf( $fmt, $tz, @fmts );
 }
-
-my @data = ();
-for my $tz (@TZs) {
-    $ENV{'TZ'} = $tz;
-    my ( $time, $offset, $day_name, $day, $month ) = split /\|/,
-      strftime( "%H:%M|%z|%A|%d|%B", localtime() );
-
-    push @data, [ $tz, $time, $offset, $day_name, $day, $month ];
-}
-
-@data = sort { $a->[2] <=> $b->[2] } @data;
-
-print_table( \@data );
