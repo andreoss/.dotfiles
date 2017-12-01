@@ -44,6 +44,7 @@ system:
 	doas ln -f -s /dev/null /etc/motd
 .if "${OS}" == "OpenBSD"
 	doas pkg_add -l pkgs-${OS}.txt
+	echo 'machine gop 13' | doas tee /etc/boot.conf
 .elif "${OS}" == "FreeBSD"
 	xargs doas pkg install -y < pkgs-${OS}.txt
 .elif "${OS}" == "Linux"
