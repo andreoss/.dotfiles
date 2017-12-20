@@ -269,14 +269,31 @@ root_mount() {
 	else
 		echo "skip"
 	fi
-        for dir in /opt /var /usr /etc /boot
+        for dir in /opt /var /usr /etc /boot /proc /sys /dev /dev/shm /run /run/shm
         do
             should_exists "${ROOT}${dir}"
         done
+        mount --types proc  /proc "${ROOT}"/proc
+        mount --rbind       /sys  "${ROOT}"/sys
+        mount --make-rslave       "${ROOT}"/sys
+        mount --rbind       /dev  "${ROOT}"/dev
+        mount --make-rslave       "${ROOT}"/dev
+        mount --bind        /run  "${ROOT}"/run
+        mount --make-slave        "${ROOT}"/run
+        mount --types tmpfs --options nosuid,nodev,noexec shm "${ROOT}"/dev/shm
+        mount --types tmpfs --options nosuid,nodev,noexec shm "${ROOT}"/run/shm
+        chmod 1777                "${ROOT}/dev/shm
+        chmod 1777                "${ROOT}/run/shm
 }
 
 root_unmount() {
-	umount "$ROOT"
+        umount  "${ROOT}"/dev/shm
+        umount  "${ROOT}"/dev
+        umount  "${ROOT}"/proc
+        umount  "${ROOT}"/run/shm
+        umount  "${ROOT}"/run
+        umount  "${ROOT}"/sys
+	umount  "$ROOT"
 }
 
 btrfs_subvol_name() {
