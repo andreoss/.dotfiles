@@ -1,4 +1,4 @@
-Emacs*font:             Terminus
+Emacs*font:             fixed
 Emacs*geometry:  	80x38
 Emacs*menuBar:   	0
 Emacs*scrollBar: 	on
@@ -44,7 +44,6 @@ URxvt.keysym.M-u: perl:url-select:select_next
 
 URxvt.letterSpace: 0
 URxvt.loginShell: true
-URxvt.perl-ext-common: context,selection-to-clipboard,url-select,resize-font,keyboard-select
 
 URxvt.saveLines: 10000000
 URxvt.scrollBar: true

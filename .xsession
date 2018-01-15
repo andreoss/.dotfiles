@@ -84,4 +84,11 @@ fi
 env | grep -v ^PS | grep -v ^DOAS | tee -a "$HOME/.xenv"
 emacs --bg-daemon &
 
+{
+	while :; do
+		sleep 1
+		uptime | sed 's/.*://;s/,//g' | xargs -Ixxx xsetroot -name xxx
+	done
+} &
+
 exec icewm-session --no-bg
