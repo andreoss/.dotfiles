@@ -23,10 +23,11 @@ __date() {
 }
 {
 	for TZ in $TZS; do
-		TZ="$TZ" __date
+		export TZ
+		__date
 	done
 } |
 	sort -t '|' -n -k 4 |
-	tee /dev/null |
+	sed 's,.*/,,' |
 	perl -F'\|' -lanE 'my @S; { for my $i (0..$#F) { $S[$i] = ($^H[$i] eq $F[$i]) ? ("-" x length($F[$i])) : $F[$i]; } }; @^H=@F; say "@S"; ;' |
 	column -t
