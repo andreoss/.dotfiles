@@ -5,5 +5,7 @@
 0     * * * * sh -c '. $HOME/.xenv; dunstify "$(date)"'
 */10  * * * * r2e run
 
+0     0 * * * git-xfetch ~/Code ; dunstify "Fetched ~/Code"
+0     0 * * * git-xfetch ~/Work ; dunstify "Fetched ~/Work"
 
 @reboot       [ "$(hostname)" == "wk" ] && xpra seamless --bind-tcp=0.0.0.0:14500
