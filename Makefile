@@ -13,12 +13,14 @@ local-bin:
 	$(LN) ${HOME}/.dotfiles/bin/wdate    ${HOME}/.local/bin/wdate
 	$(LN) ${HOME}/.dotfiles/bin/chrome   ${HOME}/.local/bin/chrome
 	$(LN) ${HOME}/.dotfiles/bin/et       ${HOME}/.local/bin/et
-	$(LN) ${HOME}/.dotfiles/bin/jetbrains       ${HOME}/.local/bin/jetbrains
-	$(LN) ${HOME}/.dotfiles/bin/signal-desktop  ${HOME}/.local/bin/signal-desktop
 	$(LN) ${HOME}/.dotfiles/bin/tm       ${HOME}/.local/bin/tm
 	$(LN) ${HOME}/.dotfiles/bin/viper    ${HOME}/.local/bin/viper
 	$(LN) ${HOME}/.dotfiles/bin/x        ${HOME}/.local/bin/x
 	$(LN) ${HOME}/.dotfiles/bin/wm       ${HOME}/.local/bin/wm
+
+	$(LN) ${HOME}/.dotfiles/bin/git-xfetch     ${HOME}/.local/bin/git-xfetch
+	$(LN) ${HOME}/.dotfiles/bin/jetbrains      ${HOME}/.local/bin/jetbrains
+	$(LN) ${HOME}/.dotfiles/bin/signal-desktop ${HOME}/.local/bin/signal-desktop
 
 dotfiles:
 	$(LN) ${HOME}/.dotfiles/.crontab     ${HOME}/.crontab
