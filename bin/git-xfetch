@@ -1,0 +1,12 @@
+#!/bin/sh
+
+DIR="${1:?directory required}"
+shift
+
+if [ -d "$DIR/.git" ]
+then
+        cd "$DIR"
+        exec git fetch
+fi
+
+find "$DIR" -name '.git' -type d -print0 | xargs -0 -i "$0" "{}/.."
