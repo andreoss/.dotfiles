@@ -3,10 +3,28 @@
 . "$HOME"/.profile
 . "$HOME"/.kshrc
 
+cleanup() {
+	pkill -P $$
+}
+
+for sig in INT QUIT HUP TERM; do
+	trap "
+    cleanup
+    trap - "$sig" EXIT
+    kill -s "$sig" "'"$$"' "$sig"
+done
+
+trap cleanup EXIT
+
 __loop() {
-    dunstify "Running - $*" 
-    "$@"
-    __loop "$@"
+	cmd=$1
+	shift
+	if ! type "$cmd"; then
+		return
+	fi
+	"$cmd" "$@"
+	dunstify "Running - $cmd"
+	__loop "$cmd" "$@"
 }
 
 eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
@@ -74,7 +92,7 @@ ulimit -Sc 0
 
 case "$(uname)" in
 OpenBSD)
-	sct 4500
+	sct
 	;;
 esac
 
@@ -84,7 +102,6 @@ xidle &
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation" 1
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
-
 
 __loop conky &
 __loop urxvtd &
@@ -96,7 +113,6 @@ fi
 
 __loop emacs --fg-daemon &
 
-
 {
 	while :; do
 		sleep 1
@@ -104,16 +120,5 @@ __loop emacs --fg-daemon &
 	done
 } &
 
-WM=
-
-if type dwm; then
-	WM=dwm
-else
-	if type icewm-session; then
-		WM="icewm-session --nobg"
-	fi
-fi
-
 env | grep -v ^PS | grep -v ^DOAS | tee -a "$HOME/.xenv"
-
-exec $WM
+exec wm

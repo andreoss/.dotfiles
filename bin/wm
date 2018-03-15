@@ -1,0 +1,16 @@
+#!/bin/sh
+WM=
+
+if type dwm; then
+	WM=dwm
+else
+	if type icewm-session; then
+		WM="icewm-session --nobg"
+	fi
+fi
+
+while :; do
+	$WM
+done
+
+exit

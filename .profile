@@ -1,6 +1,8 @@
 ENV="$HOME"/.kshrc
 export ENV
 PATH=/sbin:/bin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/X11R6/bin
+PATH=$PATH:/run/current-system/sw/bin
+PATH=$PATH:$HOME/.nix-profile/bin
 
 for PKG_PREFIX in "$HOME" /usr; do
 	if [ -d "$PKG_PREFIX/pkg" ]; then
