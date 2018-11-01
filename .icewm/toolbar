@@ -1,9 +1,6 @@
-
 prog  "Emacs"      emacs        et
 prog  "Librewolf"  www          librewolf
-prog  "mc"         save sh-c '~/.local/mucommander/mucommander.sh'
-
+prog  "mc"         save         sh -c '~/.local/mucommander/mucommander.sh'
 prog  "Jetbrains"  java  jetbrains
 prog  "Xterm"      xterm urxvt
-
-prog  "x/md"       xpra  xpra attach ssh://md
+prog  "X/md"       xpra  xpra attach --dpi=100 --sharing=yes ssh://md
