@@ -1,0 +1,67 @@
+alignment  top_right
+background false
+cpu_avg_samples 2
+double_buffer true
+draw_borders false
+draw_graph_borders false
+draw_outline true
+draw_shades false
+extra_newline false
+font Terminus:size=12
+gap_x 48
+gap_y 48
+maximum_height 320
+maximum_width 480
+minimum_height 320
+minimum_width 480
+net_avg_samples 2
+no_buffers true
+out_to_x true
+own_window falseG
+own_window_argb_visual false
+own_window_class  conky
+own_window_colour black
+own_window_hints  undecorated,below,skip_taskbar,sticky,skip_pager
+own_window_transparent false
+own_window_transparent true
+own_window_type  override
+show_graph_range false
+show_graph_scale false
+stippled_borders 0
+update_interval 1.0
+uppercase false
+use_spacer none
+use_xft true
+
+text_buffer_size 1024
+default_color FFFFEA
+default_outline_color 1F1F1F
+default_shade_color 555555
+color1 FFFFFF
+color2 FFFFFF
+color3 FFFFFF
+color4 FFFFFF
+color5 DCDCDC
+color6 FFFFFF
+color7 FFFFFF
+color8 FFFFFF
+
+TEXT
+${alignc}${time %A}, ${time %d %B, %X}
+$loadavg${alignr}$uptime
+${cpugraph 15,480 586E75 541230 scale -t}
+${alignc}${fs_used /user/}/${fs_free /user}
+$diskio_read/s${alignr}$diskio_write/s
+${diskiograph_read 25,240 586E75 541230 scale -t}${alignr}${diskiograph_write 25,240 586E75 541230 scale -t}
+${if_up iwn0}${downspeedgraph iwn0 15,240 586E75 541230 scale -t}${alignr}${upspeedgraph iwn0 15,240 586E75 541230 scale -t}$endif
+${if_up wg0}${downspeedgraph wg0 15,240 586E75 541230 scale -t}${alignr}${upspeedgraph wg0 15,240 586E75 541230 scale -t}$endif
+${if_up em0}${downspeedgraph em0 15,240 586E75 541230 scale -t}${alignr}${upspeedgraph em0 15,240 586E75 541230 scale -t}$endif
+${execi 20 notmuch count tag:inbox and tag:unread and date:today}/${execi 20 notmuch count tag:inbox and tag:unread}$alignr${execi 20 notmuch count date:1h and tag:inbox}/${execi 20 notmuch count date:1d and tag:inbox}/${execi 20 notmuch count date:1w and tag:inbox}
+$if_mpd_playing
+${mpd_file}
+${alignc}${mpd_elapsed} / ${mpd_length}
+${mpd_bar 5,480}
+$endif
+${hr 1}
+${execpi 60 /home/a/.dotfiles/misc/cal.pl}
+${hr 1}
