@@ -13,4 +13,4 @@ alias v=vi
 alias sx='screen -xRR sx'
 alias dir=la
 alias rsynca='rsync -ahcv'
-alias xpra='xpra --splash=no'
+alias xpra='xpra --splash=none'
