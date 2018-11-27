@@ -7,15 +7,13 @@ export SHELL_VARIANT
 HISTSIZE=$((1 << 16))
 HISTFILE="$HOME"/.history."$SHELL_VARIANT"
 HOSTNAME="$(hostname)"
-if [ ! -e "$HISTFILE" ]
-
-then
-    touch     "$HISTFILE"
-    chmod 600 "$HISTFILE"
+if [ ! -e "$HISTFILE" ]; then
+	touch "$HISTFILE"
+	chmod 600 "$HISTFILE"
 fi
 
 if [ "$SSH_CLIENT" ]; then
-        __PROMPT='>> '
+	__PROMPT='>> '
 else
 	__PROMPT='> '
 fi
@@ -139,27 +137,22 @@ LOCAL_OPT=$HOME/.opt/
 PATH="$LOCAL_HOME/bin:$PATH"
 PATH="$PATH:$LOCAL_HOME/share/coursier/bin"
 
-if [ -e "$HOME"/.cargo/env ]
-then
-    . "$HOME"/.cargo/env
+if [ -e "$HOME"/.cargo/env ]; then
+	. "$HOME"/.cargo/env
 fi
 
 export PATH SBT_HOME MANPATH
 
-
-if [ -e "$HOME"/.kshrc.alias ]
-then
-    . "$HOME"/.kshrc.alias
+if [ -e "$HOME"/.kshrc.alias ]; then
+	. "$HOME"/.kshrc.alias
 fi
 
-if [ -e "$HOME"/.kshrc."$HOSTNAME" ]
-then
-    . "$HOME"/.kshrc."$HOSTNAME"
+if [ -e "$HOME"/.kshrc."$HOSTNAME" ]; then
+	. "$HOME"/.kshrc."$HOSTNAME"
 fi
 
 for p in "$LOCAL_OPT"/*; do
-    if [ -d "$p" ] && [ -d "$p/bin" ]
-    then
-        PATH="$p"/bin:"$PATH"
-    fi
+	if [ -d "$p" ] && [ -d "$p/bin" ]; then
+		PATH="$p"/bin:"$PATH"
+	fi
 done
