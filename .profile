@@ -3,9 +3,8 @@ export ENV
 
 PATH=/sbin:/bin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/X11R6/bin:$PATH
 
-if [ -d "$HOME/.nix-profile/" ]
-then
-    . "$HOME"/.nix-profile/etc/profile.d/hm-session-vars.sh
+if [ -d "$HOME/.nix-profile/" ]; then
+	. "$HOME"/.nix-profile/etc/profile.d/hm-session-vars.sh
 fi
 
 for PKG_PREFIX in "$HOME" /usr; do
@@ -36,8 +35,6 @@ LOCAL_OPT=$HOME/.opt/
 PATH="$LOCAL_HOME/bin:$PATH"
 PATH="$PATH:$LOCAL_HOME/share/coursier/bin"
 
-
-
 export LC_ALL LANG
 export MANPATH
 export EDITOR
@@ -50,27 +47,22 @@ if [ ! "$GPG_AGENT_INFO" ]; then
 	fi
 fi
 
-if [ -e "$HOME/.cargo/env" ]
-then
-    . "$HOME/.cargo/env"
+if [ -e "$HOME/.cargo/env" ]; then
+	. "$HOME/.cargo/env"
 fi
 
-if [ -e "$HOME/.profile-private" ]
-then
-    . "$HOME/.profile-private"
+if [ -e "$HOME/.profile-private" ]; then
+	. "$HOME/.profile-private"
 fi
 
-if [ -e "$HOME"/.profile."$HOSTNAME" ]
-then
-    . "$HOME"/.profile."$HOSTNAME"
+if [ -e "$HOME"/.profile."$HOSTNAME" ]; then
+	. "$HOME"/.profile."$HOSTNAME"
 fi
 
-if [ -d "$LOCAL_OPT" ]
-then
-for p in "$LOCAL_OPT"/*; do
-    if [ -d "$p" ] && [ -d "$p/bin" ]
-    then
-        PATH="$p"/bin:"$PATH"
-    fi
-done
+if [ -d "$LOCAL_OPT" ]; then
+	for p in "$LOCAL_OPT"/*; do
+		if [ -d "$p" ] && [ -d "$p/bin" ]; then
+			PATH="$p"/bin:"$PATH"
+		fi
+	done
 fi

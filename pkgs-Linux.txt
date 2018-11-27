@@ -62,3 +62,4 @@ xkill
 cfdisk
 rustup
 perl-tidy
+shfmt
