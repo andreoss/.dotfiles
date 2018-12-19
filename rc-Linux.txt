@@ -15,3 +15,11 @@ doas rc-service throttled start
 
 
 echo "tun" | doas tee /etc/modules-load.d/tun.conf
+
+
+doas apk add earlyoom
+doas rc-update add earlyoom default
+doas rc-service earlyoom start
+
+
+doas groupadd --force --gid 1001 tunnel

@@ -1,0 +1,6 @@
+dev-java/*       headless-jwt -binary jce 
+dev-java/openjdk doc examples source jbootstrap -javafx
+dev-java/sbt
+dev-java/swt     cairo opengl
+app-crypt/gcr    gtk
+

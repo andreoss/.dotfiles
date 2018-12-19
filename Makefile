@@ -67,6 +67,8 @@ system:
 	xargs doas pkg install -y < pkgs-${OS}.txt
 .elif "${OS}" == "Linux"
 	xargs doas apk add < pkgs-${OS}.txt
+	xargs flatpak --user -y install < pkgs-Flatpak.txt
+	xargs flatpak --user -y update  < pkgs-Flatpak.txt
 .endif
 
 gsettings:
