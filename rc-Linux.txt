@@ -21,3 +21,5 @@ doas apk add earlyoom
 doas rc-update add earlyoom default
 doas rc-service earlyoom start
 
+
+doas groupadd --force --gid 1001 tunnel
