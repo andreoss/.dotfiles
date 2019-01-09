@@ -46,7 +46,6 @@ URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.letterSpace: 0
 URxvt.loginShell: true
 
-URxvt.saveLines: 10000000
 URxvt.saveLines: 10000
 URxvt.scrollBar: true
 URxvt.scrollBar_align: center
