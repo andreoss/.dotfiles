@@ -12,7 +12,7 @@
     dx    = diff --staged
     fe    = fetch --all
     hot   = "!f() { git log --all --find-copies --find-renames --name-only --format='format:' \"$@\" | grep -v '^$' | sort | uniq -c | sort -rn | less ;};f"
-    ll    = log --oneline --graph --decorate
+    ll    = log --pretty='%C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s' --graph --date=relative --date-order
     lp    = log -p
     ls    = ls-files
     p     = pull
