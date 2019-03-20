@@ -25,3 +25,5 @@
     sc    = clone --depth=1
     st    = status -s -b
     count = shortlog -sn
+    xx    = reset HEAD~1
+    rhm   = reset --hard origin/master
