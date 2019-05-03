@@ -1,0 +1,2 @@
+DEV="${1:?device required}"
+sudo grub-install --no-nvram --efi-directory=/efi/ --boot-directory=/boot --target=x86_64-efi --removable "$DEV"
