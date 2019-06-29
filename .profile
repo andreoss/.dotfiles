@@ -47,6 +47,10 @@ if [ ! "$GPG_AGENT_INFO" ]; then
 	fi
 fi
 
+if [ ! "$DISPLAY" ]; then
+	GPG_TTY="$(tty)"
+fi
+
 if [ -e "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"
 fi
@@ -66,3 +70,4 @@ if [ -d "$LOCAL_OPT" ]; then
 		fi
 	done
 fi
+
