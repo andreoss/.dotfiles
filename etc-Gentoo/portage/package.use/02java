@@ -1,0 +1,3 @@
+dev-java/*       headless-jwt -binary
+dev-java/openjdk doc examples source jbootstrap javafx
+dev-java/sbt
