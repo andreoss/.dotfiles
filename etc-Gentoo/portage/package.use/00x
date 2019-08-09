@@ -1,0 +1,11 @@
+media-libs/libglvnd              X
+media-libs/vulkan-loader         X
+x11-base/xlibre-server           udev -xvfb -minimal
+x11-base/xorg-server             udev -xvfb -minimal
+sys-apps/systemd-utils           udev
+x11-wm/icewm                     ao truetype
+x11-misc/rofi                    X
+
+
+media-libs/freetype              harfbuzz
+app-text/xmlto                   text
