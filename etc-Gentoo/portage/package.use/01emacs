@@ -1,2 +1,3 @@
-sys-devel/gcc jit
-app-editors/emacs X threads -gsettings jit toolkit-scroll-bars wide-int -games -gfile json libxml2 athena dynamic-loading tree-sitter source -dbus -sound
+sys-devel/gcc     jit
+app-editors/emacs X athena xft gui threads -gsettings jit toolkit-scroll-bars wide-int -games -gfile json libxml2 dynamic-loading tree-sitter source -dbus -sound
+app-emacs/emacs-common gui
