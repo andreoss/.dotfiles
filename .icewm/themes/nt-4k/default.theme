@@ -1,0 +1,81 @@
+ThemeDescription          = "nt"
+ThemeAuthor               = ""
+Look                      = metal
+
+TitleBarHeight            = 19
+TitleBarJoinRight         = 1
+TitleButtonsLeft          = "s"
+TitleButtonsRight         = "xmi"
+TitleButtonsSupported     = "xmis"
+TitleButtonsSupported     = "xmisrhd"
+
+
+TaskBarAPMGraphWidth      = 1
+
+TrayDrawBevel             = 1
+TrayIconMaxHeight         = 16
+TrayIconMaxWidth          = 16
+
+Gradients                 = "titleAB.xpm titleAT.xpm titleIB.xpm titleIT.xpm"
+
+BorderSizeX               = 3
+BorderSizeY               = 3
+CornerSizeX               = 16
+CornerSizeY               = 16
+DlgBorderSizeX            = 2
+DlgBorderSizeY            = 2
+
+ColorActiveBorder         = "rgb:D4/D0/C8"
+ColorActiveButton         = "rgb:D4/D0/C8"
+ColorActiveButtonText     = "rgb:00/00/00"
+ColorActiveMenuItem       = "rgb:0A/24/6A"
+ColorActiveMenuItemText   = "rgb:ff/ff/ff"
+ColorActiveTaskBarApp     = "rgb:ea/e8/e4"
+ColorActiveTaskBarAppText = "rgb:00/00/00"
+ColorActiveTitleBarText   = "rgb:ff/ff/ff"
+ColorApm                  = "rgb:D4/D0/C8"
+ColorApmBattery           = "rgb:80/00/00"
+ColorApmGraphBg           = "rgb:D4/D0/C8"
+ColorApmLine              = "rgb:D4/D0/C8"
+ColorApmText              = "rgb:EA/00/00"
+ColorCPUStatusIdle        = "rgb:D4/D0/C8"
+ColorCPUStatusInterrupts  = "rgb:AA/00/00"
+ColorCPUStatusIoWait      = "rgb:40/00/40"
+ColorCPUStatusNice        = "rgb:D4/08/08"
+ColorCPUStatusSoftIrq     = "rgb:88/00/80"
+ColorCPUStatusSteal       = "rgb:50/00/00"
+ColorCPUStatusSystem      = "rgb:1A/00/00"
+ColorCPUStatusTemp        = "rgb:30/00/00"
+ColorCPUStatusUser        = "rgb:80/00/00"
+ColorClockText            = "rgb:00/00/00"
+ColorDefaultTaskBar       = "rgb:D4/D0/C8"
+ColorDialog               = "rgb:D4/D0/C8"
+ColorDisabledMenuItemText = "rgb:80/80/80"
+ColorLabel                = "rgb:D4/D0/C8"
+ColorLabelText            = "rgb:00/00/00"
+ColorListBox              = "rgb:ff/ff/ff"
+ColorListBoxSelection     = "rgb:0A/24/6A"
+ColorListBoxSelectionText = "rgb:AA/08/C8"
+ColorListBoxText          = "rgb:00/00/00"
+ColorMEMStatusBuffers     = "rgb:90/90/A0"
+ColorMEMStatusCached      = "rgb:A0/90/90"
+ColorMEMStatusFree        = "rgb:D4/D0/C8"
+ColorMEMStatusUser        = "rgb:AA/00/00"
+ColorNetIdle              = "rgb:D4/D0/C8"
+ColorNetReceive           = "rgb:0A/24/6A"
+ColorNetSend              = "rgb:6A/24/0A"
+ColorNormalBorder         = "rgb:D4/D0/C8"
+ColorNormalButton         = "rgb:D4/D0/C8"
+ColorNormalButtonText     = "rgb:00/00/00"
+ColorNormalMenu           = "rgb:D4/D0/C8"
+ColorNormalMenuItemText   = "rgb:00/00/00"
+ColorNormalTaskBarApp     = "rgb:D4/D0/C8"
+ColorNormalTaskBarAppText = "rgb:00/00/00"
+ColorNormalTitleBarText   = "rgb:D4/D0/C8"
+ColorQuickSwitch          = "rgb:C0/C0/C0"
+ColorQuickSwitchActive    = "rgb:0A/24/6A"
+ColorQuickSwitchText      = "rgb:00/00/00"
+ColorScrollBar            = "rgb:D4/D0/C8"
+ColorScrollBarButton      = "rgb:D4/D0/C8"
+ColorScrollBarButtonArrow = "rgb:00/00/00"
+ColorScrollBarSlider      = "rgb:D4/D0/C8"
