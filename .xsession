@@ -4,6 +4,8 @@
 . "$HOME"/.profile
 . "$HOME"/.kshrc
 
+DPI="${DPI:-100}"
+
 cleanup() {
 	pkill -P $$
 }
@@ -30,32 +32,19 @@ __start() {
 
 eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
 
-__start /usr/libexec/pipewire-launcher &
-
 if [ -d /usr/local/share/fonts ]; then
 	for d in /usr/local/share/fonts/*; do
 		xset +fp "$d"
 	done
 fi
 
-DPI=100
-
 __is_docked() {
 	xrandr | grep -E '^(HDMI|DP)[0-9-]+ connected'
 }
 
 __is_4k() {
-	current=$(xrandr | perl -nE 'print $1 if /current \s+ (\d+) \s* x \s* (\d+)/xmgsi')
-	if [ "$current" -ge 3000 ]; then
-		echo 1
-	else
-		xrandr | grep 3840 2>/dev/null >/dev/null
-	fi
+	echo 1
 }
-
-if type keychain; then
-	eval $(keychain --eval --agents ssh,gpg 2>/dev/null | tee -a "$HOME/.xenv")
-fi
 
 if __is_docked; then
 	autorandr docked
@@ -71,9 +60,9 @@ echo "Xft.dpi: $DPI" | xrdb -merge
 echo "Xcursor.theme: Adwaita" | xrdb -merge
 echo "Xcursor.size: $((24 * $DPI / 100))" | xrdb -merge
 
+
 setxkbmap 'us,ru' -option 'ctrl:nocaps,grp:shifts_toggle,compose:ralt'
 xcape &
-sxhkd &
 
 ulimit -Sc 0
 
@@ -110,12 +99,6 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation" 1
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
 
-__start conky &
-__start udiskie &
-__start cbatticon &
-__start urxvtd &
-__start sxhkd &
-__start dunst &
 
 if [ "$HOSTNAME" = "wks" ]; then
 	xpra shadow
@@ -129,6 +112,18 @@ __start emacs --fg-daemon &
 # 		uptime | sed 's/.*://;s/,//g' | xargs -Ixxx xsetroot -name xxx
 # 	done
 # } &
+
+if type keychain; then
+	eval $(keychain --eval --agents ssh,gpg 2>/dev/null | tee -a "$HOME/.xenv")
+fi
+
+__start /usr/libexec/pipewire-launcher &
+__start conky &
+__start udiskie &
+__start cbatticon &
+__start urxvtd &
+__start sxhkd &
+__start dunst &
 
 env | grep -v ^PS | grep -v ^DOAS | tee -a "$HOME/.xenv"
 exec wm
