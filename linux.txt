@@ -1,0 +1,7 @@
+#!/bin/sh
+OS=$(uname)
+if [ "$OS" != "Linux" ]
+then
+	>2 echo "Not a Linux system"
+	exit 1
+fi
