@@ -10,12 +10,15 @@ media-fonts/terminus-font
 media-fonts/font-cronyx-cyrillic
 media-fonts/font-misc-cyrillic
 media-fonts/font-screen-cyrillic
+media-fonts/font-adobe-100dpi
+media-fonts/font-adobe-75dpi
 media-fonts/corefonts
 media-fonts/noto
 media-fonts/noto-cjk
 media-fonts/unifont
-media-fonts/font-adobe-100dpi
-media-fonts/font-adobe-75dpi
+
+
+
 
 x11-misc/rofi
 # x11-misc/rofi-file-browser-extended
@@ -35,10 +38,18 @@ net-misc/aria2
 sys-fs/btrfs-progs
 sys-fs/cryptsetup
 
-sys-power/acpi
-sys-power/acpilight
 
 www-client/librewolf
-media-video/pipewire
-media-sound/pulsemixer
 
+net-wireless/wpa_supplicant
+
+net-misc/yt-dlp
+
+
+app-admin/pass
+app-admin/pass-otp
+app-portage/eix
+
+sys-kernel/gentoo-kernel
+sys-kernel/installkernel
+sys-boot/grub
