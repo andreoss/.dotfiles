@@ -1,3 +1,6 @@
+sys-kernel/installkernel
+sys-kernel/gentoo-sources
+
 x11-base/xlibre-server
 x11-wm/icewm
 x11-apps/xdm
@@ -21,7 +24,6 @@ x11-misc/rofi
 # x11-misc/rofi-file-browser-extended
 
 app-admin/doas
-app-editors/emacs
 app-eselect/eselect-repository
 app-misc/screen
 app-portage/cpuid2cpuflags
@@ -39,6 +41,11 @@ sys-power/acpi
 sys-power/acpilight
 
 www-client/librewolf
+#www-client/ungoogled-chromium
 media-video/pipewire
 media-sound/pulsemixer
 
+app-editors/emacs
+app-emacs/vterm
+app-emacs/slime
+app-emacs/pdf-tools
