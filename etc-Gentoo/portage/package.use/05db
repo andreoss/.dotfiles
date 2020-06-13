@@ -1,0 +1,4 @@
+dev-db/mariadb yassl -jdbc
+
+dev-libs/jemalloc   stats
+
