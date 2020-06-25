@@ -1,0 +1,2 @@
+sys-apps/flatpak -systemd seccomp
+app-portage/portage-utils -static
