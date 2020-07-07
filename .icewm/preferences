@@ -1,27 +1,27 @@
-ActiveButtonFontNameXft="Terminus:size=8:bold"
-ActiveTaskBarFontNameXft="Terminus:size=8:bold"
-ActiveWorkspaceFontNameXft="Terminus:size=8"
-ApmFontNameXft="Terminus:size=8"
+ActiveButtonFontNameXft="Terminus:bold"
+ActiveTaskBarFontNameXft="Terminus:bold"
+ActiveWorkspaceFontNameXft="Terminus"
+ApmFontNameXft="Terminus"
 ClockFontNameXft="Terminussize=8"
 
 HideBordersMaximized=0
 HideTitleBarWhenMaximized=1
 PreferFreetypeFonts=1
 
-InputFontNameXft="Terminus:size=8:bold"
-LabelFontNameXft="Terminus:size=8"
-ListBoxFontNameXft="Terminus:size=8"
+InputFontNameXft="Terminus:bold"
+LabelFontNameXft="Terminus"
+ListBoxFontNameXft="Terminus"
 MenuFontNameXft="Terminus:size=10:bold"
-NormalButtonFontNameXft="Terminus:size=8"
-NormalTaskBarFontNameXft="Terminus:size=8"
-NormalWorkspaceFontNameXft="Terminus:size=8"
+NormalButtonFontNameXft="Terminus"
+NormalTaskBarFontNameXft="Terminus"
+NormalWorkspaceFontNameXft="Terminus"
 QuickSwitchFontNameXft="Terminus:size=14:bold"
-StatusFontNameXft="Terminussize=8:bold"
-TempFontNameXft="Terminussize=8"
-TitleFontNameXft="Terminus:size=8:bold"
-ToolButtonFontNameXft="Terminus:size=8"
-ToolTipFontNameXft="Terminus:size=8"
-ClockFontNameXft="Terminus:size=8:bold"
+StatusFontNameXft="Terminus:bold"
+TempFontNameXft="Terminus"
+TitleFontNameXft="Terminus:bold"
+ToolButtonFontNameXft="Terminus"
+ToolTipFontNameXft="Terminus"
+ClockFontNameXft="Terminus:bold:size=8"
 
 WorkspaceNames=" I ", " II ", " III ", " IV ", " V ", " VI ", " VII ", " VIII ", " IX "
 ColorClock = ""
@@ -32,8 +32,6 @@ CenterLarge=1
 CenterTransientsOnOwner=1
 SmartPlacement=1
 
-TrayIconMaxWidth=16
-TrayIconMaxHeight=16
 TrayDrawBevel=1
 
 ShowHelp=0
