@@ -1,9 +1,13 @@
 app-containers/docker
 app-containers/docker-compose
+app-containers/docker-buildx
+
 dev-db/mariadb
 dev-db/postgresql
 dev-db/redis
 dev-util/github-cli
+dev-util/gitlab-ci-linter
+dev-util/gitlab-cli
 dev-util/sh
 sys-apps/ack
 sys-apps/flatpak
@@ -23,7 +27,7 @@ app-containers/podman
 app-containers/podman-compose
 
 
-sys-devel/crossdev
+#sys-devel/crossdev
 dev-lang/python
 dev-embedded/avrdude
 dev-embedded/dfu-programmer
@@ -35,3 +39,4 @@ llvm-core/clang
 dev-util/cloc
 app-text/dos2unix
 app-containers/devcontainer
+dev-debug/valgrind
