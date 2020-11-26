@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+
+
+
+
 # Dependencies:
 # parted gptfdisk dosfstools e2fsprogs cryptsetup perl
 
@@ -14,17 +18,17 @@ FS=
 LABEL="gpt"
 
 die() {
-	>&2 echo "FATAL"
-	exit 1
+    >&2 echo "FATAL"
+    exit 1
 }
 
 mb_adjusted() {
-	m="${1:?arg}"
-	s="${2:-0}"
-	m=$(($m * 1024 ** 2))
-	m=$(($m - ($m % 2048)))
-	m=$(($m / 512 + $s))
-	echo "${m}s"
+    m="${1:?arg}"
+    s="${2:-0}"
+    m=$(($m * 1024 ** 2))
+    m=$(($m - ($m %  2048)))
+    m=$(($m / 512 + $s))
+    echo "${m}s"
 }
 
 FIRST_PART_GAP=$(mb_adjusted 64)
@@ -177,6 +181,7 @@ else
 	BTRFS_DEVICE=/dev/disk/by-uuid/"${ID_SYSTEM}"
 fi
 
+
 USER_DEVICE=
 if [ "$CRYPT" ]; then
 	RAW_DEVICE="$BTRFS_DEVICE"
@@ -262,38 +267,33 @@ root_mount() {
 	if [ "$EPHEMERAL" ]; then
 		mount -t tmpfs none "$ROOT"
 	else
-		btrfs_subvol_mount /
+		echo "skip"
 	fi
-
-	for dir in /opt /var /usr /etc /boot /proc /sys /dev /run; do
-		should_exists "${ROOT}${dir}"
-	done
-
-	mount --types proc /proc "${ROOT}"/proc
-	mount --rbind /sys "${ROOT}"/sys
-	mount --make-rslave "${ROOT}"/sys
-	mount --rbind /dev "${ROOT}"/dev
-	mount --make-rslave "${ROOT}"/dev
-	mount --bind /run "${ROOT}"/run
-	mount --make-slave "${ROOT}"/run
-
-	for dir in /dev/shm /run/shm; do
-		should_exists "${ROOT}${dir}"
-	done
-	mount --types tmpfs --options nosuid,nodev,noexec shm "${ROOT}"/dev/shm
-	mount --types tmpfs --options nosuid,nodev,noexec shm "${ROOT}"/run/shm
-	chmod 1777 "${ROOT}/dev/shm"
-	chmod 1777 "${ROOT}/run/shm"
+        for dir in /opt /var /usr /etc /boot /proc /sys /dev /dev/shm /run /run/shm
+        do
+            should_exists "${ROOT}${dir}"
+        done
+        mount --types proc  /proc "${ROOT}"/proc
+        mount --rbind       /sys  "${ROOT}"/sys
+        mount --make-rslave       "${ROOT}"/sys
+        mount --rbind       /dev  "${ROOT}"/dev
+        mount --make-rslave       "${ROOT}"/dev
+        mount --bind        /run  "${ROOT}"/run
+        mount --make-slave        "${ROOT}"/run
+        mount --types tmpfs --options nosuid,nodev,noexec shm "${ROOT}"/dev/shm
+        mount --types tmpfs --options nosuid,nodev,noexec shm "${ROOT}"/run/shm
+        chmod 1777                "${ROOT}/dev/shm
+        chmod 1777                "${ROOT}/run/shm
 }
 
 root_unmount() {
-	umount "${ROOT}"/dev/shm
-	umount "${ROOT}"/run/shm
-	umount "${ROOT}"/dev
-	umount "${ROOT}"/proc
-	umount "${ROOT}"/run
-	umount "${ROOT}"/sys
-	umount "$ROOT"
+        umount  "${ROOT}"/dev/shm
+        umount  "${ROOT}"/dev
+        umount  "${ROOT}"/proc
+        umount  "${ROOT}"/run/shm
+        umount  "${ROOT}"/run
+        umount  "${ROOT}"/sys
+	umount  "$ROOT"
 }
 
 btrfs_subvol_name() {
@@ -334,16 +334,21 @@ btrfs_prepare() {
 	if [ ! "$EPHEMERAL" ]; then
 		btrfs_subvol_create /
 	fi
-	for mount_point in /usr /etc /opt /boot; do
-		btrfs_subvol_create "$mount_point"
-	done
+        for mount_point in /usr /etc /opt /boot
+        do
+            btrfs_subvol_create "$mount_point"
+        done
 	btrfs_subvol_create "$USER_STORAGE"
 }
 
 btrfs_mount() {
-	for mount_point in /usr /etc /opt /boot; do
-		btrfs_subvol_mount "$mount_point"
-	done
+	if [ ! "$EPHEMERAL" ]; then
+		btrfs_subvol_mount /
+	fi
+        for mount_point in /usr /etc /opt /boot
+        do
+            btrfs_subvol_mount "$mount_point"
+        done
 	if [ "$LABEL" = "gpt" ]; then
 		should_exists "$ROOT"/boot/efi
 		mount /dev/disk/by-partuuid/"$PART_BOOT" "$ROOT"/boot/efi
@@ -355,9 +360,10 @@ btrfs_unmount() {
 	if [ "$LABEL" = "gpt" ]; then
 		umount "$ROOT/boot/efi"
 	fi
-	for mount_point in /usr /etc /opt /boot; do
-		umount "${ROOT}${mount_point}"
-	done
+        for mount_point in /usr /etc /opt /boot
+        do
+            umount "${ROOT}${mount_point}"
+        done
 }
 
 boot_prepare() {
@@ -365,12 +371,12 @@ boot_prepare() {
 		return
 	fi
 	if [ "$LABEL" = "gpt" ]; then
-		mkfs.fat /dev/disk/by-partuuid/"$PART_BOOT" -F 32 -I -i "${ID_BOOT//-/}"
+		mkfs.fat /dev/disk/by-partuuid/"$PART_BOOT"  -F 32 -I -i "${ID_BOOT//-/}"
 	elif [ "$LABEL" = "msdos" ]; then
 		if [ "$CRYPT" ]; then
 			__crypt_format "$ID_BOOT_CRYPT" "$PART_BOOT" boot
 			__crypt_open "$PART_BOOT" boot
-			mkfs.ext3 -F /dev/mapper/"$(__crypt_label boot)" || die
+			mkfs.ext3 -F /dev/mapper/$(__crypt_label boot) || die
 			__crypt_close boot
 		else
 			mkfs.ext3 -F /dev/disk/by-partuuid/"$PART_BOOT"
@@ -387,12 +393,12 @@ boot_mount() {
 	if [ "$CRYPT" ] && [ "$LABEL" == "msdos" ]; then
 		__crypt_open "$PART_BOOT" boot
 		mount /dev/mapper/$(__crypt_label boot) "$ROOT"/boot
-	elif [ "$LABEL" = "msdos" ]; then
-		mount -t ext3 /dev/disk/by-partuuid/"$PART_BOOT" "$ROOT/boot"
+        elif [ "$LABEL" = "msdos" ]; then
+            mount -t ext3 /dev/disk/by-partuuid/"$PART_BOOT" "$ROOT/boot"
 	elif [ "$LABEL" = "gpt" ]; then
 		should_exists "$ROOT"/boot/efi
 		mount /dev/disk/by-partuuid/"$PART_BOOT" "$ROOT"/boot/efi
-		return
+                return
 	fi
 }
 
@@ -402,18 +408,61 @@ boot_unmount() {
 	fi
 	if [ "$CRYPT" ]; then
 		__crypt_close boot
-	fi
-	if [ "$LABEL" == "msdos" ]; then
-		umount "$ROOT"/boot
+        fi
+        if [ "$LABEL" == "msdos" ]; then
+            umount "$ROOT"/boot
 	else
 		umount "$ROOT"/boot/efi
 	fi
 }
 
+f2fs_mount() {
+	DEV_SYSTEM=
+	DEV_USER=
+	if [ "$CRYPT" ]; then
+		DEV_SYSTEM=/dev/mapper/$(__crypt_label system)
+		DEV_USER=/dev/mapper/$(__crypt_label user)
+	else
+		DEV_SYSTEM=/dev/disk/by-partuuid/"$PART_SYSTEM"
+		DEV_USER=/dev/disk/by-partuuid/"$PART_USER"
+	fi
+	mount -o compress_algorithm=zstd:6,compress_chksum,atgc,gc_merge,lazytime "$DEV_SYSTEM" "$ROOT_MOUNT_POINT"
+	mount -o compress_algorithm=zstd:6,compress_chksum,atgc,gc_merge,lazytime "$DEV_USER" "$ROOT/$USER_STORAGE"
+	#chattr -R +c "$ROOT_MOUNT_POINT"
+}
+
+generic_mount() {
+	mount "$RAW_DEVICE" "$ROOT_MOUNT_POINT"
+        if [ "$USER_DEVICE" ]; then
+            mount "$USER_DEVICE" "$ROOT/user"
+        fi
+}
+
+generic_unmount() {
+        if [ "$USER_DEVICE" ]; then
+            umount "$ROOT/user"
+        fi
+	umount "$ROOT/$USER_STORAGE"
+	umount "$ROOT_MOUNT_POINT"
+}
+
+storage_prepare() {
+	case "$FS" in
+	btrfs)
+		btrfs_prepare
+		;;
+	*)
+		echo "Unknown fs: $FS"
+		exit
+		;;
+	esac
+}
+
 storage_mount() {
-	for dir in /opt /var /usr /etc /boot; do
-		should_exists "${ROOT}${dir}"
-	done
+        for dir in /opt /var /usr /etc /boot
+        do
+            should_exists "${ROOT}${dir}"
+        done
 	case "$FS" in
 	btrfs)
 		btrfs_mount
@@ -456,26 +505,27 @@ if [ "$FORMAT" ]; then
 			parted "$DEVICE" name 1 boot
 			parted "$DEVICE" name 1 esp
 			parted "$DEVICE" name 2 system
-			if [ "$SYS_SIZE" != "100%" ]; then
-				parted -a optimal "$DEVICE" mkpart primary ext2 "$SYS_SIZE" 100%
-				sgdisk --partition-guid=3:"$PART_USER" "$DEVICE"
-				parted "$DEVICE" name 3 system
-			fi
+                        if [ "$SYS_SIZE" != "100%" ]; then
+                            parted -a optimal "$DEVICE" mkpart primary ext2 "$SYS_SIZE" 100%
+                            sgdisk --partition-guid=3:"$PART_USER" "$DEVICE"
+                            parted "$DEVICE" name 3 system
+                        fi
 		fi
 
 	elif [ "$LABEL" = "msdos" ]; then
 		parted -s "$DEVICE" mklabel "$LABEL" || die
 		if [ "$BOOT_SIZE" = "0" ]; then
 			parted -a optimal "$DEVICE" mkpart primary ext2 "$FIRST_PART_GAP" "$SYS_SIZE" || die
-			if [ "$SYS_SIZE" != "100%" ]; then
-				parted -a optimal "$DEVICE" mkpart primary ext2 "$SYS_SIZE" 100% || die
-			fi
+                        if [ "$SYS_SIZE" != "100%" ]; then
+                            parted -a optimal "$DEVICE" mkpart primary ext2 "$SYS_SIZE" 100% || die
+                        fi
 		else
 			parted -a optimal "$DEVICE" mkpart primary ext2 "$FIRST_PART_GAP" "$BOOT_SIZE" || die
-			parted -a optimal "$DEVICE" mkpart primary ext2 "$BOOT_END" "$SYS_SIZE" || die
-			if [ "$SYS_SIZE" != "100%" ]; then
-				parted -a optimal "$DEVICE" mkpart primary ext2 "$SYS_SIZE" 100% || die
-			fi
+			parted -a optimal "$DEVICE" mkpart primary ext2 "$BOOT_END"       "$SYS_SIZE"  || die
+                        if [ "$SYS_SIZE" != "100%" ]
+                        then
+                            parted -a optimal "$DEVICE" mkpart primary ext2 "$SYS_SIZE" 100%  || die
+                        fi
 		fi
 
 		fdisk --wipe "$DEVICE"
