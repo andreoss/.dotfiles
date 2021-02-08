@@ -2,7 +2,7 @@ ThemeDescription          = "nt"
 ThemeAuthor               = ""
 Look                      = metal
 
-TitleBarHeight            = 19
+TitleBarHeight            = 38
 TitleBarJoinRight         = 1
 TitleButtonsLeft          = "s"
 TitleButtonsRight         = "xmi"
@@ -13,17 +13,21 @@ TitleButtonsSupported     = "xmisrhd"
 TaskBarAPMGraphWidth      = 1
 
 TrayDrawBevel             = 1
-TrayIconMaxHeight         = 16
-TrayIconMaxWidth          = 16
+TrayIconMaxHeight         = 32
+TrayIconMaxWidth          = 32
+MenuIconSize = 32
+SmallIconSize = 24
+LargeIconSize = 48
+HugeIconSize = 96
 
 Gradients                 = "titleAB.xpm titleAT.xpm titleIB.xpm titleIT.xpm"
 
-BorderSizeX               = 3
-BorderSizeY               = 3
-CornerSizeX               = 16
-CornerSizeY               = 16
-DlgBorderSizeX            = 2
-DlgBorderSizeY            = 2
+BorderSizeX               = 6
+BorderSizeY               = 6
+CornerSizeX               = 32
+CornerSizeY               = 32
+DlgBorderSizeX            = 4
+DlgBorderSizeY            = 4
 
 ColorActiveBorder         = "rgb:D4/D0/C8"
 ColorActiveButton         = "rgb:D4/D0/C8"
