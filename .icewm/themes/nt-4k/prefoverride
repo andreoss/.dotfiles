@@ -4,5 +4,3 @@ TaskBarShowCollapseButton = 0
 TaskbuttonIconOffset      = 3
 TimeFormat                = "%R"
 ToolTipDelay              = 200
-TrayIconMaxWidth=32 
-TrayIconMaxHeight=32 
