@@ -1,0 +1,5 @@
+#!/bin/sh
+doas pkg install -y wireguard-tools 
+doas sysrc wireguard_interfaces="wg0" 
+doas service wireguard enable 
+doas service wireguard start 

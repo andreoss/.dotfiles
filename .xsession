@@ -52,6 +52,13 @@ fi
 
 if __is_4k; then
 	DPI=$(($DPI * 2))
+        QT_FONT_DPI=$DPI
+        GDK_SCALE=1
+        ELM_SCALE=2
+        JVM_OPTIONS="-Dsun.java2d.uiScale=2 $JVM_OPTIONS"
+        JVM_OPTIONS="-Dglass.gtk.uiScale=2 $JVM_OPTIONS"
+	JAVA_OPTIONS="$JAVA_OPTIONS $JVM_OPTIONS"
+        export QT_FONT_DPI GDK_SCALE ELM_SCALE JVM_OPTIONS JAVA_OPTIONS
 fi
 
 xrdb "$HOME"/.Xresources

@@ -70,4 +70,3 @@ if [ -d "$LOCAL_OPT" ]; then
 		fi
 	done
 fi
-

@@ -1,0 +1,15 @@
+#!/bin/sh
+./linux.txt
+if ! [ -e /etc/gentoo-release ]
+then
+	>2 echo "Not a Gentoo system"
+	exit 1
+fi
+doas mkdir -p                               /etc/portage/{package.use,sets} 
+doas rm -v                                  /etc/portage/package.use/*
+doas rm -v                                  /etc/portage/sets/*
+doas cp -v etc-Gentoo/portage/package.use/* /etc/portage/package.use/
+doas cp -v etc-Gentoo/portage/sets/*        /etc/portage/sets/
+doas cp -v etc-Gentoo/portage/*.conf        /etc/portage/
+doas emerge --sync
+doas emerge --depclean

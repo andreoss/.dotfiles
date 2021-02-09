@@ -54,7 +54,7 @@ sub next_day($c) {
 
 for (
     my $c = $f ;
-    !( $c->mon > $today->mon && wday($c) == 1 ) ;
+    !(( $c->mon > $today->mon || $c->year > $today->year) && wday($c) == 1 );
     $c = next_day($c)
   )
 {
