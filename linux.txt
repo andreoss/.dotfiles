@@ -5,3 +5,8 @@ then
 	>2 echo "Not a Linux system"
 	exit 1
 fi
+
+doas cp etc-Linux/*.conf                         /etc/
+doas cp etc-Linux/sysctl.d/*.conf                /etc/sysctl.d/
+doas cp etc-Linux/mkinitfs/*.conf                /etc/mkinitfs/
+doas cp etc-Linux/modules-load.d/*.conf          /etc/modules-load.d/
