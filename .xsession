@@ -63,10 +63,13 @@ fi
 
 xrdb "$HOME"/.Xresources
 
-echo "Xft.dpi: $DPI" | xrdb -merge
-echo "Xcursor.theme: Adwaita" | xrdb -merge
-echo "Xcursor.size: $((24 * $DPI / 100))" | xrdb -merge
+touch "$HOME"/.Xresources."$HOSTNAME"
 
+echo "Xft.dpi: $DPI"                      | tee    "$HOME"/.Xresources."$HOSTNAME"
+echo "Xcursor.theme: Adwaita"             | tee -a "$HOME"/.Xresources."$HOSTNAME"
+echo "Xcursor.size: $((24 * $DPI / 100))" | tee -a "$HOME"/.Xresources."$HOSTNAME"
+
+xrdb -merge "$HOME"/.Xresources."$HOSTNAME"
 
 setxkbmap 'us,ru' -option 'ctrl:nocaps,grp:shifts_toggle,compose:ralt'
 xcape &
