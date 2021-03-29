@@ -51,7 +51,8 @@ dotfiles:
 	git config --global include.path 	   ${HOME}/.dotfiles/gitaliases
 	pkill -USR1 sxhkd ||:
 
-	xrdb ~/.Xdefaults ||:
+	xrdb ~/.Xdefaults              ||:
+	xrdb ~/.Xresources."$HOSTNAME" ||:
 system:
 	doas rm -f              /etc/motd
 	doas ln -f -s /dev/null /etc/motd
