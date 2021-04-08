@@ -63,3 +63,5 @@ cfdisk
 rustup
 perl-tidy
 shfmt
+notmuch
+msmtp
