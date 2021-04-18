@@ -223,7 +223,7 @@ __crypt_open() {
 
 	device=/dev/disk/by-partuuid/"$part_uuid"
 	if cryptsetup isLuks "$device"; then
-		cryptsetup -q open --key-file="$(__crypt_key "$name")" "$device" "$(__crypt_label "$name")"
+		cryptsetup -q open --key-file="$(__crypt_key "$name")" "$device" "$(__crypt_label "$name")" || cryptsetup open "$device" "$(__crypt_label "$name")"
 	else
 		error "Not LUKS: $*"
 	fi
@@ -264,11 +264,9 @@ root_mount() {
 	else
 		btrfs_subvol_mount /
 	fi
-
-	for dir in /opt /var /usr /etc /boot /proc /sys /dev /run; do
+	for dir in /opt /var /usr /etc /boot /proc /sys /dev /run /run/shm; do
 		should_exists "${ROOT}${dir}"
 	done
-
 	mount --types proc /proc "${ROOT}"/proc
 	mount --rbind /sys "${ROOT}"/sys
 	mount --make-rslave "${ROOT}"/sys
@@ -276,8 +274,7 @@ root_mount() {
 	mount --make-rslave "${ROOT}"/dev
 	mount --bind /run "${ROOT}"/run
 	mount --make-slave "${ROOT}"/run
-
-	for dir in /dev/shm /run/shm; do
+	for dir in //run/shm /dev/shm; do
 		should_exists "${ROOT}${dir}"
 	done
 	mount --types tmpfs --options nosuid,nodev,noexec shm "${ROOT}"/dev/shm
@@ -287,12 +284,15 @@ root_mount() {
 }
 
 root_unmount() {
-	umount "${ROOT}"/dev/shm
-	umount "${ROOT}"/run/shm
-	umount "${ROOT}"/dev
-	umount "${ROOT}"/proc
-	umount "${ROOT}"/run
-	umount "${ROOT}"/sys
+	umount "${ROOT}"/dev/pts || :
+	umount "${ROOT}"/dev/mqueue || :
+	umount "${ROOT}"/dev/shm || :
+	umount "${ROOT}"/dev || :
+	umount "${ROOT}"/proc || :
+	umount "${ROOT}"/run/shm || :
+	umount "${ROOT}"/run || :
+	umount "${ROOT}"/sys/firmware/efi/efivars || :
+	umount "${ROOT}"/sys || :
 	umount "$ROOT"
 }
 
@@ -308,7 +308,8 @@ btrfs_subvol_name() {
 
 btrfs_subvol_create() {
 	local ROOT_VOLUME=/tmp/btrfs-root-volume
-	mkdir -p "$ROOT_VOLUME"
+
+	kdir -p "$ROOT_VOLUME"
 	mount -o ssd,compress=zstd "$BTRFS_DEVICE" "$ROOT_VOLUME"
 	for MOUNT_POINT in "$@"; do
 		local SUBVOL_NAME=$(btrfs_subvol_name "$MOUNT_POINT")
@@ -353,7 +354,7 @@ btrfs_mount() {
 
 btrfs_unmount() {
 	if [ "$LABEL" = "gpt" ]; then
-		umount "$ROOT/boot/efi"
+		umount "$ROOT/boot/efi" || :
 	fi
 	for mount_point in /usr /etc /opt /boot; do
 		umount "${ROOT}${mount_point}"
@@ -370,7 +371,7 @@ boot_prepare() {
 		if [ "$CRYPT" ]; then
 			__crypt_format "$ID_BOOT_CRYPT" "$PART_BOOT" boot
 			__crypt_open "$PART_BOOT" boot
-			mkfs.ext3 -F /dev/mapper/"$(__crypt_label boot)" || die
+			mkfs.ext3 -F /dev/mapper/$(__crypt_label boot) || die
 			__crypt_close boot
 		else
 			mkfs.ext3 -F /dev/disk/by-partuuid/"$PART_BOOT"
@@ -408,6 +409,48 @@ boot_unmount() {
 	else
 		umount "$ROOT"/boot/efi
 	fi
+}
+
+f2fs_mount() {
+	DEV_SYSTEM=
+	DEV_USER=
+	if [ "$CRYPT" ]; then
+		DEV_SYSTEM=/dev/mapper/$(__crypt_label system)
+		DEV_USER=/dev/mapper/$(__crypt_label user)
+	else
+		DEV_SYSTEM=/dev/disk/by-partuuid/"$PART_SYSTEM"
+		DEV_USER=/dev/disk/by-partuuid/"$PART_USER"
+	fi
+	mount -o compress_algorithm=zstd:6,compress_chksum,atgc,gc_merge,lazytime "$DEV_SYSTEM" "$ROOT_MOUNT_POINT"
+	mount -o compress_algorithm=zstd:6,compress_chksum,atgc,gc_merge,lazytime "$DEV_USER" "$ROOT/$USER_STORAGE"
+	#chattr -R +c "$ROOT_MOUNT_POINT"
+}
+
+generic_mount() {
+	mount "$RAW_DEVICE" "$ROOT_MOUNT_POINT"
+	if [ "$USER_DEVICE" ]; then
+		mount "$USER_DEVICE" "$ROOT/user"
+	fi
+}
+
+generic_unmount() {
+	if [ "$USER_DEVICE" ]; then
+		umount "$ROOT/user"
+	fi
+	umount "$ROOT/$USER_STORAGE"
+	umount "$ROOT_MOUNT_POINT"
+}
+
+storage_prepare() {
+	case "$FS" in
+	btrfs)
+		btrfs_prepare
+		;;
+	*)
+		echo "Unknown fs: $FS"
+		exit
+		;;
+	esac
 }
 
 storage_mount() {
