@@ -1,5 +1,4 @@
 #!/bin/sh
-doas apk add flatpak
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 xargs flatpak --user -y install < pkgs-Flatpak.txt
 xargs flatpak --user -y update  < pkgs-Flatpak.txt
