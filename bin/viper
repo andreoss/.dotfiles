@@ -1,2 +1,10 @@
 #!/bin/sh
-exec emacs -Q -nw -l "$HOME/.dotfiles/.emacs" "$@"
+L=$(readlink -f "$0")
+D=$(dirname $L)
+I="$D/../.emacs"
+if [ ! -e "$I" ]
+then
+        >&2 echo "Not found: $I"
+        exit 1
+fi
+exec emacs -Q -nw -l "$I" "$@"
