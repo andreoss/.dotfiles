@@ -8,3 +8,5 @@ www-client/*chromium system-double-conversion system-ffmpeg system-harfbuzz syst
 dev-libs/libxml2 icu
 media-libs/harfbuzz icu
 sys-libs/zlib minizip
+
+media-video/mpv -javascript pipewire

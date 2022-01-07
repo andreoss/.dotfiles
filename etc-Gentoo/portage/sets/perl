@@ -1,0 +1,7 @@
+dev-lang/perl
+dev-perl/App-cpanminus
+dev-perl/App-perlbrew
+dev-perl/LWP-Protocol-https
+dev-perl/Modern-Perl
+dev-perl/Mojolicious
+dev-perl/Perl-Critic

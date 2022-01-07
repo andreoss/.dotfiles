@@ -1,8 +1,10 @@
 app-containers/docker
 app-containers/docker-compose
+def-util/sh
 dev-db/mariadb
 dev-db/postgresql
 dev-db/redis
+dev-util/github-cli
 sys-apps/ack
 sys-apps/flatpak
 sys-cluster/k9scli

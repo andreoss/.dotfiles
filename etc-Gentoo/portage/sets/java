@@ -1,7 +1,7 @@
 app-eselect/eselect-java
+dev-java/maven-bin
 dev-java/openjdk
 dev-java/openjdk:11
-dev-java/openjdk:8
 dev-java/openjdk:17
-dev-java/maven-bin
+dev-java/openjdk:8
 dev-util/visualvm
