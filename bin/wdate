@@ -20,6 +20,7 @@ our @TZs = qw(
   America/Sao_Paulo
   Asia/Dubai
   Asia/Tokyo
+  Asia/Jakarta
   Atlantic/Reykjavik
   Europe/Lisbon
   Europe/London
