@@ -114,6 +114,7 @@ if [ "$HOSTNAME" = "wks" ]; then
 	xpra shadow
 fi
 
+__start wpa_gui &
 __start emacs --fg-daemon &
 
 # {
