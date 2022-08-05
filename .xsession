@@ -42,8 +42,18 @@ __is_docked() {
 	xrandr | grep -E '^(HDMI|DP)[0-9-]+ connected'
 }
 
+__xrandr_max_resolution() {
+    xrandr -q | grep -o -E '[0-9]+x[0-9]+' | sort -n -r | head -1
+}
+
 __is_4k() {
-	echo 1
+    r=$(__xrandr_max_resolution)
+    [ -z "$r" ] && return 1
+    if [ "$r" >= 3840 ]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 if __is_docked; then
@@ -110,19 +120,8 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
 
 
-if [ "$HOSTNAME" = "wks" ]; then
-	xpra shadow
-fi
-
 __start wpa_gui &
 __start emacs --fg-daemon &
-
-# {
-# 	while :; do
-# 		sleep 1
-# 		uptime | sed 's/.*://;s/,//g' | xargs -Ixxx xsetroot -name xxx
-# 	done
-# } &
 
 if type keychain; then
 	eval $(keychain --eval --agents ssh,gpg 2>/dev/null | tee -a "$HOME/.xenv")
