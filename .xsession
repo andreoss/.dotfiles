@@ -46,21 +46,27 @@ __xrandr_max_resolution() {
     xrandr -q | grep -o -E '[0-9]+x[0-9]+' | sort -n -r | head -1
 }
 
-__is_4k() {
+__is_hdpi() {
     r=$(__xrandr_max_resolution)
     [ -z "$r" ] && return 1
-    if [ "$r" >= 3840 ]; then
+
+    if [ "$r" = "3840x2160" ]; then
         return 0
-    else
-        return 1
     fi
+     return 1
+
+    if [ "$r" = "2560x1600" ]; then
+        return 0
+    fi
+
+     return 1
 }
 
 if __is_docked; then
 	autorandr docked
 fi
 
-if __is_4k; then
+if __is_hdpi; then
 	DPI=$(($DPI * 2))
         QT_FONT_DPI=$DPI
         GDK_SCALE=1
