@@ -2,6 +2,7 @@ app-admin/doas
 app-admin/pass
 app-admin/pass-otp
 
+
 app-eselect/eselect-repository
 app-misc/screen
 app-portage/cpuid2cpuflags
@@ -18,5 +19,8 @@ sys-fs/btrfs-progs
 sys-fs/cryptsetup
 sys-kernel/gentoo-kernel
 sys-kernel/gentoo-sources
+sys-kernel/linux-firmware
 sys-kernel/installkernel
 sys-power/acpi
+
+sys-apps/fwupd
