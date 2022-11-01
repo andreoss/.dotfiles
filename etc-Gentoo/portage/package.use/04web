@@ -1,8 +1,9 @@
 media-libs/libvpx postproc
 
+www-client/*         -wifi
 www-client/librewolf system-harfbuzz -clang system-av system-ice hwaccel wasm-sandbox eme-free pgo -wayland system-libvpx -pgo
 
-www-client/*chromium system-double-conversion system-ffmpeg system-harfbuzz system-icu system-jsoncpp system-libusb -system-libvpx system-openh264 system-openjpeg system-png system-re2 system-snappy system-woff2 system-zstd -official -libcxx vaapi -wayland -widevine -custom-cflags -clang -pgo -proprietary-codecs 
+www-client/*chromium -oficial -vendor
 
 
 dev-libs/libxml2 icu
