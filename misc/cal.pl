@@ -31,10 +31,21 @@ our $today = localtime;
 sub wday($d) { $d->wday; }
 
 my $f = $today;
+
+
+sub is_next_month_monday($c) {
+    return if $c-> mon == $today ->mon;
+    return if $c-> mon <  $today ->mon && $c->year == $today->year;
+    return wday($c) == 1 if $c->year == $today->year && $c->mon > $today->mon;
+    return wday($c) == 1 if $c->year > $today->year  && $today->month == 12;;
+}
+sub is_prev_month_monday($c) {
+    return (( $c->mon < $today->mon || $c->year < $today->year) && wday($c) == 1 );
+}
+
 while (1) {
     $f -= ONE_DAY;
-    next if $f->mon == $today->mon;
-    next if $f->wday != 1;
+    next if !is_prev_month_monday($f);
     last;
 }
 
@@ -53,9 +64,7 @@ sub next_day($c) {
 }
 
 for (
-    my $c = $f ;
-    !(( $c->mon > $today->mon || $c->year > $today->year) && wday($c) == 1 );
-    $c = next_day($c)
+    my $c = $f ; !is_next_month_monday($c); $c = next_day($c)
   )
 {
 
