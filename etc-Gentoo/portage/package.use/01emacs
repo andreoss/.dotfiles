@@ -1,5 +1,5 @@
+app-crypt/pinentry emacs
 sys-devel/gcc          jit
-app-editors/emacs      X motif xft gui threads -gsettings jit toolkit-scroll-bars wide-int -games -gfile json libxml2 dynamic-loading tree-sitter source -dbus -sound
+app-editors/emacs      X motif xft gui threads -gsettings jit toolkit-scroll-bars wide-int -games -gfile json libxml2 dynamic-loading tree-sitter source -dbus -sound gif svg
 app-emacs/emacs-common gui
-app-text/poppler       cairo
-
+app-text/poppler       cairo png
