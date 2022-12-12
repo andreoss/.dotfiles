@@ -18,3 +18,4 @@ x11-misc/rofi-file-browser-extended
 x11-misc/sxhkd
 x11-terms/rxvt-unicode
 x11-wm/icewm
+x11-wm/xpra
