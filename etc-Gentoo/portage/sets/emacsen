@@ -1,12 +1,13 @@
 app-editors/emacs
 app-emacs/cider
 app-emacs/dap-mode
-app-emacs/eglot
 app-emacs/emacs-ccls
 app-emacs/evil
 app-emacs/flycheck-package
 app-emacs/geiser
 app-emacs/go-mode
+app-emacs/julia-mode
+app-emacs/julia-repl
 app-emacs/lsp-java
 app-emacs/lsp-mode
 app-emacs/lsp-ui
@@ -16,11 +17,9 @@ app-emacs/paredit
 app-emacs/pdf-tools
 app-emacs/pinentry
 app-emacs/projectile
-app-emacs/python-mode
 app-emacs/rust-mode
 app-emacs/scala-mode
 app-emacs/slime
 app-emacs/sly
 app-emacs/undo-tree
-app-emacs/use-package
 app-emacs/vterm
