@@ -183,7 +183,7 @@ if [ ! "$HISTFILE" ]
 then
         HISTSIZE="10000000"
         SAVEHIST="10000000"
-        HISTORY_IGNORE='(rm *|pkill *)'
+        HISTORY_IGNORE='(rm *|pkill *|clear|exit|history)'
         HISTFILE="$HOME/.zsh_history"
 fi
 
