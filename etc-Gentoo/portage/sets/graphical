@@ -8,6 +8,7 @@ media-fonts/noto
 media-fonts/noto-cjk
 media-fonts/terminus-font
 media-fonts/unifont
+media-gfx/imagemagick
 
 x11-apps/xdm
 x11-base/xlibre-server
