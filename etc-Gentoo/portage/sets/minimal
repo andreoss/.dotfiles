@@ -25,3 +25,6 @@ sys-power/acpi
 
 sys-apps/fwupd
 net-firewall/iptables
+sys-fs/lvm2
+net-vpn/openvpn
+net-analyzer/macchanger
