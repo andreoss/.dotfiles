@@ -1,12 +1,15 @@
 media-libs/libglvnd              X
 media-libs/vulkan-loader         X
-x11-base/xlibre-server           udev -xvfb -minimal
-x11-base/xorg-server             udev -xvfb -minimal
+x11-base/xlibre-server           udev xvfb -minimal
+x11-base/xorg-server             udev xvfb -minimal
 sys-apps/systemd-utils           udev
-x11-wm/icewm                     ao truetype
+x11-wm/icewm                     ao truetype gdk-pixbuf imlib nls
 x11-misc/rofi                    X
 
 
 media-libs/freetype              harfbuzz
 app-text/xmlto                   text
 x11-terms/rxvt-unicode           xft 24-bit-color 256-color blink fading-colors font-styles gdk-pixbuf iso14755 mousewheel perl unicode3 wide-glyphs
+dev-libs/libdbusmenu             gtk3
+net-wireless/wpa_supplicant      gui
+dev-qt/qtbase                    gui udev opengl

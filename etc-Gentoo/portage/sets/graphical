@@ -8,6 +8,7 @@ media-fonts/noto
 media-fonts/noto-cjk
 media-fonts/terminus-font
 media-fonts/unifont
+media-gfx/imagemagick
 
 x11-apps/xdm
 x11-base/xlibre-server
@@ -18,3 +19,7 @@ x11-misc/rofi-file-browser-extended
 x11-misc/sxhkd
 x11-terms/rxvt-unicode
 x11-wm/icewm
+x11-wm/xpra
+x11-apps/xbacklight
+x11-misc/xcape
+x11-apps/setxkbmap

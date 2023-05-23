@@ -42,6 +42,7 @@ dotfiles:
 	$(ND) ${HOME}/.icewm/
 
 	$(LN) ${HOME}/.dotfiles/.icewm/preferences ${HOME}/.icewm/
+	$(LN) ${HOME}/.dotfiles/.icewm/themes      ${HOME}/.icewm/
 	$(LN) ${HOME}/.dotfiles/.icewm/toolbar     ${HOME}/.icewm/
 	$(LN) ${HOME}/.dotfiles/.dunstrc           ${HOME}/.config/dunst/dunstrc
 	$(LN) ${HOME}/.dotfiles/gtk-3.0.ini        ${HOME}/.config/gtk-3.0/settings.ini
