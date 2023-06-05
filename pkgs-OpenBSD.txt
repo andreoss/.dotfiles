@@ -72,3 +72,11 @@ xcape--
 youtube-dl
 yt-dlp--
 zbar
+py3-setuptools--
+py3-cython--
+py3-xxhash--
+py3-gobject3--
+xxhash--
+wayland-protocols--
+wayland-utils--
+juliamono--
