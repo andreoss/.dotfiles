@@ -309,7 +309,7 @@ btrfs_subvol_name() {
 btrfs_subvol_create() {
 	local ROOT_VOLUME=/tmp/btrfs-root-volume
 
-	kdir -p "$ROOT_VOLUME"
+	mkdir -p "$ROOT_VOLUME"
 	mount -o ssd,compress=zstd "$BTRFS_DEVICE" "$ROOT_VOLUME"
 	for MOUNT_POINT in "$@"; do
 		local SUBVOL_NAME=$(btrfs_subvol_name "$MOUNT_POINT")
