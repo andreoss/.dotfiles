@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+
+description="Change MAC address before network services"
+depend() {
+    before net
+    keyword -shutdown
+}
+
+start() {
+    ebegin "Changing MAC addresses"
+    for interface in /sys/class/net/eth* /sys/class/net/wlan*; do
+        if [ -d "$interface" ]; then
+            interface=$(basename "$interface")
+            macchanger -r "$interface" >/dev/null 2>&1
+        fi
+    done
+    eend $?
+}
