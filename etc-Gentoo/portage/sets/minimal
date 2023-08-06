@@ -17,6 +17,7 @@ sys-apps/lm-sensors
 sys-boot/grub
 sys-fs/btrfs-progs
 sys-fs/cryptsetup
+sys-fs/genfstab
 sys-kernel/gentoo-kernel
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
