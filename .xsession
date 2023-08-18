@@ -4,6 +4,9 @@
 . "$HOME"/.profile
 . "$HOME"/.kshrc
 
+XKB_DEFAULT_LAYOUT=us,ru
+XKB_DEFAULT_OPTIONS=ctrl:nocaps,grp:shifts_toggle,compose:ralt
+
 DPI="${DPI:-100}"
 
 cleanup() {
@@ -75,7 +78,8 @@ echo "Xcursor.size: $((24 * $DPI / 100))" | tee -a "$HOME"/.Xresources."$HOSTNAM
 
 xrdb -merge "$HOME"/.Xresources."$HOSTNAME"
 
-setxkbmap 'us,ru' -option 'ctrl:nocaps,grp:shifts_toggle,compose:ralt'
+setxkbmap "$XKB_DEFAULT_LAYOUT" -option "$XKB_DEFAULT_OPTIONS"
+
 xcape &
 
 ulimit -Sc 0
