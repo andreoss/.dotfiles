@@ -11,3 +11,4 @@ media-libs/harfbuzz icu
 sys-libs/zlib minizip
 
 media-video/mpv -javascript pipewire
+media-gfx/qrencode png
