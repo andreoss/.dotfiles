@@ -67,3 +67,4 @@ shfmt
 notmuch
 msmtp
 ripgrep
+flameshot
