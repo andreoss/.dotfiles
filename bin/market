@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+use LWP::UserAgent;
+use JSON::PP;
+
+use feature qw(postderef);
+use Carp    qw(carp);
+
+my $from = shift || 'btc,eth,sol';
+my $to   = shift || 'usd';
+my $ua   = LWP::UserAgent->new( timeout => 10 );
+my $url =
+  'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
+
+my $uri = URI->new('https://api.coingecko.com/api/v3/simple/price');
+$uri->query_form(
+    symbols       => [ join( ',', map( lc, split( /,/, $from ) ) ) ],
+    vs_currencies => [ join( ',', map( lc, split( /,/, $to ) ) ) ]
+);
+print $uri;
+
+my $res = $ua->get($uri);
+carp "HTTP error: " . $res->status_line unless $res->is_success;
+my $data = decode_json( $res->decoded_content );
+for my $k ( keys $data->%* ) {
+    for my $l ( keys $data->{$k}->%* ) {
+        my $p = $data->{$k}{$l};
+        print "$k/$l: $p\n";
+    }
+}

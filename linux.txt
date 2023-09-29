@@ -6,8 +6,29 @@ then
 	exit 1
 fi
 
-doas mkdir -p /etc/mkinitfs /etc/sysctl.d /etc/modules-load.d
+doas mkdir -p /etc/mkinitfs  /etc/sysctl.d /etc/modules-load.d
+
 doas cp etc-Linux/*.conf                         /etc/
 doas cp etc-Linux/sysctl.d/*.conf                /etc/sysctl.d/
 doas cp etc-Linux/mkinitfs/*.conf                /etc/mkinitfs/
 doas cp etc-Linux/modules-load.d/*.conf          /etc/modules-load.d/
+
+if [ -d /usr/src/linux ]
+then
+	doas cp etc-Linux/config /usr/src/linux/.config
+fi
+
+if type openrc
+then
+    doas cp etc-Linux/init.d/macchanger  /etc/init.d/
+    doas chmod +x /etc/init.d/macchanger
+    doas rc-update add macchanger boot
+fi
+
+doas ./adduser.txt "a"
+
+if type openrc
+    doas rc-update add xdm   default
+    doas rc-update add sshd  default
+    doas rc-update add acpid boot
+fi

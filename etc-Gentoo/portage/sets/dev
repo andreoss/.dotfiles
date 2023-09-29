@@ -9,4 +9,3 @@ dev-util/sh
 sys-apps/ack
 sys-apps/flatpak
 sys-cluster/k9scli
-dev-lang/julia

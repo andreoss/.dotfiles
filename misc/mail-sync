@@ -18,12 +18,5 @@ while read _ account; do
 done <"$accounts"
 wait
 
-output=$(mktemp)
-notmuch new | tee "$output"
 
-if [ "$(notmuch count tag:new)" -gt 0 ]; then
-	dunstify "$(cat $output)"
-fi
-
-notmuch tag +2fa subject:"Security Code" and tag:new
-notmuch tag -new +inbox                      tag:new
+"$HOME"/.dotfiles/misc/mail-process

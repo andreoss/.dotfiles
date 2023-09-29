@@ -67,3 +67,6 @@ shfmt
 notmuch
 msmtp
 ripgrep
+flameshot
+signal-desktop
+signal-cli

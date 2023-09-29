@@ -1,9 +1,11 @@
 #!/bin/sh
-if type idea-community;
+if type idea-community
 then
     exec idea-community
 fi
 
 
 find "$HOME"/.var/app/com.jetbrains.IntelliJ-IDEA-Community -name '.lock' -delete
-exec dbus-launch flatpak run --user com.jetbrains.IntelliJ-IDEA-Community "$@"
+exec dbus-launch flatpak run \
+     --talk-name=org.freedesktop.Flatpak  \
+     --user com.jetbrains.IntelliJ-IDEA-Community "$@"

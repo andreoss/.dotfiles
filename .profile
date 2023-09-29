@@ -29,13 +29,18 @@ EDITOR=et
 HOSTNAME=$(hostname)
 
 SBT_HOME=$HOME/.local/sbt/
-JULIA_HOME=$HOME/.local/julia-1.6.7/
+JULIA_HOME=$HOME/.local/julia-1.10.0/
 PATH=$SBT_HOME/bin:$PATH
 LOCAL_HOME=$HOME/.local
 LOCAL_OPT=$HOME/.opt/
 PATH="$LOCAL_HOME/bin:$PATH"
 PATH="$PATH:$LOCAL_HOME/share/coursier/bin"
 PATH="$PATH:$JULIA_HOME/bin"
+
+if [ -d "$HOME"/.opencode ]
+then
+    PATH="$HOME"/.opencode/bin:"$PATH"
+fi
 
 export LC_ALL LANG
 export MANPATH

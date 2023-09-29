@@ -10,6 +10,7 @@ cleanup() {
 	pkill -P $$
 }
 
+
 for sig in INT QUIT HUP TERM; do
 	trap "
     cleanup
@@ -30,6 +31,16 @@ __start() {
 	fi
 }
 
+if type openrc
+then
+    for level in default graphical
+    do
+        mkdir -p "${XDG_CONFIG_HOME:-"$HOME"/.config}/rc/runlevels/$level"
+        openrc --user "$level"
+    done
+    rc-service --user --list | xargs -i rc-service --user {} start
+fi
+
 eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
 
 if [ -d /usr/local/share/fonts ]; then
@@ -42,39 +53,19 @@ __is_docked() {
 	xrandr | grep -E '^(HDMI|DP)[0-9-]+ connected'
 }
 
-__xrandr_max_resolution() {
-    xrandr -q | grep -o -E '[0-9]+x[0-9]+' | sort -n -r | head -1
-}
-
-__is_hdpi() {
-    r=$(__xrandr_max_resolution)
-    [ -z "$r" ] && return 1
-
-    if [ "$r" = "3840x2160" ]; then
-        return 0
-    fi
-     return 1
-
-    if [ "$r" = "2560x1600" ]; then
-        return 0
-    fi
-
-     return 1
-}
-
 if __is_docked; then
 	autorandr docked
 fi
 
-if __is_hdpi; then
-	DPI=$(($DPI * 2))
-        QT_FONT_DPI=$DPI
-        GDK_SCALE=1
-        ELM_SCALE=2
-        JVM_OPTIONS="-Dsun.java2d.uiScale=2 $JVM_OPTIONS"
-        JVM_OPTIONS="-Dglass.gtk.uiScale=2 $JVM_OPTIONS"
-	JAVA_OPTIONS="$JAVA_OPTIONS $JVM_OPTIONS"
-        export QT_FONT_DPI GDK_SCALE ELM_SCALE JVM_OPTIONS JAVA_OPTIONS
+eval "$("$HOME"/.dotfiles/scripts/get-dpi)"
+if [ "$DPI" -ge 150 ]; then
+    QT_FONT_DPI=$DPI
+    GDK_SCALE=1
+    ELM_SCALE=2
+    JVM_OPTIONS="-Dsun.java2d.uiScale=2 $JVM_OPTIONS"
+    JVM_OPTIONS="-Dglass.gtk.uiScale=2 $JVM_OPTIONS"
+    JAVA_OPTIONS="$JAVA_OPTIONS $JVM_OPTIONS"
+    export QT_FONT_DPI GDK_SCALE ELM_SCALE JVM_OPTIONS JAVA_OPTIONS
 fi
 
 xrdb "$HOME"/.Xresources
