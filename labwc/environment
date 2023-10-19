@@ -1,0 +1,3 @@
+WLR_XWAYLAND=
+XKB_DEFAULT_LAYOUT=us,ru
+XKB_DEFAULT_OPTIONS=ctrl:nocaps,grp:shifts_toggle,compose:ralt

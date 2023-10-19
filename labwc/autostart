@@ -1,0 +1,4 @@
+swaybg -m fill -i ~/.config/wallpaper/1.jpeg &
+emacs --daemon &
+
+

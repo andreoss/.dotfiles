@@ -13,6 +13,7 @@ dunst--
 emacs--pgtk
 feh
 firefox-esr
+foot
 ghostscript--
 git--
 gmake--
@@ -25,6 +26,7 @@ isync
 ja-fonts-funet
 ja-fonts-gnu
 keychain
+labwc
 leiningen--
 libreoffice--
 maven

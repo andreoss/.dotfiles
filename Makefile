@@ -37,6 +37,7 @@ dotfiles:
 	$(LN) ${HOME}/.dotfiles/.ideavimrc   ${HOME}/.ideavimrc
 	$(LN) ${HOME}/.xsession              ${HOME}/.xinitrc
 
+	$(ND) ${HOME}/.config/labwc/
 	$(ND) ${HOME}/.config/dunst/
 	$(ND) ${HOME}/.config/gtk-3.0/
 	$(ND) ${HOME}/.config/sxhkd/
@@ -46,10 +47,17 @@ dotfiles:
 	$(LN) ${HOME}/.dotfiles/.icewm/preferences ${HOME}/.icewm/
 	$(LN) ${HOME}/.dotfiles/.icewm/themes      ${HOME}/.icewm/
 	$(LN) ${HOME}/.dotfiles/.icewm/toolbar     ${HOME}/.icewm/
+
 	$(LN) ${HOME}/.dotfiles/.dunstrc           ${HOME}/.config/dunst/dunstrc
 	$(LN) ${HOME}/.dotfiles/gtk-3.0.ini        ${HOME}/.config/gtk-3.0/settings.ini
 	$(LN) ${HOME}/.dotfiles/sxhkdrc	           ${HOME}/.config/sxhkd/sxhkdrc
 	$(LN) ${HOME}/.dotfiles/alacritty.toml     ${HOME}/.config/alacritty/alacritty.toml
+
+	$(LN) ${HOME}/.dotfiles/labwc/autostart    ${HOME}/.config/labwc/
+	$(LN) ${HOME}/.dotfiles/labwc/environment  ${HOME}/.config/labwc/
+	$(LN) ${HOME}/.dotfiles/labwc/rc.xml       ${HOME}/.config/labwc/
+	$(LN) ${HOME}/.dotfiles/labwc/menu.xml     ${HOME}/.config/labwc/
+
 	pkill -USR1 sxhkd || echo "Not running"
 
 	git config --global include.path 	   ${HOME}/.dotfiles/gitaliases
