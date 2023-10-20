@@ -32,6 +32,15 @@ __start() {
 
 eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
 
+if type openrc
+then
+    for level in default graphical
+    do
+        mkdir -p "${XDG_CONFIG_HOME:-~/.config}/rc/runlevels/$level"
+        openrc -U "$level"
+    done
+fi
+
 if [ -d /usr/local/share/fonts ]; then
 	for d in /usr/local/share/fonts/*; do
 		xset +fp "$d"
