@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+set -euo pipefail
+set -x
+
+DEVICE="/dev/nvme1n1"
+
+mb_adjusted() {
+	m="${1:?arg}"
+	s="${2:-0}"
+	m=$(($m * 1024 ** 2))
+	m=$(($m - ($m % 2048)))
+	m=$(($m / 512 + $s))
+	echo "${m}s"
+}
+
+for cmd in sgdisk mkfs.vfat mkswap mkfs.ext4 partprobe; do
+	if ! command -v "$cmd" >/dev/null 2>&1; then
+		echo "Required command not found: $cmd" >&2
+		exit 1
+	fi
+done
+
+if [ ! -b "$DEVICE" ]; then
+	echo "Device not found or not a block device: $DEVICE" >&2
+	exit 1
+fi
+
+echo "WARNING: This will destroy all data on $DEVICE"
+read -rp "Type the device path ($DEVICE) to confirm: " CONFIRM
+if [ "$CONFIRM" != "$DEVICE" ]; then
+	echo "Confirmation mismatch. Aborting."
+	exit 1
+fi
+
+sgdisk --zap-all "$DEVICE"
+
+parted -s         "$DEVICE" mklabel gpt
+parted -a optimal "$DEVICE" mkpart primary fat16 $(mb_adjusted 64)    $(mb_adjusted 256)
+parted -a optimal "$DEVICE" mkpart primary fat16 $(mb_adjusted 257)   $(mb_adjusted 66000)
+parted -a optimal "$DEVICE" mkpart primary ext2  $(mb_adjusted 66001) 100%
+
+partprobe "$DEVICE" || true
+sleep 1
+
+sgdisk  --partition-guid=1:00000000-0000-0000-0000-000000000001 \
+	--partition-guid=2:00000000-0000-0000-0000-000000000002 \
+	--partition-guid=3:00000000-0000-0000-0000-000000000003 \
+	"$DEVICE"
+
+kpartx    "$DEVICE"
+sleep 1
+
+mkfs.vfat    -I -i "00000000" -F32 /dev/disk/by-partuuid/00000000-0000-0000-0000-000000000001
+
+sgdisk -p "$DEVICE"
+
+for dev in /dev/disk/by-partuuid/00000000-0000-0000-0000-*; do
+	echo
+	echo "$dev:"
+	lsblk -o NAME,SIZE,FSTYPE,PARTUUID -n "$dev"
+done
