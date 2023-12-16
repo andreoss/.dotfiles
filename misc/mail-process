@@ -1,0 +1,29 @@
+#!/bin/sh
+
+. "$HOME"/.xenv
+
+
+output=$(mktemp)
+notmuch new | tee "$output"
+
+if [ "$(notmuch count tag:new)" -gt 0 ]; then
+	dunstify "$(cat $output)"
+fi
+
+notmuch tag +2fa                          -- subject:"Security Code" and tag:new
+notmuch tag +hh.ru                        -- from:hh.ru and tag:new
+notmuch tag +rejection                    -- tag:hh.ru and subject:"Работодатель не готов пригласить вас на собеседование"
+notmuch tag +rejection                    -- tag:hh.ru and subject:"Работодатель не готов пригласить на следующий этап"
+notmuch tag +rejection                    -- tag:hh.ru and subject:"Работодатель закрыл позицию"
+notmuch tag +rejection                    -- tag:hh.ru and subject:"Работодатель закрыл вакансию"
+notmuch tag +employer-message             -- tag:hh.ru and subject:"Invitation to the interview"
+notmuch tag +employer-message             -- tag:hh.ru and subject:"С вами хотят связаться из компании"
+notmuch tag +employer-message             -- tag:hh.ru and subject:"Новое сообщение от работодателя"
+notmuch tag +employer-message             -- tag:hh.ru and subject:"Новое сообщение в чате"
+notmuch tag +employer-message             -- tag:hh.ru and subject:"Вам написали по вакансии"
+notmuch tag +ignore                       -- tag:hh.ru and subject:"Спасибо за ваше резюме"
+notmuch tag +ignore                       -- tag:hh.ru and subject:"Отклик получен"
+notmuch tag +ignore                       -- tag:hh.ru and subject:"Ваше резюме прошло модерацию"
+
+notmuch tag -new +inbox                   -- tag:new
+notmuch tag -inbox                        -- tag:ignore
