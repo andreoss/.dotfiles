@@ -29,7 +29,7 @@ EDITOR=et
 HOSTNAME=$(hostname)
 
 SBT_HOME=$HOME/.local/sbt/
-JULIA_HOME=$HOME/.local/julia-1.6.7/
+JULIA_HOME=$HOME/.local/julia-1.10.0/
 PATH=$SBT_HOME/bin:$PATH
 LOCAL_HOME=$HOME/.local
 LOCAL_OPT=$HOME/.opt/
