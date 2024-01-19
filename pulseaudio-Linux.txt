@@ -6,8 +6,10 @@ doas apk add pipewire-alsa
 doas apk add bluez bluez-openrc pipewire-spa-bluez
 doas rc-update add bluetooth
 doas rc-service bluetooth start
-rc-service -U pipewire start 
-rc-service -U wireplumber start
+rc-service --user pipewire start 
+rc-service --user wireplumber start
+rc-update  --user add pipewire    default
+rc-update  --user add wireplumber default
 
 doas addgroup "$USER" audio
 doas addgroup "$USER" video
