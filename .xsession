@@ -10,6 +10,7 @@ cleanup() {
 	pkill -P $$
 }
 
+
 for sig in INT QUIT HUP TERM; do
 	trap "
     cleanup
@@ -30,16 +31,17 @@ __start() {
 	fi
 }
 
-eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
-
 if type openrc
 then
     for level in default graphical
     do
         mkdir -p "${XDG_CONFIG_HOME:-~/.config}/rc/runlevels/$level"
-        openrc -U "$level"
+        openrc --user "$level"
     done
+    rc-service --user --list | xargs -i rc-service --user {} start
 fi
+
+eval $(dbus-launch --sh-syntax | tee "$HOME/.xenv")
 
 if [ -d /usr/local/share/fonts ]; then
 	for d in /usr/local/share/fonts/*; do
