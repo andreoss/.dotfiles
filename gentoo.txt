@@ -11,6 +11,7 @@ doas rm -v                                  /etc/portage/sets/*
 doas cp -v etc-Gentoo/portage/package.use/* /etc/portage/package.use/
 doas cp -v etc-Gentoo/portage/sets/*        /etc/portage/sets/
 doas cp -v etc-Gentoo/portage/*.conf        /etc/portage/
+doas ./gentoo-overlays.txt
 doas emerge --sync
 for set in etc-Gentoo/portage/sets/*        
 do
