@@ -1,0 +1,16 @@
+#!/bin/sh
+
+user="${1:?user name required}"
+home="${2:-/user}"
+shell="${3:-zsh}"
+
+mkdir "$home"
+useradd --home-dir"$home" --no-create-home --gid wheel --shell- $(which "$shell") "$user"
+chown a "$home"
+chmod 700 "$home"
+
+for group in video audio input disk kvm docker libvirt; do
+	if grep "^${group}" /etc/group; then
+		usermod --append "$group" "$user"
+	fi
+done

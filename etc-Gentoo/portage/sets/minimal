@@ -2,7 +2,6 @@ app-admin/doas
 app-admin/pass
 app-admin/pass-otp
 
-
 app-eselect/eselect-repository
 app-misc/screen
 app-portage/cpuid2cpuflags
