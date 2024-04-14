@@ -6,7 +6,8 @@ then
 	exit 1
 fi
 
-doas mkdir -p /etc/mkinitfs /etc/sysctl.d /etc/modules-load.d
+doas mkdir -p /etc/mkinitfs  /etc/sysctl.d /etc/modules-load.d
+
 doas cp etc-Linux/*.conf                         /etc/
 doas cp etc-Linux/sysctl.d/*.conf                /etc/sysctl.d/
 doas cp etc-Linux/mkinitfs/*.conf                /etc/mkinitfs/
@@ -18,3 +19,5 @@ then
     doas chmod +x /etc/init.d/macchanger
     doas rc-update add macchanger boot
 fi
+
+doas ./adduser.txt "a"
