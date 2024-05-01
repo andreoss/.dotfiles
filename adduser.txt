@@ -11,6 +11,6 @@ chmod 700 "$home"
 
 for group in video audio input disk kvm docker libvirt; do
 	if grep "^${group}" /etc/group; then
-		usermod --append "$group" "$user"
+		usermod --append --groups "$group" "$user"
 	fi
 done
