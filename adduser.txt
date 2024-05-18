@@ -5,8 +5,8 @@ home="${2:-/user}"
 shell="${3:-zsh}"
 
 mkdir "$home"
-useradd --home-dir"$home" --no-create-home --gid wheel --shell- $(which "$shell") "$user"
-chown a "$home"
+useradd --home-dir "$home" --no-create-home --gid wheel --shell- $(which "$shell") "$user"
+chown "$user" "$home"
 chmod 700 "$home"
 
 for group in video audio input disk kvm docker libvirt; do
