@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use feature 'say';
+
+(my $width, my $height) = `xrandr -q` =~ /(\d+)x(\d+)\+0\+0/;
+die "No resolution found\n" unless $width && $height;
+
+my $dpi;
+if ($width > $height) {
+    $dpi = int(($width / 1920) * 96 + 0.5);
+} else {
+    $dpi = int(($height / 1080) * 96 + 0.5);
+}
+$dpi = int($dpi / 24 + 0.5) * 24;
+
+say "DPI=$dpi";
+say "X_SCREEN_WIDTH=$width";
+say "X_SCREEN_HEIGHT=$height";
