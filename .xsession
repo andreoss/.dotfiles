@@ -35,7 +35,7 @@ if type openrc
 then
     for level in default graphical
     do
-        mkdir -p "${XDG_CONFIG_HOME:-~/.config}/rc/runlevels/$level"
+        mkdir -p "${XDG_CONFIG_HOME:-"$HOME"/.config}/rc/runlevels/$level"
         openrc --user "$level"
     done
     rc-service --user --list | xargs -i rc-service --user {} start
