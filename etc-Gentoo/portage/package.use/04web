@@ -3,7 +3,7 @@ media-libs/libvpx postproc
 www-client/*         -wifi
 www-client/librewolf system-harfbuzz -clang system-av system-ice hwaccel wasm-sandbox eme-free pgo -wayland system-libvpx -pgo
 
-www-client/*chromium -oficial -vendor
+www-client/*chromium -official -vendor
 
 
 dev-libs/libxml2 icu
