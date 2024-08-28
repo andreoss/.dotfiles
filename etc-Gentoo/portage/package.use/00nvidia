@@ -1,0 +1,4 @@
+*/* VIDEO_CARDS: -* nvidia
+*/* modules-sign nvenc vdpau
+
+x11-drivers/nvidia-drivers  	strip tools X -wayland
