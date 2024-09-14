@@ -21,3 +21,8 @@ then
 fi
 
 doas ./adduser.txt "a"
+
+if type openrc
+    doas rc-update add xdm  default
+    doas rc-update add sshd default
+fi
