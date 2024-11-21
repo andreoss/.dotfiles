@@ -13,6 +13,11 @@ doas cp etc-Linux/sysctl.d/*.conf                /etc/sysctl.d/
 doas cp etc-Linux/mkinitfs/*.conf                /etc/mkinitfs/
 doas cp etc-Linux/modules-load.d/*.conf          /etc/modules-load.d/
 
+if [ -d /usr/src/linux ]
+then
+	doas cp etc-Linux/config /usr/src/linux/.config
+fi
+
 if type openrc
 then
     doas cp etc-Linux/init.d/macchanger  /etc/init.d/
