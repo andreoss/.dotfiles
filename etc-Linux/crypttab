@@ -1,0 +1,1 @@
+# swap PARTUUID="00000000-0000-0000-0000-000000000002" /dev/urandom luks,swap
