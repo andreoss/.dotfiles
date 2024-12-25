@@ -22,9 +22,11 @@ sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 sys-kernel/installkernel
 sys-power/acpi
+sys-power/acpid
 
 sys-apps/fwupd
 net-firewall/iptables
 sys-fs/lvm2
 net-vpn/openvpn
 net-analyzer/macchanger
+sys-power/hybernate-script
