@@ -1,13 +1,14 @@
 /* XPM */
 static char *minimizeA[] = {
 /* columns rows colors chars-per-pixel */
-"34 76 6 1 ",
+"34 76 7 1 ",
 "  c #A9CDF2",
 ". c white",
 "X c gray26",
 "o c #D6D3CE",
 "O c #848484",
 "+ c black",
+"C c #D4D0C8",
 /* pixels */
 "                                  ",
 "                                  ",
@@ -45,8 +46,8 @@ static char *minimizeA[] = {
 "                                  ",
 "                                  ",
 "                                  ",
-"                                  ",
-"                                  ",
+"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
 "                                  ",
 "                                  ",
 "                                  ",
@@ -83,6 +84,6 @@ static char *minimizeA[] = {
 "                                  ",
 "                                  ",
 "                                  ",
-"                                  ",
-"                                  "
+"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
 };
