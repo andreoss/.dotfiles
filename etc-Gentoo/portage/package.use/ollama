@@ -1,2 +1,2 @@
-sci-ml/ollama cuda
-sci-ml/ollama mkl blas
+sci-ml/ollama cuda mkl blas
+sci-libs/mkl  llvm-openmp
