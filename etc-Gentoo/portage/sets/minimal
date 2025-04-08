@@ -30,3 +30,4 @@ sys-fs/lvm2
 net-vpn/openvpn
 net-analyzer/macchanger
 sys-power/hibernate-script
+app-portage/gentoolkit
