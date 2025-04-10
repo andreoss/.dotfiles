@@ -29,7 +29,8 @@ doas ./adduser.txt "a"
 
 if type openrc
 then
-    doas rc-update add xdm   default
-    doas rc-update add sshd  default
-    doas rc-update add acpid boot
+    doas rc-update add xdm     default
+    doas rc-update add sshd    default
+    doas rc-update add acpid   boot
+    doas rc-update add dmcrypt boot
 fi

@@ -1,0 +1,2 @@
+net-misc/turbovnc  -server ssl viewer dri3 verify-sig
+media-libs/libjpeg-turbo java
