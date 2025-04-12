@@ -20,6 +20,6 @@ x11-misc/sxhkd
 x11-terms/rxvt-unicode
 x11-wm/icewm
 x11-wm/xpra
-x11-apps/xbacklight
 x11-misc/xcape
 x11-apps/setxkbmap
+sys-power/acpilight
