@@ -6,12 +6,18 @@ then
 	exit 1
 fi
 
-doas mkdir -p /etc/mkinitfs  /etc/sysctl.d /etc/modules-load.d
+doas mkdir -p \
+     /etc/mkinitfs  \
+     /etc/sysctl.d  \
+     /etc/modules-load.d \
+     /etc/wpa_supplicant
 
 doas cp etc-Linux/*.conf                         /etc/
 doas cp etc-Linux/sysctl.d/*.conf                /etc/sysctl.d/
 doas cp etc-Linux/mkinitfs/*.conf                /etc/mkinitfs/
 doas cp etc-Linux/modules-load.d/*.conf          /etc/modules-load.d/
+doas cp etc-Linux/wpa_supplicant/*.conf          /etc/wpa_supplicant/
+doas chmod 600                                   /etc/wpa_supplicant/*.conf
 
 if [ -d /usr/src/linux ]
 then
@@ -33,4 +39,5 @@ then
     doas rc-update add sshd    default
     doas rc-update add acpid   boot
     doas rc-update add dmcrypt boot
+    doas rc-update del wpa_supplicant 
 fi
