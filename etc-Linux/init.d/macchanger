@@ -8,7 +8,7 @@ depend() {
 
 start() {
     ebegin "Changing MAC addresses"
-    for interface in /sys/class/net/eth* /sys/class/net/wlan*; do
+    for interface in /sys/class/net/e* /sys/class/net/w*; do
         if [ -d "$interface" ]; then
             interface=$(basename "$interface")
             macchanger -r "$interface" >/dev/null 2>&1
