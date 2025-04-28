@@ -31,3 +31,9 @@ net-vpn/openvpn
 net-analyzer/macchanger
 sys-power/hibernate-script
 app-portage/gentoolkit
+app-misc/physlock
+
+sys-apps/pciutils
+sys-apps/usbutils
+sys-apps/hwinfo
+sys-apps/cpuid

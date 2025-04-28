@@ -1,1 +1,4 @@
 net-analyzer/nmap -symlink ncat nping
+
+net-dns/bind      -static -static-libs
+dev-libs/tree-sitter* python

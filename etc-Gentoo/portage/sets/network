@@ -1,3 +1,10 @@
 net-analyzer/nmap
+net-dns/bind-tools
 net-dns/dnscrypt-proxy
 net-dns/unbound
+
+net-analyzer/iftop
+net-analyzer/mtr
+sys-apps/ethtool
+
+net-analyzer/xprobe

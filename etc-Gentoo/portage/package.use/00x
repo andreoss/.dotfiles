@@ -6,10 +6,11 @@ sys-apps/systemd-utils           udev
 x11-wm/icewm                     ao truetype gdk-pixbuf imlib nls
 x11-misc/rofi                    X
 
-
-media-libs/freetype              harfbuzz
+media-libs/freetype              cleartype-hinting harfbuzz
 app-text/xmlto                   text
-x11-terms/rxvt-unicode           xft 24-bit-color 256-color blink fading-colors font-styles gdk-pixbuf iso14755 mousewheel perl unicode3 wide-glyphs
+x11-terms/rxvt-unicode           xft 24-bit-color 256-color blink fading-colors font-styles gdk-pixbuf iso14755 mousewheel perl unicode3 wide-glyphs startup-notification
 dev-libs/libdbusmenu             gtk3
 net-wireless/wpa_supplicant      gui
-dev-qt/qtbase                    gui udev opengl
+dev-qt/*                         opengl pulseaudio
+dev-qt/qtbase                    gui udev icu
+x11-wm/xpra                      x264 opengpl cuda sound

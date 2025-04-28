@@ -1,6 +1,7 @@
 www-client/librewolf
 #www-client/ungoogled-chromium
-
+www-plugins/browserpass
 
 net-misc/aria2
 net-misc/yt-dlp
+net-im/telegram-desktop

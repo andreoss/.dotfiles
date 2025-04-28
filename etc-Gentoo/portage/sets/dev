@@ -9,3 +9,8 @@ dev-util/sh
 sys-apps/ack
 sys-apps/flatpak
 sys-cluster/k9scli
+sys-apps/firejail
+app-benchmarks/stress
+
+app-misc/jq
+net-misc/httpie
