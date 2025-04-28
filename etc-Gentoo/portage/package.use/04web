@@ -1,14 +1,17 @@
 media-libs/libvpx postproc
 
 www-client/*         -wifi
-www-client/librewolf system-harfbuzz -clang system-av system-ice hwaccel wasm-sandbox eme-free pgo -wayland system-libvpx -pgo
+www-client/librewolf system-harfbuzz -clang system-av system-ice hwaccel wasm-sandbox eme-free pgo -wayland system-libvpx pgo system-pipewire system-png pulseaudio openh264
 
-www-client/*chromium -official -vendor
-
+www-client/*chromium -official -vendor -wayland -screencast -widevine pgo custom-cflags system-harfbuzz system-icu system-png system-zstd pulseaudio vaapi -flac
 
 dev-libs/libxml2 icu
 media-libs/harfbuzz icu
 sys-libs/zlib minizip
 
 media-video/mpv -javascript pipewire
+media-video/ffmpeg vpx opus
 media-gfx/qrencode png
+
+net-im/telegram-desktop -webkit -screencast -enchant -fonts -libspatch
+media-libs/libpng  apng

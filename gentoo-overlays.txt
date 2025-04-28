@@ -1,5 +1,6 @@
 #!/bin/sh
-eselect repository enable xlibre
 eselect repository add librewolf git https://codeberg.org/librewolf/gentoo.git
+eselect repository enable xlibre
+eselect repository enable librewolf
 emaint sync -r xlibre
 emaint sync -r librewolf

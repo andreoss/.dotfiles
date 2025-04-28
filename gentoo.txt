@@ -1,24 +1,18 @@
 #!/bin/sh
 ./linux.txt
-if ! [ -e /etc/gentoo-release ]
-then
+if ! [ -e /etc/gentoo-release ]; then
 	>2 echo "Not a Gentoo system"
 	exit 1
 fi
-doas mkdir -p                               /etc/portage/{package.use,sets} 
-doas rm -v                                  /etc/portage/package.use/*
-doas rm -v                                  /etc/portage/sets/*
-doas cp -v etc-Gentoo/portage/package.use/* /etc/portage/package.use/
-doas cp -v etc-Gentoo/portage/sets/*        /etc/portage/sets/
-doas cp -v etc-Gentoo/portage/*.conf        /etc/portage/
-doas ./gentoo-overlays.txt
-doas emerge --sync
+doas mkdir -p /etc/portage/{package.use,sets,package.mask,package.accept_keywords}
 
-doas emerge --newuse --update --quiet-build=y --deep @system
-doas emerge --newuse --update --quiet-build=y --deep @minimal
-for set in etc-Gentoo/portage/sets/*        
-do
-    doas emerge --newuse --update --quiet-build=y --deep @"$(basename $set)"
-done
-doas emerge --newuse --update --quiet-build=y --deep @world 
-doas emerge --depclean
+doas rm -v /etc/portage/package.*/*
+doas rm -v /etc/portage/sets/*
+doas cp -v etc-Gentoo/portage/package.use/* /etc/portage/package.use/
+doas cp -v etc-Gentoo/portage/package.accept_keywords/* \
+	/etc/portage/package.accept_keywords/
+doas cp -v etc-Gentoo/portage/package.mask/* \
+	/etc/portage/package.mask/
+
+doas cp -v etc-Gentoo/portage/sets/* /etc/portage/sets/
+doas cp -v etc-Gentoo/portage/*.conf /etc/portage/

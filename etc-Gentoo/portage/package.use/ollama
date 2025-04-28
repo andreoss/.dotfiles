@@ -1,2 +1,3 @@
 sci-ml/ollama cuda mkl blas
 sci-libs/mkl  llvm-openmp
+app-containers/docker cuda
