@@ -1,1 +1,2 @@
 sys-kernel/* redistributable
+sys-libs/libcap pam
