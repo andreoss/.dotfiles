@@ -1,0 +1,10 @@
+#!/bin/sh
+doas ./gentoo-overlays.txt
+doas emerge --quiet --sync
+
+doas emerge --newuse --update --quiet-build=y --deep @system
+for set in etc-Gentoo/portage/sets/*; do
+ 	doas emerge --newuse --update --quiet-build=y --deep @"$(basename $set)"
+done
+doas emerge --newuse --update --quiet-build=y --deep @world
+doas emerge --quiet --depclean
