@@ -3,7 +3,6 @@ app-containers/docker-compose
 dev-db/mariadb
 dev-db/postgresql
 dev-db/redis
-dev-java/sbt
 dev-util/github-cli
 dev-util/sh
 sys-apps/ack
@@ -14,3 +13,7 @@ app-benchmarks/stress
 
 app-misc/jq
 net-misc/httpie
+app-shells/direnv
+
+dev-java/sbt-bin
+dev-java/coursier-bin
