@@ -1,0 +1,7 @@
+app-dicts/aspell-en
+app-portage/pfl
+app-text/hunspell
+app-text/texlive
+dev-texlive/texlive-basic
+dev-texlive/texlive-latexextra                                     
+dev-texlive/texlive-luatex
