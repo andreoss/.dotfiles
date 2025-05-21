@@ -17,3 +17,5 @@ app-shells/direnv
 
 dev-java/sbt-bin
 dev-java/coursier-bin
+sys-cluster/minikube
+dev-util/uncrustify
