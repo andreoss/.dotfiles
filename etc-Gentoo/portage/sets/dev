@@ -19,3 +19,5 @@ dev-java/sbt-bin
 dev-java/coursier-bin
 sys-cluster/minikube
 dev-util/uncrustify
+app-containers/podman
+app-containers/podman-compose
