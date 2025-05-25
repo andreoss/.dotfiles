@@ -1,2 +1,3 @@
-net-misc/turbovnc  -server ssl viewer dri3 verify-sig
+net-misc/turbovnc -server ssl viewer dri3 verify-sig
 media-libs/libjpeg-turbo java
+net-firewall/iptables nftables
