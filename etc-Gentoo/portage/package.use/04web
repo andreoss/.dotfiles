@@ -1,6 +1,6 @@
 media-libs/libvpx postproc
 
-www-client/*         -wifi
+www-client/* -wifi
 www-client/librewolf system-harfbuzz -clang system-av system-ice hwaccel wasm-sandbox eme-free pgo -wayland system-libvpx pgo system-pipewire system-png pulseaudio openh264
 
 www-client/*chromium -official -vendor -wayland -screencast -widevine pgo custom-cflags system-harfbuzz system-icu system-png system-zstd pulseaudio vaapi -flac
@@ -14,4 +14,5 @@ media-video/ffmpeg vpx opus
 media-gfx/qrencode png
 
 net-im/telegram-desktop -webkit -screencast -enchant -fonts -libspatch
-media-libs/libpng  apng
+media-libs/libpng apng
+net-misc/aria2 bittorrent
