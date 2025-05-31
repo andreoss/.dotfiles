@@ -37,3 +37,4 @@ sys-apps/pciutils
 sys-apps/usbutils
 sys-apps/hwinfo
 sys-apps/cpuid
+app-arch/7zip
