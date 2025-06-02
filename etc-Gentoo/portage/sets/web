@@ -5,3 +5,4 @@ www-plugins/browserpass
 net-misc/aria2
 net-misc/yt-dlp
 net-im/telegram-desktop
+media-video/v4l2loopback
