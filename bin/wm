@@ -5,6 +5,8 @@ if type icewm-session; then
 	WM="icewm-session --nobg"
 elif type dwm; then
 	WM=dwm
+elif [ -d "$HOME"/.stumpwm.d ] && type sbcl; then
+	WM="$HOME/.stumpwm.d/start.sh"
 elif type ratpoison; then
 	WM=ratpoison
 else
