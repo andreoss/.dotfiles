@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use feature 'say';
 
-( my $width, my $height ) = `xrandr -q` =~ /(\d+)x(\d+)(?:\+0\+0)?/;
+( my $width, my $height ) = `xrandr -q` =~ /(\d+)x(\d+)\+0\+0/;
 die "No resolution found\n" unless $width && $height;
 
 my $dpi;
