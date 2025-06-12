@@ -17,6 +17,7 @@ our @TZs = qw(
   America/Los_Angeles
   America/Mexico_City
   America/New_York
+  America/Chicago
   America/Sao_Paulo
   Asia/Dubai
   Asia/Tokyo
