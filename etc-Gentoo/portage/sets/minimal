@@ -37,4 +37,5 @@ sys-apps/pciutils
 sys-apps/usbutils
 sys-apps/hwinfo
 sys-apps/cpuid
+sys-apps/inxi
 app-arch/7zip
