@@ -13,4 +13,8 @@ dev-libs/libdbusmenu             gtk3
 net-wireless/wpa_supplicant      gui
 dev-qt/*                         opengl pulseaudio
 dev-qt/qtbase                    gui udev icu
-x11-wm/xpra                      x264 opengpl cuda sound
+x11-wm/xpra                      x264 cuda opengpl sound avif webcam openh264 webp jpeg vpx pinentry gtk3
+media-libs/opencv                gtk3 cuda contrib
+dev-python/pillow webp
+media-libs/opencv python
+
