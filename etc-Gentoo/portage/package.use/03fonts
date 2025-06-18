@@ -1,4 +1,4 @@
 media-libs/freetype             adobe-cff cleartype-hinting
 media-fonts/* 			otf opentype-compact
-media-fonts/terminus-font 	distinct-l a-like-o ru-i ru-k ru-g quote pcf-unicode center-tilde
+media-fonts/terminus-font 	distinct-l a-like-o ru-i ru-k ru-g quote pcf-unicode center-tilde pcf-8bit ru-dv otf
 media-fonts/corefonts           tahoma

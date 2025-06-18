@@ -11,6 +11,7 @@ media-fonts/noto
 media-fonts/noto-cjk
 media-fonts/terminus-font
 media-fonts/unifont
+media-fonts/termsyn
 media-gfx/imagemagick
 media-gfx/scrot
 sys-power/acpilight
