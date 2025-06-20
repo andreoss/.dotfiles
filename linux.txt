@@ -39,5 +39,7 @@ then
     doas rc-update add sshd    default
     doas rc-update add acpid   boot
     doas rc-update add dmcrypt boot
+    doas rc-update add unbound default
+    doas rc-update add dnscrypt-proxy default
     doas rc-update del wpa_supplicant 
 fi
