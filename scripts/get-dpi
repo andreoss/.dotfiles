@@ -3,18 +3,50 @@ use strict;
 use warnings;
 use feature 'say';
 
+sub get_dpi;
+sub test_get_dpi;
+
+if ( grep { /--test/ } @ARGV ) {
+    exit( test_get_dpi() );
+}
+
 ( my $width, my $height ) = `xrandr -q` =~ /(\d+)x(\d+)\+0\+0/;
 die "No resolution found\n" unless $width && $height;
 
-my $dpi;
-if ( $width > $height ) {
-    $dpi = int( ( $width / 1920 ) * 96 + 0.5 );
-}
-else {
-    $dpi = int( ( $height / 1080 ) * 96 + 0.5 );
-}
-$dpi = int( $dpi / 24 + 0.5 ) * 24;
-
-say "DPI=$dpi";
+say "DPI=" . get_dpi( $width, $height );
 say "X_SCREEN_WIDTH=$width";
 say "X_SCREEN_HEIGHT=$height";
+
+sub get_dpi {
+    my ( $w, $h ) = @_;
+    use POSIX qw(log);
+    my $pixels   = $w * $h;
+    my $baseline = 1920 * 1080;
+    my $ratio    = $pixels / $baseline;
+    my $power    = int( log($ratio) / log(1.5) + 0.5 );
+    my $scale    = 1.5**$power;
+    return int( 96 * $scale + 0.5 );
+}
+
+sub run_test {
+    my ( $w, $h, $r ) = map int, @_;
+    my $a = get_dpi( $w, $h );
+    printf( "%-.4s: get_dpi($w, $h) == $a (expected $r)\n",
+        ( ( $a == $r ) ? "OK" : "FAIL" ), );
+    return $a != $r;
+}
+
+sub test_get_dpi {
+    my $fails = 0;
+    while ( my $line = <DATA> ) {
+        $fails += run_test( split /\s+/, $line );
+    }
+    $fails;
+}
+
+__DATA__
+1600 900 96
+1280 720 96
+1920 1080 96
+2560 1440 144
+3840 2160 192
