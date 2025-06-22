@@ -1,3 +1,8 @@
 net-misc/turbovnc -server ssl viewer dri3 verify-sig
 media-libs/libjpeg-turbo java
 net-firewall/iptables nftables
+app-emulation/qemu bpf static-user fuse xen usb usdredir systemtap
+app-emulation/qemu QEMU_SOFTMMU_TARGETS="x86_64" QEMU_USER_TARGETS="x86_64"
+sys-apps/iproute2 -minimal
+virtual/blas flexiblas
+sci-libs/lapack flexiblas
