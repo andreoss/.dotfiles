@@ -1,7 +1,7 @@
 alias ..='cd ..'
 alias cs=courier
-alias e='emacsclient -t'
-alias ee=emacs
+alias e=et
+alias ee=et
 alias g=git
 alias l=ls
 alias la='ll | less'
@@ -13,11 +13,19 @@ alias v=vi
 alias sx='screen -xRR sx'
 alias dir=la
 alias rsynca='rsync -ahcv'
-alias xpra='xpra --splash=none'
+alias xpra='xpra --splash=no'
 alias df='df -h'
 alias du='du -h'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias mkdir='mkdir -pv'
+
+if [ "$(uname)" = "Linux" ]; then
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+	alias mkdir='mkdir -pv'
+fi
+
+if ! type vi >/dev/null; then
+	alias vi=et
+fi
+
 alias wget='wget -c'
