@@ -36,4 +36,4 @@ super+Prior
        icesh -f sizeto 49% 49% top right
 
 Print
-	flameshot gui
+	scrot --select - | tee ~/.scrot/"$(date --iso-8601=ns)".png | xclip -selection clipboard -target image/png
