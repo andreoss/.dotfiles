@@ -1,0 +1,2 @@
+sys-devel/gcc          multilib
+cross-arm-none-eabi/newlib nano

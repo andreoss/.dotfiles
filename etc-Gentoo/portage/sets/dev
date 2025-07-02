@@ -21,3 +21,13 @@ sys-cluster/minikube
 dev-util/uncrustify
 app-containers/podman
 app-containers/podman-compose
+
+
+sys-devel/crossdev
+dev-lang/python
+dev-embedded/avrdude
+dev-embedded/dfu-programmer
+app-mobilephone/dfu-util
+sys-apps/hwloc
+dev-libs/hidapi
+llvm-core/clang
