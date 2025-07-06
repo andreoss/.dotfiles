@@ -39,6 +39,7 @@ dotfiles:
 	$(ND) ${HOME}/.config/dunst/
 	$(ND) ${HOME}/.config/gtk-3.0/
 	$(ND) ${HOME}/.config/sxhkd/
+	$(ND) ${HOME}/.config//
 	$(ND) ${HOME}/.icewm/
 
 	$(LN) ${HOME}/.dotfiles/.icewm/preferences ${HOME}/.icewm/
@@ -47,6 +48,7 @@ dotfiles:
 	$(LN) ${HOME}/.dotfiles/.dunstrc           ${HOME}/.config/dunst/dunstrc
 	$(LN) ${HOME}/.dotfiles/gtk-3.0.ini        ${HOME}/.config/gtk-3.0/settings.ini
 	$(LN) ${HOME}/.dotfiles/sxhkdrc	           ${HOME}/.config/sxhkd/sxhkdrc
+	$(LN) ${HOME}/.dotfiles/alacritty.toml     ${HOME}/.config/alacritty/alacritty.toml
 	pkill -USR1 sxhkd || echo "Not running"
 
 	git config --global include.path 	   ${HOME}/.dotfiles/gitaliases
