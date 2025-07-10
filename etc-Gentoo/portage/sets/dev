@@ -31,3 +31,6 @@ app-mobilephone/dfu-util
 sys-apps/hwloc
 dev-libs/hidapi
 llvm-core/clang
+
+dev-util/cloc
+app-text/dos2unix
