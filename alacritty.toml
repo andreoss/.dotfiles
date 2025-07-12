@@ -1,57 +1,25 @@
-[font]
-size = 36.0
-
-[font.normal]
-family = "Terminus"
-
-[font.bold]
-family = "Terminus"
-
-[font.italic]
-family = "Terminus"
-
-[font.bold_italic]
-family = "Terminus"
-
 [window]
 opacity = 0.9
 padding.x = 16
 padding.y = 16
 
+[font]
+size = 16.0
+
+[font.normal]
+family = "JuliaMono"
+
+[font.bold]
+family = "JuliaMono"
+
+[font.italic]
+family = "JuliaMono"
+
+[font.bold_italic]
+family = "JuliaMono"
+
 [mouse]
-hide_when_typing = false
-
-[colors.primary]
-background = "#000000"
-foreground = "#FFFFEA"
-
-[colors.cursor]
-text = "#000000"
-cursor = "#ffffff"
-
-[colors.selection]
-text = "CellForeground"
-background = "#583838"
-
-[colors.normal]
-black   = '#000000'
-red     = '#AE2808'
-green   = '#00A800'
-yellow  = '#A85400'
-blue    = '#0000A8'
-magenta = '#A800A8'
-cyan    = '#00A8A8'
-white   = '#A8A8A8'
-
-[colors.bright]
-black   = '#545454'
-red     = '#FC5454'
-green   = '#54FC54'
-yellow  = '#FCFC54'
-blue    = '#5454FC'
-magenta = '#FC54FC'
-cyan    = '#54FCFC'
-white   = '#FFFFEA'
+hide_when_typing = true
 
 [keyboard]
 bindings = [
@@ -63,6 +31,35 @@ bindings = [
   { key = "-", mods = "Control|Shift", action = "DecreaseFontSize" }
 ]
 
-
 [env]
 TERM = "xterm-256color"
+
+[colors.primary]
+foreground = "#111111"
+background = "#FFFFEA"
+
+[colors.cursor]
+text   = "#FFFFEA"
+cursor = "#8B0000"
+
+[colors.selection]
+text       = "#111111"
+background = "#AA9982"
+
+[colors]
+normal.red =     "#9E1020"
+bright.red =     "#DA3B43"
+normal.blue =    "#20109E"
+bright.blue =    "#4066DC"
+normal.cyan =    "#209E80"
+bright.cyan =    "#49EAA8"
+normal.black =   "#201020"
+bright.black =   "#4A4A4A"
+normal.green =   "#668820"
+bright.green =   "#66A96A"
+normal.white =   "#EAEAEA"
+bright.white =   "#FFFFEA"
+bright.yellow =  "#828200"
+normal.yellow =  "#EA9E66"
+bright.magenta = "#8066CC"
+normal.magenta = "#9E20AE"
