@@ -36,4 +36,4 @@ super+Prior
        icesh -f sizeto 49% 49% top right
 
 Print
-	scrot --select - | tee ~/.scrot/"$(date --iso-8601=ns)".png | xclip -selection clipboard -target image/png
+        mkdir -p ~/.scrot; scrot --select - | tee ~/.scrot/"$(date --iso-8601=ns)".png | convert - -colors 256 png:- | xclip -selection clipboard -target image/png
