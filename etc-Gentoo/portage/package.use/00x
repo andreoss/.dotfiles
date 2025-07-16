@@ -17,4 +17,4 @@ x11-wm/xpra                      x264 cuda opengpl sound avif webcam openh264 we
 media-libs/opencv                gtk3 cuda contrib
 dev-python/pillow webp
 media-libs/opencv python
-
+app-admin/conky  lua colour-name-map iostats mpd nvidia thinkpad truetype xinput
