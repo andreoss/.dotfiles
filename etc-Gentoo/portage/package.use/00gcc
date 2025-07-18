@@ -1,2 +1,2 @@
-sys-devel/gcc          multilib
+sys-devel/gcc          multilib custom-cflags fixed-point graphite
 cross-arm-none-eabi/newlib nano
