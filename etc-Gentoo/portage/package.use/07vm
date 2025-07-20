@@ -5,7 +5,9 @@ app-emulation/qemu bpf static-user fuse xen usb usdredir systemtap
 app-emulation/qemu QEMU_SOFTMMU_TARGETS="x86_64" QEMU_USER_TARGETS="x86_64"
 app-containers/docker-credential-helpers pass
 sys-apps/iproute2 -minimal
-virtual/blas flexiblas
+virtual/blas    -flexiblas
 sci-libs/lapack flexiblas
 
+sys-firmware/ipxe binary                                                                                                               |
+sys-firmware/sgabios binary
 
