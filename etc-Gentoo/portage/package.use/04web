@@ -1,9 +1,9 @@
 media-libs/libvpx postproc
 
-www-client/* -wifi
+www-client/* -wifi -bindist
 www-client/librewolf system-harfbuzz -clang system-av system-ice hwaccel wasm-sandbox eme-free pgo -wayland system-libvpx pgo system-pipewire system-png pulseaudio openh264
 
-www-client/*chromium -official -vendor -wayland -screencast -widevine pgo custom-cflags system-harfbuzz system-icu system-png system-zstd pulseaudio vaapi -flac
+www-client/*chromium -official -vendor -screencast -wayland X
 
 dev-libs/libxml2 icu
 media-libs/harfbuzz icu
