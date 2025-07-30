@@ -2,9 +2,11 @@
 opacity = 0.9
 padding.x = 16
 padding.y = 16
+dimensions.columns = 80
+dimensions.lines  = 30
 
 [font]
-size = 16.0
+size = 14.0
 
 [font.normal]
 family = "JuliaMono"
