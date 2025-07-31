@@ -37,6 +37,11 @@ PATH="$LOCAL_HOME/bin:$PATH"
 PATH="$PATH:$LOCAL_HOME/share/coursier/bin"
 PATH="$PATH:$JULIA_HOME/bin"
 
+if [ -d "$HOME"/.opencode ]
+then
+    PATH="$HOME"/.opencode/bin:"$PATH"
+fi
+
 export LC_ALL LANG
 export MANPATH
 export EDITOR
