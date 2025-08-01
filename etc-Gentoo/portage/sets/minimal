@@ -39,3 +39,5 @@ sys-apps/hwinfo
 sys-apps/cpuid
 sys-apps/inxi
 app-arch/7zip
+
+sys-apps/pv
