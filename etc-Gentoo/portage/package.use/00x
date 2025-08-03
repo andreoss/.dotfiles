@@ -18,3 +18,5 @@ media-libs/opencv                gtk3 cuda contrib
 dev-python/pillow webp
 media-libs/opencv python
 app-admin/conky  lua colour-name-map iostats mpd nvidia thinkpad truetype xinput
+x11-libs/gdk-pixbuf jpeg
+
