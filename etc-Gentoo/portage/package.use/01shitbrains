@@ -1,0 +1,3 @@
+dev-util/pycharm*    -bundled-jdk -bundled-xvfb
+dev-util/intellij*   -bundled-jdk -bundled-xvfb -professional -wayland
+
