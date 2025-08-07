@@ -1,5 +1,5 @@
 
-Emacs*font:             Terminus
+Emacs*font:             JuliaMono
 Emacs*geometry:  	80x38
 Emacs*menuBar:   	0
 Emacs*scrollBar: 	on
@@ -28,7 +28,7 @@ Emacs*scrollBarWidth: 	6
 URxvt.perl-ext-common: font-size
 
 
-URxvt.font: xft:Terminus:size=10
+URxvt.font: xft:JuliaMono:size=10
 URxvt.background: #FFFFEA
 URxvt.foreground: #000000
 URxvt.cursorBlink: true
