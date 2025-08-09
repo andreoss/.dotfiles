@@ -1,3 +1,4 @@
+ImageMagick
 amigafonts--
 aspell
 bash
@@ -12,13 +13,13 @@ dunst--
 emacs--gtk3
 firefox-esr
 ghc--
+ghostscript--
 git--
 gmake--
 gnupg
 gradle
 gtar--static
 icewm
-ImageMagick
 iridium
 isync
 keychain
@@ -33,7 +34,7 @@ pass-otp
 password-store
 pcmanfm
 poppler
-qemu
+qemu--
 ratpoison
 rofi
 rsync--
@@ -42,6 +43,7 @@ sbcl
 sbt--
 screen--
 shellcheck
+shellcheck--
 shfmt
 sudo--
 terminus-font--centered_tilde
