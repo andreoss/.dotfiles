@@ -42,4 +42,6 @@ then
     doas rc-update add unbound default
     doas rc-update add dnscrypt-proxy default
     doas rc-update del wpa_supplicant 
+    doas rc-update add bluetooth default
+    doas rc-update add iptables  default
 fi
