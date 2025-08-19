@@ -1,2 +1,5 @@
 sys-kernel/* redistributable
+
 sys-libs/libcap pam
+
+app-admin/sysklogd logrorate
