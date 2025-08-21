@@ -11,7 +11,7 @@ app-text/xmlto                   text
 x11-terms/rxvt-unicode           xft 24-bit-color 256-color blink fading-colors font-styles gdk-pixbuf iso14755 mousewheel perl unicode3 wide-glyphs startup-notification
 dev-libs/libdbusmenu             gtk3
 net-wireless/wpa_supplicant      gui
-dev-qt/*                         opengl pulseaudio
+dev-qt/*                         opengl pulseaudio custom-cflags icu
 dev-qt/qtbase                    gui udev icu
 x11-wm/xpra                      x264 cuda opengpl sound avif webcam openh264 webp jpeg vpx pinentry gtk3
 media-libs/opencv                gtk3 cuda contrib
@@ -19,4 +19,5 @@ dev-python/pillow webp
 media-libs/opencv python
 app-admin/conky  lua colour-name-map iostats mpd nvidia thinkpad truetype xinput
 x11-libs/gdk-pixbuf jpeg
+
 
