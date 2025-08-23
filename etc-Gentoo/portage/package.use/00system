@@ -1,0 +1,2 @@
+net-wireless/wpa_supplicant privsep wps fasteap
+net-misc/dhcpcd             privsep
