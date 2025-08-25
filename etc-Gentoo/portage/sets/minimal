@@ -52,3 +52,5 @@ sys-kernel/linux-firmware
 sys-power/acpi
 sys-power/acpid
 sys-power/hibernate-script
+
+sys-apps/ifplugd
