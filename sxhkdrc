@@ -7,7 +7,7 @@ alt + BackSpace
 super+c
        icesh -f center
 ctrl + alt + Return
-       urxvt
+       xterm
 super+j
        chrome
 super+p

@@ -10,7 +10,7 @@ dmenu
 dnscrypt-proxy
 dnscrypt-proxy--
 dunst--
-emacs--gtk3
+emacs--pgtk
 feh
 firefox-esr
 ghostscript--

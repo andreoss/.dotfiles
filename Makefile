@@ -17,6 +17,7 @@ local-bin:
 	$(LN) ${HOME}/.dotfiles/bin/viper    ${HOME}/.local/bin/viper
 	$(LN) ${HOME}/.dotfiles/bin/x        ${HOME}/.local/bin/x
 	$(LN) ${HOME}/.dotfiles/bin/wm       ${HOME}/.local/bin/wm
+	$(LN) ${HOME}/.dotfiles/bin/xterm    ${HOME}/.local/bin/xterm
 
 	$(LN) ${HOME}/.dotfiles/bin/git-xfetch     ${HOME}/.local/bin/git-xfetch
 	$(LN) ${HOME}/.dotfiles/bin/jetbrains      ${HOME}/.local/bin/jetbrains
@@ -39,7 +40,7 @@ dotfiles:
 	$(ND) ${HOME}/.config/dunst/
 	$(ND) ${HOME}/.config/gtk-3.0/
 	$(ND) ${HOME}/.config/sxhkd/
-	$(ND) ${HOME}/.config//
+	$(ND) ${HOME}/.config/
 	$(ND) ${HOME}/.icewm/
 
 	$(LN) ${HOME}/.dotfiles/.icewm/preferences ${HOME}/.icewm/
@@ -54,8 +55,8 @@ dotfiles:
 	git config --global include.path 	   ${HOME}/.dotfiles/gitaliases
 	pkill -USR1 sxhkd ||:
 
-	xrdb ~/.Xdefaults              ||:
-	xrdb ~/.Xresources."$HOSTNAME" ||:
+	xrdb        ~/.Xdefaults              ||:
+	xrdb -merge ~/.Xresources.${HOSTNAME} ||:
 system:
 	doas rm -f              /etc/motd
 	doas ln -f -s /dev/null /etc/motd

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for t in alacritty urxvt xterm; do
+	if type "$t" >/dev/null; then
+		exec "$t" "$@"
+	fi
+done
