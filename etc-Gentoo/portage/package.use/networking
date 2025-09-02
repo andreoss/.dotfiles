@@ -1,0 +1,9 @@
+net-analyzer/nmap -symlink ncat nping
+
+net-dns/bind -static -static-libs
+
+net-firewall/iptables nftables
+
+sys-apps/iproute2 -minimal
+
+net-misc/turbovnc -server ssl viewer dri3 verify-sig
