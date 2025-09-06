@@ -54,3 +54,4 @@ sys-power/acpid
 sys-power/hibernate-script
 
 sys-apps/ifplugd
+sys-kernel/modprobed-db
