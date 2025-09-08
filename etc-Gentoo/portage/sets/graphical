@@ -26,6 +26,7 @@ x11-misc/xcape
 x11-terms/rxvt-unicode
 x11-misc/urxvt-perls
 x11-misc/urxvt-font-size
+x11-misc/cbatticon
 x11-wm/icewm
 x11-wm/xpra
 app-admin/conky
