@@ -3,7 +3,7 @@ OS != uname
 ND = mkdir -p
 LN = ln -f -s
 
-all: system local-bin dotfiles cron
+all: local-bin dotfiles cron system
 
 cron:
 	crontab ${HOME}/.crontab
@@ -42,9 +42,9 @@ dotfiles:
 	pkill -USR1 sxhkd || echo "Not running"
 
 	git config --global include.path 	   ${HOME}/.dotfiles/gitaliases
-	pkill -USR1 sxhkd
+	pkill -USR1 sxhkd ||:
 
-	xrdb ~/.Xdefaults
+	xrdb ~/.Xdefaults ||:
 system:
 	doas rm -f              /etc/motd
 	doas ln -f -s /dev/null /etc/motd

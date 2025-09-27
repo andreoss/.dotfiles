@@ -1,5 +1,4 @@
-terminus-font--
-ImageMagick
+ ImageMagick
 amigafonts--
 aspell
 bash
@@ -32,6 +31,7 @@ mpv--
 notmuch
 openvpn--
 p5-ack
+p7zip
 pass-otp
 password-store
 pcmanfm
@@ -49,6 +49,7 @@ shellcheck
 shellcheck--
 shfmt
 sudo--
+terminus-font--centered_tilde
 texlive_texmf-full
 unifont--
 unzip--
